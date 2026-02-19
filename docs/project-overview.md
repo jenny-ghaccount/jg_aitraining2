@@ -48,6 +48,7 @@ The project uses npm workspaces to manage the monorepo structure. You can:
 For detailed project documentation, see:
 - [Functional Requirements](functional-requirements.md) - Detailed system requirements and specifications
 - [UI Guidelines](ui-guidelines.md) - Design system, accessibility, and Material Design implementation
+- [Testing Guidelines](testing-guidelines.md) - Comprehensive testing strategy and best practices
 
 ## Deployment
 
