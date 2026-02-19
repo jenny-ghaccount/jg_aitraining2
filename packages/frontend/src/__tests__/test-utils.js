@@ -4,11 +4,10 @@ import '@testing-library/jest-dom';
 
 /**
  * React Component Testing Utilities
- * Simple testing utilities for React components
  */
 
 /**
- * Custom render function with common providers
+ * Custom render function with providers
  */
 export const renderWithProviders = (ui, options = {}) => {
   const { ...renderOptions } = options;
@@ -21,35 +20,13 @@ export const renderWithProviders = (ui, options = {}) => {
 };
 
 /**
- * Helper function to simulate typing and form submission
- */
-export const fillAndSubmitForm = async (user, formData) => {
-  for (const [selector, value] of Object.entries(formData)) {
-    const element = document.querySelector(selector) || 
-                   screen.getByRole('textbox', { name: new RegExp(selector, 'i') });
-    if (element) {
-      await user.clear(element);
-      await user.type(element, value);
-    }
-  }
-};
-
-/**
- * Helper to create mock functions with common patterns
+ * Helper to create mock functions
  */
 export const createMockHandlers = () => ({
   onClick: jest.fn(),
   onChange: jest.fn(),
   onSubmit: jest.fn(),
-  onKeyDown: jest.fn(),
 });
-
-/**
- * Helper to wait for async operations
- */
-export const waitForAsync = (ms = 100) => {
-  return new Promise(resolve => setTimeout(resolve, ms));
-};
 
 // Re-export commonly used testing-library functions
 export * from '@testing-library/react';
