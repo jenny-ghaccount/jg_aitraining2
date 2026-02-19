@@ -1,4 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
+import React from 'react';
 
 // Mock fetch for API calls
 global.fetch = jest.fn();
@@ -31,6 +32,15 @@ describe('useTaskManager Hook (mocked)', () => {
     expect(result.current.tasks).toEqual([]);
     expect(result.current.filter).toBe('all');
     expect(result.current.isLoading).toBe(false);
+  });
+
+  test('provides necessary functions', () => {
+    const { result } = renderHook(() => mockUseTaskManager());
+    
+    expect(typeof result.current.addTask).toBe('function');
+    expect(typeof result.current.updateTask).toBe('function');
+    expect(typeof result.current.deleteTask).toBe('function');
+    expect(typeof result.current.setFilter).toBe('function');
   });
 });
 
