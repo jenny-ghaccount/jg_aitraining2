@@ -1,13 +1,5 @@
 // This file has been removed to avoid duplicate test conflicts.
 // The canonical useTaskManager tests are in useTaskManager.test.js
-    };
-    
-    setTasks(prev => [...prev, newTask]);
-    setError(null);
-  };
-
-  const removeTask = (taskId) => {
-    setTasks(prev => prev.filter(task => task.id !== taskId));
   };
 
   const toggleTask = (taskId) => {
