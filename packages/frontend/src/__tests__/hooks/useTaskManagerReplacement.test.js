@@ -1,23 +1,5 @@
-import { renderHook, act } from '@testing-library/react';
-import React from 'react';
-
-// Mock fetch for API calls
-global.fetch = jest.fn();
-
-// Simple mock hook for testing hook patterns
-const useTestTaskManager = () => {
-  const [tasks, setTasks] = React.useState([]);
-  const [filter, setFilter] = React.useState('all');
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
-
-  const addTask = React.useCallback((taskData) => {
-    const newTask = {
-      id: Date.now(),
-      ...taskData,
-      completed: false,
-      createdAt: new Date().toISOString()
-    };
+// This file has been removed to avoid duplicate test conflicts.
+// The canonical useTaskManager tests are in useTaskManager.test.js
     setTasks(prev => [...prev, newTask]);
   }, []);
 

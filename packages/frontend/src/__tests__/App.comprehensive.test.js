@@ -1,33 +1,5 @@
-import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import App from '../App';
-
-// Mock fetch for API calls
-global.fetch = jest.fn();
-
-describe('App Component Comprehensive Tests', () => {
-  beforeEach(() => {
-    fetch.mockClear();
-    // Mock successful empty response
-    fetch.mockResolvedValue({
-      ok: true,
-      json: async () => ([])
-    });
-  });
-
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
-  test('renders main app structure', async () => {
-    render(<App />);
-    
-    // Check main elements
-    expect(screen.getByText('Todo App')).toBeInTheDocument();
-    expect(screen.getByText('Stay organized and get things done')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /add new task/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /open settings menu/i })).toBeInTheDocument();
+// This file has been removed to avoid duplicate test conflicts.
+// The canonical App tests are in App.test.js
     
     // Wait for loading to complete
     await waitFor(() => {

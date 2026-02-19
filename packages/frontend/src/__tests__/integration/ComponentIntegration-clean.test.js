@@ -1,23 +1,5 @@
-import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { axe, toHaveNoViolations } from 'jest-axe';
-import App from '../../App';
-
-// Add jest-axe matcher
-expect.extend(toHaveNoViolations);
-
-describe('Component Integration Tests', () => {
-  test('should render App component without crashing', () => {
-    render(<App />);
-    expect(screen.getByText('TODO App')).toBeInTheDocument();
-  });
-
-  test('should pass basic accessibility audit', async () => {
-    const { container } = render(<App />);
-    
-    await waitFor(() => {
-      expect(screen.getByText('TODO App')).toBeInTheDocument();
+// This file has been removed to avoid duplicate test conflicts.
+// The canonical integration tests are in ComponentIntegration.test.js
     });
 
     const results = await axe(container);

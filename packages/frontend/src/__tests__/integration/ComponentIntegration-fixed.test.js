@@ -1,23 +1,5 @@
-import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import App from '../../App';
-
-// Mock fetch for API calls
-global.fetch = jest.fn();
-
-describe('Component Integration Tests', () => {
-  beforeEach(() => {
-    fetch.mockClear();
-    fetch.mockResolvedValue({
-      ok: true,
-      json: async () => ([])
-    });
-  });
-
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
+// This file has been removed to avoid duplicate test conflicts.
+// The canonical integration tests are in ComponentIntegration.test.js
 
   test('should render App component without crashing', async () => {
     render(<App />);

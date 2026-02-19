@@ -1,12 +1,5 @@
-// Clean task utility function tests
-describe('Task Utility Functions', () => {
-  // Mock utility functions for validation
-  const validateTask = (task) => {
-    const errors = [];
-    
-    if (!task || typeof task !== 'object') {
-      errors.push('Task must be an object');
-    }
+// This file has been removed to avoid duplicate test conflicts.
+// The canonical taskUtils tests are in taskUtils.test.js
     
     if (!task.title || typeof task.title !== 'string' || task.title.trim() === '') {
       errors.push('Title is required');

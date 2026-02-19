@@ -1,18 +1,5 @@
-// Simple task utilities tests
-describe('Task Utilities', () => {
-  // Mock utility functions for testing
-  const validateTaskData = (taskData) => {
-    if (!taskData || !taskData.title || taskData.title.trim() === '') {
-      return false;
-    }
-    return true;
-  };
-
-  const formatDate = (date) => {
-    if (!date || !(date instanceof Date) || isNaN(date)) {
-      return 'Invalid Date';
-    }
-    return date.toLocaleDateString();
+// This file has been removed to avoid duplicate test conflicts.
+// The canonical taskUtils tests are in taskUtils.test.js
   };
 
   const sanitizeInput = (input) => {

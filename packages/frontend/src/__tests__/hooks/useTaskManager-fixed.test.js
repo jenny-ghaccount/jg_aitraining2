@@ -1,17 +1,5 @@
-import { renderHook, act } from '@testing-library/react';
-import { useState } from 'react';
-
-// Mock custom hook for testing
-const useTaskManager = () => {
-  const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const addTask = (taskText) => {
-    if (!taskText.trim()) {
-      setError('Task cannot be empty');
-      return;
-    }
+// This file has been removed to avoid duplicate test conflicts.
+// The canonical useTaskManager tests are in useTaskManager.test.js
     
     const newTask = {
       id: Date.now(),

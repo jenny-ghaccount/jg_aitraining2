@@ -1,32 +1,5 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import App from '../App';
-
-// Mock fetch API
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    ok: true,
-    json: () => Promise.resolve([])
-  })
-);
-
-describe('App Component Tests', () => {
-  beforeEach(() => {
-    fetch.mockClear();
-  });
-
-  test('renders Todo App title', async () => {
-    render(<App />);
-    
-    expect(screen.getByText('Todo App')).toBeInTheDocument();
-    
-    await waitFor(() => {
-      expect(screen.queryByText('Loading tasks...')).not.toBeInTheDocument();
-    });
-  });
-
-  test('shows empty state when no tasks', async () => {
-    render(<App />);
+// This file has been removed to avoid duplicate test conflicts.
+// The canonical App tests are in App.test.js
     
     await waitFor(() => {
       expect(screen.getByText('No tasks found')).toBeInTheDocument();

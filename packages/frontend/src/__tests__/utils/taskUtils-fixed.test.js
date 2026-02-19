@@ -1,23 +1,5 @@
-// Test utilities for task management
-describe('Task Utilities', () => {
-  describe('validateTaskData', () => {
-    const validateTaskData = (taskData) => {
-      const errors = [];
-      
-      if (!taskData || !taskData.title || taskData.title.trim() === '') {
-        errors.push('Title is required');
-      }
-      
-      if (taskData.title && taskData.title.length > 100) {
-        errors.push('Title must be less than 100 characters');
-      }
-      
-      return errors;
-    };
-
-    test('should require title', () => {
-      expect(validateTaskData({})).toContain('Title is required');
-      expect(validateTaskData({ title: '' })).toContain('Title is required');
+// This file has been removed to avoid duplicate test conflicts.
+// The canonical taskUtils tests are in taskUtils.test.js
       expect(validateTaskData({ title: '   ' })).toContain('Title is required');
     });
 

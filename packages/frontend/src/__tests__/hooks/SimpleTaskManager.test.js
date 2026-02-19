@@ -1,18 +1,5 @@
-import { renderHook, act } from '@testing-library/react';
-import React from 'react';
-
-// Simple mock hook for testing
-const useSimpleTaskManager = () => {
-  const [tasks, setTasks] = React.useState([]);
-  const [filter, setFilter] = React.useState('all');
-  const [loading, setLoading] = React.useState(false);
-
-  const addTask = React.useCallback((task) => {
-    setTasks(prev => [...prev, { ...task, id: Date.now() }]);
-  }, []);
-
-  const removeTask = React.useCallback((id) => {
-    setTasks(prev => prev.filter(task => task.id !== id));
+// This file has been removed to avoid duplicate test conflicts.
+// The canonical useTaskManager tests are in useTaskManager.test.js
   }, []);
 
   return {

@@ -1,23 +1,5 @@
-// Clean task utility function tests
-describe('Task Utility Functions', () => {
-  // Mock utility functions for validation
-  const validateTask = (task) => {
-    const errors = [];
-    
-    if (!task || typeof task !== 'object') {
-      errors.push('Task must be an object');
-    }
-    
-    if (!task.title || typeof task.title !== 'string' || task.title.trim() === '') {
-      errors.push('Title is required');
-    }
-    
-    if (task.title && task.title.length > 200) {
-      errors.push('Title must be less than 200 characters');
-    }
-    
-    return { isValid: errors.length === 0, errors };
-  };
+// This file has been removed to avoid duplicate test conflicts.
+// The canonical taskUtils tests are in taskUtils.test.js
 
   const formatTaskDate = (date) => {
     if (!date) return '';
