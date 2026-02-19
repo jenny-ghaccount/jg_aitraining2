@@ -11,9 +11,10 @@ The project documentation includes:
 - [Project Overview](../docs/project-overview.md) - Overview of the project architecture and setup
 - [Functional Requirements](../docs/functional-requirements.md) - Detailed system requirements and specifications
 - [UI Guidelines](../docs/ui-guidelines.md) - Design system, Material Design components, and accessibility standards
+- [Coding Guidelines](../docs/coding-guidelines.md) - Coding style, formatting rules, best practices, and quality principles
 - [Testing Guidelines](../docs/testing-guidelines.md) - Comprehensive testing strategy, unit/integration/E2E tests, and best practices
 
-Refer to these documents when implementing features to ensure alignment with project goals and requirements.
+Refer to these documents when implementing features to ensure alignment with project goals, coding standards, and quality requirements.
 
 ## Testing Requirements for AI-Generated Code
 
