@@ -1,17 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import TaskForm from './TaskForm';
+
+// Theme management
+const THEMES = {
+  STANDARD: 'standard',
+  HIGH_CONTRAST_DARK: 'high-contrast-dark',
+  HIGH_CONTRAST_LIGHT: 'high-contrast-light'
+};
 
 function App() {
-  const [data, setData] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [newItem, setNewItem] = useState('');
+  const [filter, setFilter] = useState('all'); // 'all', 'active', 'completed'
+  const [showSettings, setShowSettings] = useState(false);
+  const [showTaskForm, setShowTaskForm] = useState(false);
+  const [editingTask, setEditingTask] = useState(null);
+  const [theme, setTheme] = useState(
+    localStorage.getItem('preferred-theme') || THEMES.STANDARD
+  );
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchTasks();
+    // Apply theme on load
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
-  const fetchData = async () => {
+  const fetchTasks = async () => {
     try {
       setLoading(true);
       const response = await fetch('/api/items');
@@ -19,107 +35,351 @@ function App() {
         throw new Error('Network response was not ok');
       }
       const result = await response.json();
-      setData(result);
+      // Transform basic items to tasks format
+      const tasks = result.map(item => ({
+        id: item.id,
+        title: item.name,
+        description: '',
+        completed: false,
+        dueDate: null,
+        createdAt: new Date().toISOString()
+      }));
+      setTasks(tasks);
       setError(null);
     } catch (err) {
-      setError('Failed to fetch data: ' + err.message);
-      console.error('Error fetching data:', err);
+      setError('Failed to fetch tasks: ' + err.message);
+      console.error('Error fetching tasks:', err);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!newItem.trim()) return;
-
+  const addTask = async (taskData) => {
     try {
       const response = await fetch('/api/items', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name: newItem }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: taskData.title }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to add item');
-      }
+      if (!response.ok) throw new Error('Failed to add task');
 
       const result = await response.json();
-      setData([...data, result]);
-      setNewItem('');
+      const newTask = {
+        id: result.id,
+        title: taskData.title,
+        description: taskData.description,
+        completed: false,
+        dueDate: taskData.dueDate,
+        createdAt: new Date().toISOString()
+      };
+      
+      setTasks([...tasks, newTask]);
+      setShowTaskForm(false);
     } catch (err) {
-      setError('Error adding item: ' + err.message);
-      console.error('Error adding item:', err);
+      setError('Error adding task: ' + err.message);
     }
   };
 
-  const handleDelete = async (itemId) => {
+  const updateTask = async (taskId, taskData) => {
     try {
-      const response = await fetch(`/api/items/${itemId}`, {
+      // In a real app, this would be a PUT request to update the task
+      const updatedTask = {
+        ...tasks.find(t => t.id === taskId),
+        title: taskData.title,
+        description: taskData.description,
+        dueDate: taskData.dueDate
+      };
+      
+      setTasks(tasks.map(t => t.id === taskId ? updatedTask : t));
+      setEditingTask(null);
+      setShowTaskForm(false);
+    } catch (err) {
+      setError('Error updating task: ' + err.message);
+    }
+  };
+
+  const toggleTaskComplete = async (taskId) => {
+    try {
+      const task = tasks.find(t => t.id === taskId);
+      const updatedTask = { ...task, completed: !task.completed };
+      
+      // Update in state immediately for better UX
+      setTasks(tasks.map(t => t.id === taskId ? updatedTask : t));
+      
+      // In a real app, this would be a PATCH request to update task status
+      // For now, we'll keep the optimistic update
+    } catch (err) {
+      setError('Error updating task: ' + err.message);
+    }
+  };
+
+  const deleteTask = async (taskId) => {
+    try {
+      const response = await fetch(`/api/items/${taskId}`, {
         method: 'DELETE',
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to delete item');
-      }
+      if (!response.ok) throw new Error('Failed to delete task');
 
-      setData(data.filter(item => item.id !== itemId));
+      setTasks(tasks.filter(task => task.id !== taskId));
       setError(null);
     } catch (err) {
-      setError('Error deleting item: ' + err.message);
-      console.error('Error deleting item:', err);
+      setError('Error deleting task: ' + err.message);
     }
   };
+
+  const handleThemeChange = (newTheme) => {
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('preferred-theme', newTheme);
+    
+    // Announce theme change for screen readers
+    const announcement = `Theme changed to ${newTheme.replace('-', ' ')}`;
+    const announcer = document.createElement('div');
+    announcer.setAttribute('aria-live', 'polite');
+    announcer.setAttribute('aria-atomic', 'true');
+    announcer.textContent = announcement;
+    announcer.style.position = 'absolute';
+    announcer.style.left = '-10000px';
+    document.body.appendChild(announcer);
+    setTimeout(() => document.body.removeChild(announcer), 1000);
+  };
+
+  const getFilteredTasks = () => {
+    let filtered = tasks;
+    
+    switch (filter) {
+      case 'active':
+        filtered = tasks.filter(task => !task.completed);
+        break;
+      case 'completed':
+        filtered = tasks.filter(task => task.completed);
+        break;
+      default:
+        filtered = tasks;
+    }
+    
+    // Sort by due date (earliest first), then by creation date
+    return filtered.sort((a, b) => {
+      if (a.dueDate && b.dueDate) {
+        return new Date(a.dueDate) - new Date(b.dueDate);
+      }
+      if (a.dueDate && !b.dueDate) return -1;
+      if (!a.dueDate && b.dueDate) return 1;
+      return new Date(a.createdAt) - new Date(b.createdAt);
+    });
+  };
+
+  const getTaskStatus = (task) => {
+    if (task.completed) return 'completed';
+    if (!task.dueDate) return 'normal';
+    
+    const today = new Date();
+    const dueDate = new Date(task.dueDate);
+    const daysDiff = Math.ceil((dueDate - today) / (1000 * 60 * 60 * 24));
+    
+    if (daysDiff < 0) return 'overdue';
+    if (daysDiff <= 1) return 'due-soon';
+    return 'normal';
+  };
+
+  const formatDueDate = (dateString) => {
+    if (!dateString) return null;
+    const date = new Date(dateString);
+    const today = new Date();
+    const daysDiff = Math.ceil((date - today) / (1000 * 60 * 60 * 24));
+    
+    if (daysDiff === 0) return 'Due today';
+    if (daysDiff === 1) return 'Due tomorrow';
+    if (daysDiff === -1) return 'Due yesterday';
+    if (daysDiff < 0) return `${Math.abs(daysDiff)} days overdue`;
+    if (daysDiff > 0) return `Due in ${daysDiff} days`;
+    
+    return date.toLocaleDateString();
+  };
+
+  const filteredTasks = getFilteredTasks();
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>To Do App</h1>
-        <p>Keep track of your tasks</p>
+        <div>
+          <h1>Todo App</h1>
+          <p>Stay organized and get things done</p>
+        </div>
+        <button 
+          className="settings-btn"
+          onClick={() => setShowSettings(!showSettings)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setShowSettings(!showSettings);
+            }
+          }}
+          aria-expanded={showSettings}
+          aria-label="Open settings menu"
+        >
+          ⚙️ Settings
+        </button>
       </header>
 
-      <main>
-        <section className="add-item-section">
-          <h2>Add New Item</h2>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={newItem}
-              onChange={(e) => setNewItem(e.target.value)}
-              placeholder="Enter item name"
-            />
-            <button type="submit">Add Item</button>
-          </form>
-        </section>
+      {/* Settings Menu */}
+      {showSettings && (
+        <div className="settings-menu" role="dialog" aria-label="Settings">
+          <h3>Accessibility Themes</h3>
+          <div className="theme-options">
+            {Object.entries(THEMES).map(([key, value]) => (
+              <label key={value} className="theme-option">
+                <input
+                  type="radio"
+                  name="theme"
+                  value={value}
+                  checked={theme === value}
+                  onChange={() => handleThemeChange(value)}
+                />
+                {key.replace('_', ' ').toLowerCase().replace(/\b\w/g, l => l.toUpperCase())}
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
 
-        <section className="items-section">
-          <h2>Items from Database</h2>
-          {loading && <p>Loading data...</p>}
-          {error && <p className="error">{error}</p>}
-          {!loading && !error && (
-            <ul>
-              {data.length > 0 ? (
-                data.map((item) => (
-                  <li key={item.id}>
-                    <span>{item.name}</span>
-                    <button 
-                      onClick={() => handleDelete(item.id)}
-                      className="delete-btn"
-                      type="button"
-                    >
-                      Delete
-                    </button>
-                  </li>
-                ))
-              ) : (
-                <p>No items found. Add some!</p>
-              )}
-            </ul>
+      <main className="main-content">
+        <div className="task-list-container">
+          <div className="task-list-header">
+            <h2>Your Tasks ({filteredTasks.length})</h2>
+            <div className="task-filters">
+              {['all', 'active', 'completed'].map(filterType => (
+                <button
+                  key={filterType}
+                  className={`filter-btn ${filter === filterType ? 'active' : ''}`}
+                  onClick={() => setFilter(filterType)}
+                  aria-pressed={filter === filterType}
+                >
+                  {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {loading && (
+            <div className="loading" role="status" aria-label="Loading tasks">
+              Loading tasks...
+            </div>
           )}
-        </section>
+
+          {error && (
+            <div className="error-message" role="alert">
+              {error}
+            </div>
+          )}
+
+          {!loading && !error && (
+            <>
+              {filteredTasks.length > 0 ? (
+                <ul className="task-list" role="list">
+                  {filteredTasks.map((task) => {
+                    const status = getTaskStatus(task);
+                    return (
+                      <li 
+                        key={task.id} 
+                        className={`task-card ${status}`}
+                        role="listitem"
+                      >
+                        <div className="task-content">
+                          <div className="task-header">
+                            <h3 className={`task-title ${task.completed ? 'completed' : ''}`}>
+                              {task.title}
+                            </h3>
+                          </div>
+                          
+                          {task.description && (
+                            <p className="task-description">{task.description}</p>
+                          )}
+                          
+                          <div className="task-meta">
+                            <div className="task-due-date">
+                              {formatDueDate(task.dueDate)}
+                            </div>
+                            
+                            <div className="task-actions">
+                              <button
+                                className={`task-btn complete ${task.completed ? 'completed' : ''}`}
+                                onClick={() => toggleTaskComplete(task.id)}
+                                aria-label={task.completed ? 'Mark as incomplete' : 'Mark as complete'}
+                              >
+                                {task.completed ? '↶ Undo' : '✓ Complete'}
+                              </button>
+                              <button
+                                className="task-btn edit"
+                                onClick={() => {
+                                  setEditingTask(task);
+                                  setShowTaskForm(true);
+                                }}
+                                aria-label={`Edit task: ${task.title}`}
+                              >
+                                ✏️ Edit
+                              </button>
+                              <button
+                                className="task-btn delete"
+                                onClick={() => deleteTask(task.id)}
+                                aria-label={`Delete task: ${task.title}`}
+                              >
+                                🗑 Delete
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <div className="empty-state">
+                  <h3>No tasks found</h3>
+                  <p>
+                    {filter === 'all' 
+                      ? 'Click the + button to add your first task!'
+                      : `No ${filter} tasks. Try a different filter or add some tasks.`
+                    }
+                  </p>
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </main>
+
+      {/* Floating Action Button */}
+      <button 
+        className="fab"
+        onClick={() => {
+          setEditingTask(null);
+          setShowTaskForm(true);
+        }}
+        aria-label="Add new task"
+        title="Add new task"
+      >
+        +
+      </button>
+
+      {/* Task Form Modal */}
+      <TaskForm
+        isOpen={showTaskForm}
+        onClose={() => {
+          setShowTaskForm(false);
+          setEditingTask(null);
+        }}
+        onSubmit={(taskData) => {
+          if (editingTask) {
+            updateTask(editingTask.id, taskData);
+          } else {
+            addTask(taskData);
+          }
+        }}
+        task={editingTask}
+      />
     </div>
   );
 }
