@@ -76,9 +76,6 @@
       "html",
       "json"
     ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.js"
-    ],
     "testTimeout": 30000
   }
 }
