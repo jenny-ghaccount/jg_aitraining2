@@ -1,52 +1,38 @@
 import { renderHook, act } from '@testing-library/react';
-import { useState } from 'react';
 
-// Mock custom hook for testing
-const useTaskManager = () => {
-  const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+// Mock fetch for API calls
+global.fetch = jest.fn();
 
-  const addTask = (taskText) => {
-    if (!taskText.trim()) {
-      setError('Task cannot be empty');
-      return;
-    }
-    
-    const newTask = {
-      id: Date.now(),
-      text: taskText,
-      completed: false,
-      createdAt: new Date().toISOString()
-    };
-    
-    setTasks(prev => [...prev, newTask]);
-    setError(null);
-  };
-
-  const removeTask = (taskId) => {
-    setTasks(prev => prev.filter(task => task.id !== taskId));
-  };
-
-  const toggleTask = (taskId) => {
-    setTasks(prev => 
-      prev.map(task => 
-        task.id === taskId 
-          ? { ...task, completed: !task.completed }
-          : task
-      )
-    );
-  };
+// Mock the useTaskManager hook
+const mockUseTaskManager = () => {
+  const [tasks, setTasks] = React.useState([]);
+  const [filter, setFilter] = React.useState('all');
+  const [isLoading, setIsLoading] = React.useState(false);
 
   return {
     tasks,
-    loading,
-    error,
-    addTask,
-    removeTask,
-    toggleTask
+    filter,
+    isLoading,
+    setFilter,
+    addTask: jest.fn(),
+    updateTask: jest.fn(),
+    deleteTask: jest.fn()
   };
 };
+
+describe('useTaskManager Hook (mocked)', () => {
+  beforeEach(() => {
+    fetch.mockClear();
+  });
+
+  test('initializes with correct default state', () => {
+    const { result } = renderHook(() => mockUseTaskManager());
+    
+    expect(result.current.tasks).toEqual([]);
+    expect(result.current.filter).toBe('all');
+    expect(result.current.isLoading).toBe(false);
+  });
+});
 
 describe('useTaskManager Hook', () => {
   test('should initialize with empty state', () => {
@@ -78,6 +64,44 @@ describe('useTaskManager Hook', () => {
     
     expect(result.current.tasks).toHaveLength(0);
     expect(result.current.error).toBe('Task cannot be empty');
+  });
+
+  test('should remove tasks', () => {
+    const { result } = renderHook(() => useTaskManager());
+    
+    act(() => {
+      result.current.addTask('Test task');
+    });
+    
+    const taskId = result.current.tasks[0].id;
+    
+    act(() => {
+      result.current.removeTask(taskId);
+    });
+    
+    expect(result.current.tasks).toHaveLength(0);
+  });
+
+  test('should toggle task completion', () => {
+    const { result } = renderHook(() => useTaskManager());
+    
+    act(() => {
+      result.current.addTask('Test task');
+    });
+    
+    const taskId = result.current.tasks[0].id;
+    
+    act(() => {
+      result.current.toggleTask(taskId);
+    });
+    
+    expect(result.current.tasks[0].completed).toBe(true);
+    
+    act(() => {
+      result.current.toggleTask(taskId);
+    });
+    
+    expect(result.current.tasks[0].completed).toBe(false);
   });
 });
 

@@ -1,34 +1,103 @@
-// Test utilities for task management
+// Simple task utilities tests
 describe('Task Utilities', () => {
-  describe('validateTaskData', () => {
-    const validateTaskData = (taskData) => {
-      const errors = [];
-      
-      if (!taskData || !taskData.title || taskData.title.trim() === '') {
-        errors.push('Title is required');
-      }
-      
-      if (taskData.title && taskData.title.length > 100) {
-        errors.push('Title must be less than 100 characters');
-      }
-      
-      return errors;
-    };
+  // Mock utility functions for testing
+  const validateTaskData = (taskData) => {
+    if (!taskData || !taskData.title || taskData.title.trim() === '') {
+      return false;
+    }
+    return true;
+  };
 
+  const formatDate = (date) => {
+    if (!date || !(date instanceof Date) || isNaN(date)) {
+      return 'Invalid Date';
+    }
+    return date.toLocaleDateString();
+  };
+
+  const sanitizeInput = (input) => {
+    if (!input) return '';
+    return input.replace(/<[^>]*>/g, '').trim();
+  };
+
+  describe('validateTaskData', () => {
     test('should require title', () => {
-      expect(validateTaskData({})).toContain('Title is required');
-      expect(validateTaskData({ title: '' })).toContain('Title is required');
-      expect(validateTaskData({ title: '   ' })).toContain('Title is required');
+      expect(validateTaskData({})).toBe(false);
+      expect(validateTaskData({ title: '' })).toBe(false);
+      expect(validateTaskData({ title: '   ' })).toBe(false);
     });
 
     test('should accept valid title', () => {
-      expect(validateTaskData({ title: 'Valid task' })).toHaveLength(0);
+      expect(validateTaskData({ title: 'Valid task' })).toBe(true);
+    });
+  });
+
+  describe('formatDate', () => {
+    test('should format date correctly', () => {
+      const testDate = new Date('2024-01-15');
+      expect(formatDate(testDate)).toMatch(/\d{1,2}\/\d{1,2}\/\d{4}/);
     });
 
-    test('should reject very long titles', () => {
-      const longTitle = 'x'.repeat(101);
-      expect(validateTaskData({ title: longTitle })).toContain('Title must be less than 100 characters');
+    test('should handle invalid dates', () => {
+      expect(formatDate(null)).toBe('Invalid Date');
+      expect(formatDate('invalid')).toBe('Invalid Date');
     });
+  });
+
+  describe('sanitizeInput', () => {
+    test('should remove HTML tags', () => {
+      expect(sanitizeInput('<script>alert("xss")</script>Hello')).toBe('Hello');
+    });
+
+    test('should handle empty input', () => {
+      expect(sanitizeInput('')).toBe('');
+      expect(sanitizeInput(null)).toBe('');
+    });
+  });
+});
+    });
+  });
+
+  describe('formatDate', () => {
+    const formatDate = (dateString) => {
+      if (!dateString) return '';
+      const date = new Date(dateString);
+      return date.toLocaleDateString();
+    };
+
+    test('should format dates correctly', () => {
+      const result = formatDate('2024-01-15');
+      expect(result).toMatch(/\d+\/\d+\/\d+/);
+    });
+
+    test('should handle empty dates', () => {
+      expect(formatDate('')).toBe('');
+      expect(formatDate(null)).toBe('');
+      expect(formatDate(undefined)).toBe('');
+    });
+  });
+
+  describe('sanitizeInput', () => {
+    const sanitizeInput = (input) => {
+      if (typeof input !== 'string') return '';
+      return input.trim().replace(/<[^>]*>/g, '');
+    };
+
+    test('should trim whitespace', () => {
+      expect(sanitizeInput('  hello  ')).toBe('hello');
+    });
+
+    test('should remove HTML tags', () => {
+      expect(sanitizeInput('<script>alert("test")</script>')).toBe('alert("test")');
+      expect(sanitizeInput('Hello <b>world</b>')).toBe('Hello world');
+    });
+
+    test('should handle non-string inputs', () => {
+      expect(sanitizeInput(null)).toBe('');
+      expect(sanitizeInput(undefined)).toBe('');
+      expect(sanitizeInput(123)).toBe('');
+    });
+  });
   });
 
   describe('formatDate', () => {

@@ -1,63 +1,49 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import '@testing-library/jest-dom';
 
-/**
- * React Component Testing Utilities
- */
-
-/**
- * Custom render function with providers
- */
-export const renderWithProviders = (ui, options = {}) => {
-  const { ...renderOptions } = options;
-
-  const Wrapper = ({ children }) => {
-    return children;
-  };
-
-  return render(ui, { wrapper: Wrapper, ...renderOptions });
+// Test utilities and helpers
+export const renderWithRouter = (component) => {
+  return render(component);
 };
 
-/**
- * Helper to create mock functions
- */
-export const createMockHandlers = () => ({
-  onClick: jest.fn(),
-  onChange: jest.fn(),
-  onSubmit: jest.fn(),
+export const mockFetch = (data = []) => {
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve(data)
+    })
+  );
+};
+
+export const resetMocks = () => {
+  if (global.fetch && global.fetch.mockClear) {
+    global.fetch.mockClear();
+  }
+};
+
+export const createMockTask = (overrides = {}) => ({
+  id: 1,
+  title: 'Test Task',
+  description: 'Test Description',
+  completed: false,
+  createdAt: new Date().toISOString(),
+  ...overrides
 });
 
-// Re-export commonly used testing-library functions
-export * from '@testing-library/react';
-export { default as userEvent } from '@testing-library/user-event';
-
-  // Wrapper component with providers (to be expanded with Context providers)
-  const Wrapper = ({ children }) => {
-    return (
-      <div data-theme={theme}>
-        {children}
-      </div>
-    );
-  };
-
-  return {
-    user: userEvent.setup(),
-    ...render(ui, { wrapper: Wrapper, ...renderOptions })
-  };
+export const waitForElement = async (element, timeout = 1000) => {
+  return new Promise((resolve) => {
+    const checkElement = () => {
+      if (element) {
+        resolve(element);
+      } else if (timeout > 0) {
+        setTimeout(checkElement, 100);
+        timeout -= 100;
+      } else {
+        resolve(null);
+      }
+    };
+    checkElement();
+  });
 };
-
-/**
- * Form Testing Utilities
- */
-export const formTestUtils = {
-  // Fill form fields by label text
-  async fillFormField(user, labelText, value) {
-    const field = screen.getByLabelText(labelText);
-    await user.clear(field);
-    await user.type(field, value);
-    return field;
-  },
 
   // Fill form fields by placeholder text
   async fillFormFieldByPlaceholder(user, placeholderText, value) {

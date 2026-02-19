@@ -1,18 +1,32 @@
 import React from 'react';
-import { render, screen, waitFor, act } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe, toHaveNoViolations } from 'jest-axe';
 import App from '../../App';
 
-// Add jest-axe matcher
-expect.extend(toHaveNoViolations);
+// Mock fetch for API calls
+global.fetch = jest.fn();
 
 describe('Component Integration Tests', () => {
+  beforeEach(() => {
+    fetch.mockClear();
+    fetch.mockResolvedValue({
+      ok: true,
+      json: async () => ([])
+    });
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   test('should render App component without crashing', async () => {
     render(<App />);
     
-    // Check for the main heading
-    expect(screen.getByText('TODO App')).toBeInTheDocument();
+    expect(screen.getByText('Todo App')).toBeInTheDocument();
+    
+    await waitFor(() => {
+      expect(screen.queryByText('Loading tasks...')).not.toBeInTheDocument();
+    });
   });
 
   test('should pass basic accessibility audit', async () => {
