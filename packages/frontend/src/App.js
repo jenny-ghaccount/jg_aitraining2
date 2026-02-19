@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import { 
+  Container, 
+  Box, 
+  Typography, 
+  AppBar, 
+  Toolbar, 
+  IconButton,
+  Fab,
+  CircularProgress,
+  Alert
+} from '@mui/material';
+import { 
+  Add as AddIcon,
+  Settings as SettingsIcon,
+  Brightness4 as ThemeIcon
+} from '@mui/icons-material';
+import { ThemeProvider, useTheme } from './theme/ThemeProvider';
 import TaskForm from './TaskForm';
 
-// Theme management
-const THEMES = {
-  STANDARD: 'standard',
-  HIGH_CONTRAST_DARK: 'high-contrast-dark',
-  HIGH_CONTRAST_LIGHT: 'high-contrast-light'
-};
-
-function App() {
+// Main App Component (wrapped by ThemeProvider)
+function AppContent() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,33 +27,22 @@ function App() {
   const [showSettings, setShowSettings] = useState(false);
   const [showTaskForm, setShowTaskForm] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
-  const [theme, setTheme] = useState(
-    localStorage.getItem('preferred-theme') || THEMES.STANDARD
-  );
+
+  // Access theme utilities
+  const { toggleTheme, currentTheme, isHighContrast } = useTheme();
 
   useEffect(() => {
     fetchTasks();
-    // Apply theme on load
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
+  }, []);
 
   const fetchTasks = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/items');
+      const response = await fetch('/api/tasks');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      const result = await response.json();
-      // Transform basic items to tasks format
-      const tasks = result.map(item => ({
-        id: item.id,
-        title: item.name,
-        description: '',
-        completed: false,
-        dueDate: null,
-        createdAt: new Date().toISOString()
-      }));
+      const tasks = await response.json();
       setTasks(tasks);
       setError(null);
     } catch (err) {
@@ -56,26 +55,23 @@ function App() {
 
   const addTask = async (taskData) => {
     try {
-      const response = await fetch('/api/items', {
+      const response = await fetch('/api/tasks', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: taskData.title }),
+        body: JSON.stringify({
+          title: taskData.title,
+          description: taskData.description || '',
+          dueDate: taskData.dueDate || null,
+          completed: false
+        }),
       });
 
       if (!response.ok) throw new Error('Failed to add task');
 
-      const result = await response.json();
-      const newTask = {
-        id: result.id,
-        title: taskData.title,
-        description: taskData.description,
-        completed: false,
-        dueDate: taskData.dueDate,
-        createdAt: new Date().toISOString()
-      };
-      
-      setTasks([...tasks, newTask]);
+      const newTask = await response.json();
+      setTasks(prevTasks => [...prevTasks, newTask]);
       setShowTaskForm(false);
+      setError(null);
     } catch (err) {
       setError('Error adding task: ' + err.message);
     }
