@@ -72,7 +72,7 @@
     "coverageReporters": [
       "text",
       "text-summary",
-      "lcov", 
+      "lcov",
       "html",
       "json"
     ],
