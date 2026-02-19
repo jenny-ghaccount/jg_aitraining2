@@ -8,7 +8,10 @@
     "test": "jest --detectOpenHandles",
     "test:watch": "jest --detectOpenHandles --watchAll",
     "test:coverage": "jest --detectOpenHandles --coverage",
-    "test:ci": "jest --detectOpenHandles --coverage --reporters=default --reporters=jest-junit"
+    "test:ci": "jest --detectOpenHandles --coverage --reporters=default --reporters=jest-junit",
+    "test:integration": "jest --detectOpenHandles --testPathPattern=integration",
+    "test:unit": "jest --detectOpenHandles --testPathPattern=unit",
+    "test:performance": "jest --detectOpenHandles --testPathPattern=performance"
   },
   "dependencies": {
     "better-sqlite3": "^11.10.0",

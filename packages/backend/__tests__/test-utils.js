@@ -1,8 +1,38 @@
 const request = require('supertest');
 
 /**
- * Test utilities for backend testing
+ * Enhanced Test utilities for backend testing with comprehensive coverage
  */
+
+/**
+ * Creates a test task with optional overrides
+ * @param {Object} overrides - Properties to override in the default task
+ * @returns {Object} Task data object
+ */
+const createValidTask = (overrides = {}) => ({
+  title: 'Test Task',
+  description: 'Test task description',
+  completed: false,
+  dueDate: '2026-03-01',
+  sortOrder: 0,
+  ...overrides
+});
+
+/**
+ * Creates multiple test tasks for bulk testing
+ * @param {number} count - Number of tasks to create
+ * @param {Function} customizer - Function to customize each task (receives index)
+ * @returns {Array} Array of task objects
+ */
+const createMultipleTasks = (count, customizer = (i) => ({})) => {
+  return Array.from({ length: count }, (_, i) => 
+    createValidTask({
+      title: `Test Task ${i + 1}`,
+      description: `Description for task ${i + 1}`,
+      ...customizer(i)
+    })
+  );
+};
 
 /**
  * API Testing Utilities
