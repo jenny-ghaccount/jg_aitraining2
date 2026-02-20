@@ -21,12 +21,12 @@ export const CircularProgress = (props) => <div {...props}>Loading...</div>;
 export const Alert = ({ children, ...props }) => <div {...props} role="alert">{children}</div>;
 export const Button = ({ children, ...props }) => <button {...props}>{children}</button>;
 
-// Enhanced TextField mock with proper label handling
-export const TextField = ({ label, id, name, error, helperText, ...props }) => (
+// Enhanced TextField mock with proper label handling and error display
+export const TextField = ({ label, id, name, error, helperText, inputProps, InputLabelProps, InputProps, ...props }) => (
   <div>
     {label && <label htmlFor={id || name}>{label}</label>}
     <input id={id || name} name={name} {...props} />
-    {error && helperText && <div role="alert">{helperText}</div>}
+    {helperText && <div role={error ? 'alert' : undefined} data-testid="helper-text">{helperText}</div>}
   </div>
 );
 

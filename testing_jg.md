@@ -1,3 +1,39 @@
+                  2
+                  )
+                </div>
+                <div>
+                  <button
+                    aria-pressed="true"
+                    variant="contained"
+                  >
+                    All
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    variant="outlined"
+                  >
+                    Active
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    variant="outlined"
+                  >
+                    Completed
+                  </button>
+                </div>
+              </div>
+              <div
+                role="alert"
+                severity="error"
+                sx="[object Object]"
+              >
+                Error adding task: Failed to add task
+              </div>
+            </div>
+          </div>
+          <button
+            aria-label="Add new task"
+            color="primary"
             sx="[object Object]"
           >
             <span>
@@ -96,10 +132,10 @@
     </body>
 
       366 |       
-      367 |       // Should show error message
+      367 |       // Should show error message for long title
     > 368 |       await waitFor(() => {
           |                    ^
-      369 |         expect(screen.getByText(/cannot exceed 255 characters/i)).toBeInTheDocument();
+      369 |         expect(screen.getByText(/255 characters/i)).toBeInTheDocument();
       370 |       });
       371 |     });
 
@@ -108,7 +144,7 @@
 
   ● App Component › Theme and Accessibility › toggles theme when theme button clicked
 
-    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/toggle theme/i`
+    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/switch to.*theme/i`
 
     Here are the accessible roles:
 
@@ -266,7 +302,7 @@
 
       380 |       });
       381 |       
-    > 382 |       const themeButton = screen.getByRole('button', { name: /toggle theme/i });
+    > 382 |       const themeButton = screen.getByRole('button', { name: /switch to.*theme/i });
           |                                  ^
       383 |       await user.click(themeButton);
       384 |       
@@ -280,7 +316,7 @@
 
   ● App Component › Theme and Accessibility › supports keyboard navigation
 
-    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/toggle theme/i`
+    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/switch to.*theme/i`
 
     Here are the accessible roles:
 
@@ -584,7 +620,7 @@
 
       415 |       // Tab through interactive elements
       416 |       await user.tab();
-    > 417 |       expect(screen.getByRole('button', { name: /toggle theme/i })).toHaveFocus();
+    > 417 |       expect(screen.getByRole('button', { name: /switch to.*theme/i })).toHaveFocus();
           |                     ^
       418 |       
       419 |       await user.tab();
@@ -609,6 +645,184 @@
       441 |       const taskElements = screen.getAllByRole('listitem');
 
       at Object.<anonymous> (src/__tests__/App.test.js:438:58)
+
+ FAIL  src/__tests__/integration/Integration.test.js
+  ● Integration Tests › filter and display integration
+
+    Unable to find an element with the text: Your Tasks (1). This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, script, style
+    <body>
+      <div>
+        <div>
+          <div
+            position="static"
+            role="banner"
+            sx="[object Object]"
+          >
+            <div>
+              <h1>
+                Todo App
+              </h1>
+              <button
+                aria-expanded="false"
+                aria-label="Open settings menu"
+                color="inherit"
+                edge="end"
+              >
+                <span>
+                  ⚙
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            role="main"
+          >
+            <div>
+              <div>
+                <div>
+                  Your Tasks (
+                  2
+                  )
+                </div>
+                <div>
+                  <button
+                    aria-pressed="true"
+                    variant="contained"
+                  >
+                    All
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    variant="outlined"
+                  >
+                    Active
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    variant="outlined"
+                  >
+                    Completed
+                  </button>
+                </div>
+              </div>
+              <ul
+                role="list"
+              >
+                <li
+                  elevation="1"
+                  role="listitem"
+                  sx="[object Object]"
+                >
+                  <div>
+                    <input
+                      aria-label="Mark as incomplete"
+                      checked=""
+                      type="checkbox"
+                    />
+                  </div>
+                  <div>
+                    <div>
+                      <div>
+                        Completed Task
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <div
+                          color="text.secondary"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      <button
+                        aria-label="Edit task: Completed Task"
+                        variant="outlined"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        aria-label="Delete task: Completed Task"
+                        color="error"
+                        variant="outlined"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </li>
+                <li
+                  elevation="1"
+                  role="listitem"
+                  sx="[object Object]"
+                >
+                  <div>
+                    <input
+                      aria-label="Mark as complete"
+                      type="checkbox"
+                    />
+                  </div>
+                  <div>
+                    <div>
+                      <div>
+                        Active Task
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <div
+                          color="text.secondary"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      <button
+                        aria-label="Edit task: Active Task"
+                        variant="outlined"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        aria-label="Delete task: Active Task"
+                        color="error"
+                        variant="outlined"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <button
+            aria-label="Add new task"
+            color="primary"
+            sx="[object Object]"
+          >
+            <span>
+              +
+            </span>
+          </button>
+        </div>
+      </div>
+    </body>
+
+      187 |       await user.click(activeButton);
+      188 |
+    > 189 |       await waitFor(() => {
+          |                    ^
+      190 |         expect(screen.getByText('Your Tasks (1)')).toBeInTheDocument();
+      191 |       });
+      192 |     } else {
+
+      at waitForWrapper (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:163:27)
+      at Object.<anonymous> (src/__tests__/integration/Integration.test.js:189:20)
 
  FAIL  src/__tests__/integration/ComponentIntegration.test.js
   ● Component Integration Tests › should handle Enter key form submission
@@ -805,222 +1019,11 @@
       at checkRealTimersCallback (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:118:16)
       at Timeout.task [as _onTimeout] (../../node_modules/jsdom/lib/jsdom/browser/Window.js:516:19)
 
- FAIL  src/__tests__/integration/Integration.test.js
-  ● Integration Tests › filter and display integration
-
-    TestingLibraryElementError: Found multiple elements with the role "button" and name `/active/i`
-
-    Here are the matching elements:
-
-    Ignored nodes: comments, script, style
-    <button
-      aria-pressed="false"
-      variant="outlined"
-    >
-      Active
-    </button>
-
-    Ignored nodes: comments, script, style
-    <button
-      aria-label="Edit task: Active Task"
-      variant="outlined"
-    >
-      Edit
-    </button>
-
-    Ignored nodes: comments, script, style
-    <button
-      aria-label="Delete task: Active Task"
-      color="error"
-      variant="outlined"
-    >
-      Delete
-    </button>
-
-    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
-
-    Ignored nodes: comments, script, style
-    <body>
-      <div>
-        <div>
-          <div
-            position="static"
-            role="banner"
-            sx="[object Object]"
-          >
-            <div>
-              <h1>
-                Todo App
-              </h1>
-              <button
-                aria-expanded="false"
-                aria-label="Open settings menu"
-                color="inherit"
-                edge="end"
-              >
-                <span>
-                  ⚙
-                </span>
-              </button>
-            </div>
-          </div>
-          <div
-            role="main"
-          >
-            <div>
-              <div>
-                <div>
-                  Your Tasks (
-                  2
-                  )
-                </div>
-                <div>
-                  <button
-                    aria-pressed="true"
-                    variant="contained"
-                  >
-                    All
-                  </button>
-                  <button
-                    aria-pressed="false"
-                    variant="outlined"
-                  >
-                    Active
-                  </button>
-                  <button
-                    aria-pressed="false"
-                    variant="outlined"
-                  >
-                    Completed
-                  </button>
-                </div>
-              </div>
-              <ul
-                role="list"
-              >
-                <li
-                  elevation="1"
-                  role="listitem"
-                  sx="[object Object]"
-                >
-                  <div>
-                    <input
-                      aria-label="Mark as incomplete"
-                      checked=""
-                      type="checkbox"
-                    />
-                  </div>
-                  <div>
-                    <div>
-                      <div>
-                        Completed Task
-                      </div>
-                    </div>
-                    <div>
-                      <div>
-                        <div
-                          color="text.secondary"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <button
-                        aria-label="Edit task: Completed Task"
-                        variant="outlined"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        aria-label="Delete task: Completed Task"
-                        color="error"
-                        variant="outlined"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                </li>
-                <li
-                  elevation="1"
-                  role="listitem"
-                  sx="[object Object]"
-                >
-                  <div>
-                    <input
-                      aria-label="Mark as complete"
-                      type="checkbox"
-                    />
-                  </div>
-                  <div>
-                    <div>
-                      <div>
-                        Active Task
-                      </div>
-                    </div>
-                    <div>
-                      <div>
-                        <div
-                          color="text.secondary"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <button
-                        aria-label="Edit task: Active Task"
-                        variant="outlined"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        aria-label="Delete task: Active Task"
-                        color="error"
-                        variant="outlined"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <button
-            aria-label="Add new task"
-            color="primary"
-            sx="[object Object]"
-          >
-            <span>
-              +
-            </span>
-          </button>
-        </div>
-      </div>
-    </body>
-
-      176 |
-      177 |     // Test filtering to active only
-    > 178 |     const activeButton = screen.getByRole('button', { name: /active/i });
-          |                                 ^
-      179 |     await user.click(activeButton);
-      180 |
-      181 |     await waitFor(() => {
-
-      at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
-      at getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:20:35)
-      at getMultipleElementsFoundError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:23:10)
-      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:55:13
-      at getByRole (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
-      at Object.<anonymous> (src/__tests__/integration/Integration.test.js:178:33)
-
 
 Test Suites: 4 failed, 24 skipped, 10 passed, 14 of 38 total
-Tests:       18 failed, 29 skipped, 85 passed, 132 total
+Tests:       18 failed, 29 skipped, 101 passed, 148 total
 Snapshots:   0 total
-Time:        33.331 s
+Time:        34.576 s
 Ran all test suites.
 npm error Lifecycle script `test` failed with error:
 npm error code 1
