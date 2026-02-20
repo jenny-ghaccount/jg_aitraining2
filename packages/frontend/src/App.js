@@ -39,15 +39,24 @@ function AppContent() {
     try {
       setLoading(true);
       const response = await fetch('/api/tasks');
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+      
+      // Handle case where fetch returns undefined or null
+      if (!response) {
+        throw new Error('No response received from server');
       }
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const tasks = await response.json();
-      setTasks(tasks);
+      setTasks(tasks || []);
       setError(null);
     } catch (err) {
       setError('Failed to fetch tasks: ' + err.message);
       console.error('Error fetching tasks:', err);
+      // Set empty array on error so app still works
+      setTasks([]);
     } finally {
       setLoading(false);
     }
@@ -66,7 +75,9 @@ function AppContent() {
         }),
       });
 
-      if (!response.ok) throw new Error('Failed to add task');
+      if (!response || !response.ok) {
+        throw new Error('Failed to add task');
+      }
 
       const newTask = await response.json();
       setTasks(prevTasks => [...prevTasks, newTask]);
@@ -116,30 +127,15 @@ function AppContent() {
         method: 'DELETE',
       });
 
-      if (!response.ok) throw new Error('Failed to delete task');
+      if (!response || !response.ok) {
+        throw new Error('Failed to delete task');
+      }
 
       setTasks(tasks.filter(task => task.id !== taskId));
       setError(null);
     } catch (err) {
       setError('Error deleting task: ' + err.message);
     }
-  };
-
-  const handleThemeChange = (newTheme) => {
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('preferred-theme', newTheme);
-    
-    // Announce theme change for screen readers
-    const announcement = `Theme changed to ${newTheme.replace('-', ' ')}`;
-    const announcer = document.createElement('div');
-    announcer.setAttribute('aria-live', 'polite');
-    announcer.setAttribute('aria-atomic', 'true');
-    announcer.textContent = announcement;
-    announcer.style.position = 'absolute';
-    announcer.style.left = '-10000px';
-    document.body.appendChild(announcer);
-    setTimeout(() => document.body.removeChild(announcer), 1000);
   };
 
   const getFilteredTasks = () => {
@@ -225,18 +221,13 @@ function AppContent() {
         <div className="settings-menu" role="dialog" aria-label="Settings">
           <h3>Accessibility Themes</h3>
           <div className="theme-options">
-            {Object.entries(THEMES).map(([key, value]) => (
-              <label key={value} className="theme-option">
-                <input
-                  type="radio"
-                  name="theme"
-                  value={value}
-                  checked={theme === value}
-                  onChange={() => handleThemeChange(value)}
-                />
-                {key.replace('_', ' ').toLowerCase().replace(/\b\w/g, l => l.toUpperCase())}
-              </label>
-            ))}
+            <button
+              onClick={toggleTheme}
+              className=\"theme-option-button\"
+            >
+              Switch to {currentTheme === 'standard' ? 'high contrast' : 'standard'} theme
+            </button>
+            <p>Current theme: {currentTheme.replace('-', ' ')}</p>
           </div>
         </div>
       )}

@@ -11,7 +11,12 @@ describe('Integration Tests', () => {
     fetch.mockClear();
     fetch.mockResolvedValue({
       ok: true,
-      json: async () => ([])
+      status: 200,
+      json: async () => ([]),
+      text: async () => '[]',
+      headers: new Headers(),
+      url: '/api/tasks',
+      statusText: 'OK'
     });
   });
 

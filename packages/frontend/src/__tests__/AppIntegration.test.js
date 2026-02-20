@@ -6,13 +6,27 @@ import App from '../App';
 global.fetch = jest.fn(() =>
   Promise.resolve({
     ok: true,
-    json: () => Promise.resolve([])
+    status: 200,
+    json: () => Promise.resolve([]),
+    text: () => Promise.resolve('[]'),
+    headers: new Headers(),
+    url: '/api/tasks',
+    statusText: 'OK'
   })
 );
 
 describe('App Integration Tests', () => {
   beforeEach(() => {
     fetch.mockClear();
+    fetch.mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ([]),
+      text: async () => '[]',
+      headers: new Headers(),
+      url: '/api/tasks',
+      statusText: 'OK'
+    });
   });
 
   test('renders without crashing', async () => {

@@ -1,3 +1,202 @@
+      <h2
+        id="task-form-title"
+      />
+
+      --------------------------------------------------
+      button:
+
+      Name "Open settings menu":
+      <button
+        aria-expanded="false"
+        aria-label="Open settings menu"
+        class="settings-btn"
+      />
+
+      Name "All":
+      <button
+        aria-pressed="true"
+        class="filter-btn active"
+      />
+
+      Name "Active":
+      <button
+        aria-pressed="false"
+        class="filter-btn "
+      />
+
+      Name "Completed":
+      <button
+        aria-pressed="false"
+        class="filter-btn "
+      />
+
+      Name "Add new task":
+      <button
+        aria-label="Add new task"
+        class="fab"
+        title="Add new task"
+      />
+
+      Name "Close dialog":
+      <button
+        aria-label="Close dialog"
+        class="modal-close-btn"
+        type="button"
+      />
+
+      Name "Cancel":
+      <button
+        class="btn-secondary"
+        type="button"
+      />
+
+      Name "Add Task":
+      <button
+        class="btn-primary"
+        type="submit"
+      />
+
+      --------------------------------------------------
+      main:
+
+      Name "":
+      <main
+        class="main-content"
+      />
+
+      --------------------------------------------------
+      dialog:
+
+      Name "Add New Task":
+      <div
+        aria-labelledby="task-form-title"
+        aria-modal="true"
+        class="modal-content"
+        role="dialog"
+      />
+
+      --------------------------------------------------
+      textbox:
+
+      Name "Task Title *":
+      <input
+        class="form-input "
+        id="task-title"
+        maxlength="255"
+        placeholder="Enter task title"
+        required=""
+        type="text"
+        value="My First Task"
+      />
+
+      Name "Description":
+      <textarea
+        class="form-textarea "
+        id="task-description"
+        maxlength="1000"
+        placeholder="Enter task description (optional)"
+        rows="3"
+      />
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    <body>
+      <div>
+        <div
+          class="App"
+        >
+          <header
+            class="App-header"
+          >
+            <div>
+              <h1>
+                Todo App
+              </h1>
+              <p>
+                Stay organized and get things done
+              </p>
+            </div>
+            <button
+              aria-expanded="false"
+              aria-label="Open settings menu"
+              class="settings-btn"
+            >
+              ⚙️ Settings
+            </button>
+          </header>
+          <main
+            class="main-content"
+          >
+            <div
+              class="task-list-container"
+            >
+              <div
+                class="task-list-header"
+              >
+                <h2>
+                  Your Tasks (
+                  0
+                  )
+                </h2>
+                <div
+                  class="task-filters"
+                >
+                  <button
+                    aria-pressed="true"
+                    class="filter-btn active"
+                  >
+                    All
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Active
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Completed
+                  </button>
+                </div>
+              </div>
+              <div
+                class="empty-state"
+              >
+                <h3>
+                  No tasks found
+                </h3>
+                <p>
+                  Click the + button to add your first task!
+                </p>
+              </div>
+            </div>
+          </main>
+          <button
+            aria-label="Add new task"
+            class="fab"
+            title="Add new task"
+          >
+            +
+          </button>
+          <div
+            class="modal-overlay"
+          >
+            <div
+              aria-labelledby="task-form-title"
+              aria-modal="true"
+              class="modal-content"
+              role="dialog"
+            >
+              <div
+                class="modal-header"
+              >
+                <h2
+                  id="task-form-title"
+                >
+                  Add New Task
                 </h2>
                 <button
                   aria-label="Close dialog"
@@ -117,15 +316,15 @@
 
     ReferenceError: THEMES is not defined
 
-      226 |           <h3>Accessibility Themes</h3>
-      227 |           <div className="theme-options">
-    > 228 |             {Object.entries(THEMES).map(([key, value]) => (
+      239 |           <h3>Accessibility Themes</h3>
+      240 |           <div className="theme-options">
+    > 241 |             {Object.entries(THEMES).map(([key, value]) => (
           |                             ^
-      229 |               <label key={value} className="theme-option">
-      230 |                 <input
-      231 |                   type="radio"
+      242 |               <label key={value} className="theme-option">
+      243 |                 <input
+      244 |                   type="radio"
 
-      at AppContent (src/App.js:228:29)
+      at AppContent (src/App.js:241:29)
       at renderWithHooks (../../node_modules/react-dom/cjs/react-dom.development.js:15486:18)
       at updateFunctionComponent (../../node_modules/react-dom/cjs/react-dom.development.js:19617:20)
       at beginWork (../../node_modules/react-dom/cjs/react-dom.development.js:21640:16)
@@ -381,106 +580,6 @@
       at Object.<anonymous> (src/__tests__/integration/Integration.test.js:166:33)
 
  FAIL  src/__tests__/integration/ComponentIntegration.test.js
-  ● Component Integration Tests › should pass basic accessibility audit
-
-    Unable to find an element with the text: TODO App. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
-
-    Ignored nodes: comments, script, style
-    <body>
-      <div>
-        <div
-          class="App"
-        >
-          <header
-            class="App-header"
-          >
-            <div>
-              <h1>
-                Todo App
-              </h1>
-              <p>
-                Stay organized and get things done
-              </p>
-            </div>
-            <button
-              aria-expanded="false"
-              aria-label="Open settings menu"
-              class="settings-btn"
-            >
-              ⚙️ Settings
-            </button>
-          </header>
-          <main
-            class="main-content"
-          >
-            <div
-              class="task-list-container"
-            >
-              <div
-                class="task-list-header"
-              >
-                <h2>
-                  Your Tasks (
-                  0
-                  )
-                </h2>
-                <div
-                  class="task-filters"
-                >
-                  <button
-                    aria-pressed="true"
-                    class="filter-btn active"
-                  >
-                    All
-                  </button>
-                  <button
-                    aria-pressed="false"
-                    class="filter-btn "
-                  >
-                    Active
-                  </button>
-                  <button
-                    aria-pressed="false"
-                    class="filter-btn "
-                  >
-                    Completed
-                  </button>
-                </div>
-              </div>
-              <div
-                class="empty-state"
-              >
-                <h3>
-                  No tasks found
-                </h3>
-                <p>
-                  Click the + button to add your first task!
-                </p>
-              </div>
-            </div>
-          </main>
-          <button
-            aria-label="Add new task"
-            class="fab"
-            title="Add new task"
-          >
-            +
-          </button>
-        </div>
-      </div>
-    </body>
-
-      39 |     const { container } = render(<App />);
-      40 |     
-    > 41 |     await waitFor(() => {
-         |                  ^
-      42 |       expect(screen.getByText('TODO App')).toBeInTheDocument();
-      43 |     });
-      44 |
-
-      at waitForWrapper (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:163:27)
-      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:41:18)
-
   ● Component Integration Tests › should handle form interactions
 
     TestingLibraryElementError: Unable to find an accessible element with the role "textbox"
@@ -640,19 +739,19 @@
       </div>
     </body>
 
-      52 |     
-      53 |     // Find the task input and button
-    > 54 |     const taskInput = screen.getByRole('textbox');
+      66 |     
+      67 |     // Find the task input and button
+    > 68 |     const taskInput = screen.getByRole('textbox');
          |                              ^
-      55 |     const addButton = screen.getByRole('button', { name: /add task/i });
-      56 |     
-      57 |     // Type a task and submit
+      69 |     const addButton = screen.getByRole('button', { name: /add task/i });
+      70 |     
+      71 |     // Type a task and submit
 
       at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
       at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
       at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
       at getByRole (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
-      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:54:30)
+      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:68:30)
 
   ● Component Integration Tests › should handle Enter key form submission
 
@@ -813,116 +912,19 @@
       </div>
     </body>
 
-      84 |     render(<App />);
-      85 |     
-    > 86 |     const taskInput = screen.getByRole('textbox');
-         |                              ^
-      87 |     
-      88 |     // Type task and press Enter
-      89 |     await user.type(taskInput, 'Task via Enter{enter}');
+       98 |     render(<App />);
+       99 |     
+    > 100 |     const taskInput = screen.getByRole('textbox');
+          |                              ^
+      101 |     
+      102 |     // Type task and press Enter
+      103 |     await user.type(taskInput, 'Task via Enter{enter}');
 
       at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
       at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
       at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
       at getByRole (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
-      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:86:30)
-
- FAIL  src/__tests__/AppIntegration.test.js
-  ● App Integration Tests › shows empty state when no tasks
-
-    Unable to find an element with the text: No tasks found. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
-
-    Ignored nodes: comments, script, style
-    <body>
-      <div>
-        <div
-          class="App"
-        >
-          <header
-            class="App-header"
-          >
-            <div>
-              <h1>
-                Todo App
-              </h1>
-              <p>
-                Stay organized and get things done
-              </p>
-            </div>
-            <button
-              aria-expanded="false"
-              aria-label="Open settings menu"
-              class="settings-btn"
-            >
-              ⚙️ Settings
-            </button>
-          </header>
-          <main
-            class="main-content"
-          >
-            <div
-              class="task-list-container"
-            >
-              <div
-                class="task-list-header"
-              >
-                <h2>
-                  Your Tasks (
-                  0
-                  )
-                </h2>
-                <div
-                  class="task-filters"
-                >
-                  <button
-                    aria-pressed="true"
-                    class="filter-btn active"
-                  >
-                    All
-                  </button>
-                  <button
-                    aria-pressed="false"
-                    class="filter-btn "
-                  >
-                    Active
-                  </button>
-                  <button
-                    aria-pressed="false"
-                    class="filter-btn "
-                  >
-                    Completed
-                  </button>
-                </div>
-              </div>
-              <div
-                class="error-message"
-                role="alert"
-              >
-                Failed to fetch tasks: Cannot read properties of undefined (reading 'ok')
-              </div>
-            </div>
-          </main>
-          <button
-            aria-label="Add new task"
-            class="fab"
-            title="Add new task"
-          >
-            +
-          </button>
-        </div>
-      </div>
-    </body>
-
-      29 |     render(<App />);
-      30 |     
-    > 31 |     await waitFor(() => {
-         |                  ^
-      32 |       expect(screen.getByText('No tasks found')).toBeInTheDocument();
-      33 |     });
-      34 |   });
-
-      at waitForWrapper (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:163:27)
-      at Object.<anonymous> (src/__tests__/AppIntegration.test.js:31:18)
+      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:100:30)
 
  FAIL  src/__tests__/SimpleApp.test.js
   ● Simple App Tests › shows empty state message
@@ -1011,25 +1013,25 @@
       </div>
     </body>
 
-      29 |   test('shows empty state message', () => {
-      30 |     render(<App />);
-    > 31 |     expect(screen.getByText('No tasks found')).toBeInTheDocument();
+      45 |   test('shows empty state message', () => {
+      46 |     render(<App />);
+    > 47 |     expect(screen.getByText('No tasks found')).toBeInTheDocument();
          |                   ^
-      32 |     expect(screen.getByText(/click the \+ button to add your first task/i)).toBeInTheDocument();
-      33 |   });
-      34 |
+      48 |     expect(screen.getByText(/click the \+ button to add your first task/i)).toBeInTheDocument();
+      49 |   });
+      50 |
 
       at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
       at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
       at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
       at getByText (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
-      at Object.<anonymous> (src/__tests__/SimpleApp.test.js:31:19)
+      at Object.<anonymous> (src/__tests__/SimpleApp.test.js:47:19)
 
 
-Test Suites: 6 failed, 22 skipped, 10 passed, 16 of 38 total
-Tests:       28 failed, 23 skipped, 81 passed, 132 total
+Test Suites: 5 failed, 22 skipped, 11 passed, 16 of 38 total
+Tests:       26 failed, 23 skipped, 83 passed, 132 total
 Snapshots:   0 total
-Time:        36.884 s
+Time:        34.6 s
 Ran all test suites.
 npm error Lifecycle script `test` failed with error:
 npm error code 1
