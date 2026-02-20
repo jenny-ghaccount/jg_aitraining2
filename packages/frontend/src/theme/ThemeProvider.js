@@ -74,13 +74,19 @@ export const ThemeProvider = ({ children }) => {
     }
     
     // Check for system dark mode preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'high-contrast-dark';
+    if (window.matchMedia) {
+      const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      if (darkModeQuery && darkModeQuery.matches) {
+        return 'high-contrast-dark';
+      }
     }
     
     // Check for high contrast preference
-    if (window.matchMedia && window.matchMedia('(prefers-contrast: high)').matches) {
-      return 'high-contrast-light';
+    if (window.matchMedia) {
+      const highContrastQuery = window.matchMedia('(prefers-contrast: high)');
+      if (highContrastQuery && highContrastQuery.matches) {
+        return 'high-contrast-dark';
+      }
     }
     
     return 'standard';
@@ -88,6 +94,8 @@ export const ThemeProvider = ({ children }) => {
 
   // Listen for system theme changes
   useEffect(() => {
+    if (!window.matchMedia) return;
+    
     const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const highContrastQuery = window.matchMedia('(prefers-contrast: high)');
     
@@ -144,8 +152,8 @@ export const ThemeProvider = ({ children }) => {
     localStorage.removeItem('manual-theme-selection');
     
     // Determine system theme
-    const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const highContrast = window.matchMedia('(prefers-contrast: high)').matches;
+    const darkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const highContrast = window.matchMedia && window.matchMedia('(prefers-contrast: high)').matches;
     
     if (highContrast) {
       setCurrentTheme(darkMode ? 'high-contrast-dark' : 'high-contrast-light');
