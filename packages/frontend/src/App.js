@@ -369,12 +369,8 @@ function AppContent() {
         aria-label="Add new task"
         sx={{ position: 'fixed', bottom: 16, right: 16 }}
         onClick={() => {
-            // Wrap state updates in act()
-            import { act } from 'react-dom/test-utils';
-            act(() => {
-              setEditingTask(null);
-              setShowTaskForm(true);
-            });
+            setEditingTask(null);
+            setShowTaskForm(true);
         }}
       >
         <AddIcon />

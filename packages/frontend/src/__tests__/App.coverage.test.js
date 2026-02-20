@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor, act } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 
@@ -79,7 +79,7 @@ describe('App Component Coverage', () => {
       });
     });
     render(<App />);
-    const user = require('@testing-library/user-event').default.setup();
+    const user = userEvent.setup();
     // Open task form
     const addButton = screen.getByRole('button', { name: /add new task/i });
     await user.click(addButton);
@@ -89,15 +89,15 @@ describe('App Component Coverage', () => {
     const submitButton = screen.getByRole('button', { name: /add task/i });
     await user.click(submitButton);
     // Wait for task to appear
-    await require('@testing-library/react').waitFor(() => {
+    await waitFor(() => {
       expect(screen.getByText('Test Task')).toBeInTheDocument();
     });
     const addButton = screen.getByRole('button', { name: /add new task/i });
-    await userEvent.click(addButton);
-    await userEvent.type(screen.getByLabelText(/task title/i), 'New Task');
-    await userEvent.type(screen.getByLabelText(/description/i), 'New Desc');
-    const submitButton = screen.getByRole('button', { name: /add task/i });
-    await userEvent.click(submitButton);
+    await user.click(addButton);
+    await user.type(screen.getByLabelText(/task title/i), 'New Task');
+    await user.type(screen.getByLabelText(/description/i), 'New Desc');
+    const submitButton2 = screen.getByRole('button', { name: /add task/i });
+    await user.click(submitButton2);
     await waitFor(() => {
       expect(screen.getByText('New Task')).toBeInTheDocument();
     });

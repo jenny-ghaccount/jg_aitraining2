@@ -1,191 +1,3 @@
-      at invokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
-      at HTMLUnknownElementImpl._dispatch (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
-      at HTMLUnknownElementImpl.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
-      at HTMLUnknownElement.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
-      at Object.invokeGuardedCallbackDev (../../node_modules/react-dom/cjs/react-dom.development.js:4213:16)
-      at invokeGuardedCallback (../../node_modules/react-dom/cjs/react-dom.development.js:4277:31)
-      at invokeGuardedCallbackAndCatchFirstError (../../node_modules/react-dom/cjs/react-dom.development.js:4291:25)
-      at executeDispatch (../../node_modules/react-dom/cjs/react-dom.development.js:9041:3)
-      at processDispatchQueueItemsInOrder (../../node_modules/react-dom/cjs/react-dom.development.js:9073:7)
-      at processDispatchQueue (../../node_modules/react-dom/cjs/react-dom.development.js:9086:5)
-      at dispatchEventsForPlugins (../../node_modules/react-dom/cjs/react-dom.development.js:9097:3)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:9288:12
-      at batchedUpdates$1 (../../node_modules/react-dom/cjs/react-dom.development.js:26179:12)
-      at batchedUpdates (../../node_modules/react-dom/cjs/react-dom.development.js:3991:12)
-      at dispatchEventForPluginEventSystem (../../node_modules/react-dom/cjs/react-dom.development.js:9287:3)
-      at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (../../node_modules/react-dom/cjs/react-dom.development.js:6465:5)
-      at dispatchEvent (../../node_modules/react-dom/cjs/react-dom.development.js:6457:5)
-      at dispatchDiscreteEvent (../../node_modules/react-dom/cjs/react-dom.development.js:6430:5)
-      at HTMLDivElement.callTheUserObjectsOperation (../../node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
-      at innerInvokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
-      at invokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
-      at HTMLButtonElementImpl._dispatch (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
-      at HTMLButtonElementImpl.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
-      at HTMLButtonElement.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
-      at ../../node_modules/@testing-library/user-event/dist/cjs/event/dispatchEvent.js:45:43
-      at Object.eventWrapper (../../node_modules/@testing-library/dom/dist/config.js:25:23)
-      at Object.wrapEvent (../../node_modules/@testing-library/user-event/dist/cjs/event/wrapEvent.js:6:28)
-      at Object.dispatchEvent (../../node_modules/@testing-library/user-event/dist/cjs/event/dispatchEvent.js:45:22)
-      at Object.dispatchUIEvent (../../node_modules/@testing-library/user-event/dist/cjs/event/dispatchEvent.js:22:26)
-      at Mouse.up (../../node_modules/@testing-library/user-event/dist/cjs/system/pointer/mouse.js:100:30)
-      at PointerHost.release (../../node_modules/@testing-library/user-event/dist/cjs/system/pointer/index.js:87:24)
-      at pointerAction (../../node_modules/@testing-library/user-event/dist/cjs/pointer/index.js:54:47)
-      at Object.pointer (../../node_modules/@testing-library/user-event/dist/cjs/pointer/index.js:27:9)
-      at Object.<anonymous> (src/__tests__/SimpleApp.test.js:65:5)
-
-    console.error
-      Warning: An update to AppContent inside a test was not wrapped in act(...).
-      
-      When testing, code that causes React state updates should be wrapped into act(...):
-      
-      act(() => {
-        /* fire events that update state */
-      });
-      /* assert on the output */
-      
-      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
-          at AppContent (/workspaces/jg_aitraining2/packages/frontend/src/App.js:30:37)
-          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material/styles.js:26:33)
-          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/theme/ThemeProvider.js:68:33)
-          at App
-
-      371 |         onClick={() => {
-      372 |           setEditingTask(null);
-    > 373 |           setShowTaskForm(true);
-          |           ^
-      374 |         }}
-      375 |       >
-      376 |         <AddIcon />
-
-      at printWarning (../../node_modules/react-dom/cjs/react-dom.development.js:86:30)
-      at error (../../node_modules/react-dom/cjs/react-dom.development.js:60:7)
-      at warnIfUpdatesNotWrappedWithActDEV (../../node_modules/react-dom/cjs/react-dom.development.js:27628:9)
-      at scheduleUpdateOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:25547:5)
-      at setShowTaskForm (../../node_modules/react-dom/cjs/react-dom.development.js:16708:7)
-      at onClick (src/App.js:373:11)
-      at HTMLUnknownElement.callCallback (../../node_modules/react-dom/cjs/react-dom.development.js:4164:14)
-      at HTMLUnknownElement.callTheUserObjectsOperation (../../node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
-      at innerInvokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
-      at invokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
-      at HTMLUnknownElementImpl._dispatch (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
-      at HTMLUnknownElementImpl.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
-      at HTMLUnknownElement.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
-      at Object.invokeGuardedCallbackDev (../../node_modules/react-dom/cjs/react-dom.development.js:4213:16)
-      at invokeGuardedCallback (../../node_modules/react-dom/cjs/react-dom.development.js:4277:31)
-      at invokeGuardedCallbackAndCatchFirstError (../../node_modules/react-dom/cjs/react-dom.development.js:4291:25)
-      at executeDispatch (../../node_modules/react-dom/cjs/react-dom.development.js:9041:3)
-      at processDispatchQueueItemsInOrder (../../node_modules/react-dom/cjs/react-dom.development.js:9073:7)
-      at processDispatchQueue (../../node_modules/react-dom/cjs/react-dom.development.js:9086:5)
-      at dispatchEventsForPlugins (../../node_modules/react-dom/cjs/react-dom.development.js:9097:3)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:9288:12
-      at batchedUpdates$1 (../../node_modules/react-dom/cjs/react-dom.development.js:26179:12)
-      at batchedUpdates (../../node_modules/react-dom/cjs/react-dom.development.js:3991:12)
-      at dispatchEventForPluginEventSystem (../../node_modules/react-dom/cjs/react-dom.development.js:9287:3)
-      at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (../../node_modules/react-dom/cjs/react-dom.development.js:6465:5)
-      at dispatchEvent (../../node_modules/react-dom/cjs/react-dom.development.js:6457:5)
-      at dispatchDiscreteEvent (../../node_modules/react-dom/cjs/react-dom.development.js:6430:5)
-      at HTMLDivElement.callTheUserObjectsOperation (../../node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
-      at innerInvokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
-      at invokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
-      at HTMLButtonElementImpl._dispatch (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
-      at HTMLButtonElementImpl.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
-      at HTMLButtonElement.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
-      at ../../node_modules/@testing-library/user-event/dist/cjs/event/dispatchEvent.js:45:43
-      at Object.eventWrapper (../../node_modules/@testing-library/dom/dist/config.js:25:23)
-      at Object.wrapEvent (../../node_modules/@testing-library/user-event/dist/cjs/event/wrapEvent.js:6:28)
-      at Object.dispatchEvent (../../node_modules/@testing-library/user-event/dist/cjs/event/dispatchEvent.js:45:22)
-      at Object.dispatchUIEvent (../../node_modules/@testing-library/user-event/dist/cjs/event/dispatchEvent.js:22:26)
-      at Mouse.up (../../node_modules/@testing-library/user-event/dist/cjs/system/pointer/mouse.js:100:30)
-      at PointerHost.release (../../node_modules/@testing-library/user-event/dist/cjs/system/pointer/index.js:87:24)
-      at pointerAction (../../node_modules/@testing-library/user-event/dist/cjs/pointer/index.js:54:47)
-      at Object.pointer (../../node_modules/@testing-library/user-event/dist/cjs/pointer/index.js:27:9)
-      at Object.<anonymous> (src/__tests__/SimpleApp.test.js:65:5)
-
-    console.error
-      Warning: React does not recognize the `maxWidth` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `maxwidth` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
-          at div
-          at Dialog (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material.js:35:26)
-          at TaskForm (/workspaces/jg_aitraining2/packages/frontend/src/TaskForm.js:14:21)
-          at div
-          at Container (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material.js:5:29)
-          at AppContent (/workspaces/jg_aitraining2/packages/frontend/src/App.js:30:37)
-          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material/styles.js:26:33)
-          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/theme/ThemeProvider.js:68:33)
-          at App
-
-      at printWarning (../../node_modules/react-dom/cjs/react-dom.development.js:86:30)
-      at error (../../node_modules/react-dom/cjs/react-dom.development.js:60:7)
-      at validateProperty$1 (../../node_modules/react-dom/cjs/react-dom.development.js:3757:7)
-      at warnUnknownProperties (../../node_modules/react-dom/cjs/react-dom.development.js:3803:21)
-      at validateProperties$2 (../../node_modules/react-dom/cjs/react-dom.development.js:3827:3)
-      at validatePropertiesInDevelopment (../../node_modules/react-dom/cjs/react-dom.development.js:9541:5)
-      at setInitialProperties (../../node_modules/react-dom/cjs/react-dom.development.js:9830:5)
-      at finalizeInitialChildren (../../node_modules/react-dom/cjs/react-dom.development.js:10950:3)
-      at completeWork (../../node_modules/react-dom/cjs/react-dom.development.js:22232:17)
-      at completeUnitOfWork (../../node_modules/react-dom/cjs/react-dom.development.js:26632:16)
-      at performUnitOfWork (../../node_modules/react-dom/cjs/react-dom.development.js:26607:5)
-      at workLoopSync (../../node_modules/react-dom/cjs/react-dom.development.js:26505:5)
-      at renderRootSync (../../node_modules/react-dom/cjs/react-dom.development.js:26473:7)
-      at performSyncWorkOnRoot (../../node_modules/react-dom/cjs/react-dom.development.js:26124:20)
-      at flushSyncCallbacks (../../node_modules/react-dom/cjs/react-dom.development.js:12042:22)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:25690:13
-      at ../../node_modules/jsdom/lib/jsdom/browser/Window.js:550:9
-
-    console.error
-      Warning: React does not recognize the `fullWidth` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `fullwidth` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
-          at div
-          at Dialog (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material.js:35:26)
-          at TaskForm (/workspaces/jg_aitraining2/packages/frontend/src/TaskForm.js:14:21)
-          at div
-          at Container (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material.js:5:29)
-          at AppContent (/workspaces/jg_aitraining2/packages/frontend/src/App.js:30:37)
-          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material/styles.js:26:33)
-          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/theme/ThemeProvider.js:68:33)
-          at App
-
-      at printWarning (../../node_modules/react-dom/cjs/react-dom.development.js:86:30)
-      at error (../../node_modules/react-dom/cjs/react-dom.development.js:60:7)
-      at validateProperty$1 (../../node_modules/react-dom/cjs/react-dom.development.js:3757:7)
-      at warnUnknownProperties (../../node_modules/react-dom/cjs/react-dom.development.js:3803:21)
-      at validateProperties$2 (../../node_modules/react-dom/cjs/react-dom.development.js:3827:3)
-      at validatePropertiesInDevelopment (../../node_modules/react-dom/cjs/react-dom.development.js:9541:5)
-      at setInitialProperties (../../node_modules/react-dom/cjs/react-dom.development.js:9830:5)
-      at finalizeInitialChildren (../../node_modules/react-dom/cjs/react-dom.development.js:10950:3)
-      at completeWork (../../node_modules/react-dom/cjs/react-dom.development.js:22232:17)
-      at completeUnitOfWork (../../node_modules/react-dom/cjs/react-dom.development.js:26632:16)
-      at performUnitOfWork (../../node_modules/react-dom/cjs/react-dom.development.js:26607:5)
-      at workLoopSync (../../node_modules/react-dom/cjs/react-dom.development.js:26505:5)
-      at renderRootSync (../../node_modules/react-dom/cjs/react-dom.development.js:26473:7)
-      at performSyncWorkOnRoot (../../node_modules/react-dom/cjs/react-dom.development.js:26124:20)
-      at flushSyncCallbacks (../../node_modules/react-dom/cjs/react-dom.development.js:12042:22)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:25690:13
-      at ../../node_modules/jsdom/lib/jsdom/browser/Window.js:550:9
-
- PASS  src/__tests__/hooks/useTaskManager.test.js
- PASS  src/theme/ThemeProvider.test.js
-  ● Console
-
-    console.error
-      Error: Uncaught [Error: useTheme must be used within a ThemeProvider]
-          at reportException (/workspaces/jg_aitraining2/node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:24)
-          at innerInvokeEventListeners (/workspaces/jg_aitraining2/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:341:9)
-          at invokeEventListeners (/workspaces/jg_aitraining2/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
-          at HTMLUnknownElementImpl._dispatch (/workspaces/jg_aitraining2/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
-          at HTMLUnknownElementImpl.dispatchEvent (/workspaces/jg_aitraining2/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
-          at HTMLUnknownElement.dispatchEvent (/workspaces/jg_aitraining2/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
-          at Object.invokeGuardedCallbackDev (/workspaces/jg_aitraining2/node_modules/react-dom/cjs/react-dom.development.js:4213:16)
-          at invokeGuardedCallback (/workspaces/jg_aitraining2/node_modules/react-dom/cjs/react-dom.development.js:4277:31)
-          at beginWork$1 (/workspaces/jg_aitraining2/node_modules/react-dom/cjs/react-dom.development.js:27490:7)
-          at performUnitOfWork (/workspaces/jg_aitraining2/node_modules/react-dom/cjs/react-dom.development.js:26599:12)
-          at workLoopSync (/workspaces/jg_aitraining2/node_modules/react-dom/cjs/react-dom.development.js:26505:5)
-          at renderRootSync (/workspaces/jg_aitraining2/node_modules/react-dom/cjs/react-dom.development.js:26473:7)
-          at performConcurrentWorkOnRoot (/workspaces/jg_aitraining2/node_modules/react-dom/cjs/react-dom.development.js:25777:74)
-          at flushActQueue (/workspaces/jg_aitraining2/node_modules/react/cjs/react.development.js:2667:24)
-          at act (/workspaces/jg_aitraining2/node_modules/react/cjs/react.development.js:2582:11)
-          at /workspaces/jg_aitraining2/node_modules/@testing-library/react/dist/act-compat.js:47:25
-          at renderRoot (/workspaces/jg_aitraining2/node_modules/@testing-library/react/dist/pure.js:180:26)
-          at render (/workspaces/jg_aitraining2/node_modules/@testing-library/react/dist/pure.js:271:10)
-          at /workspaces/jg_aitraining2/packages/frontend/src/theme/ThemeProvider.test.js:76:24
           at Object.<anonymous> (/workspaces/jg_aitraining2/node_modules/expect/build/toThrowMatchers.js:83:11)
           at Object.toThrow (/workspaces/jg_aitraining2/node_modules/expect/build/index.js:382:21)
           at Object.<anonymous> (/workspaces/jg_aitraining2/packages/frontend/src/theme/ThemeProvider.test.js:76:46)
@@ -459,9 +271,9 @@
       94 |     });
     > 95 |     const addButton = screen.getByRole('button', { name: /add new task/i });
          |           ^
-      96 |     await userEvent.click(addButton);
-      97 |     await userEvent.type(screen.getByLabelText(/task title/i), 'New Task');
-      98 |     await userEvent.type(screen.getByLabelText(/description/i), 'New Desc');
+      96 |     await user.click(addButton);
+      97 |     await user.type(screen.getByLabelText(/task title/i), 'New Task');
+      98 |     await user.type(screen.getByLabelText(/description/i), 'New Desc');
 
       at toParseError (../../node_modules/@babel/parser/src/parse-error.ts:95:45)
       at FlowParserMixin.raise (../../node_modules/@babel/parser/src/tokenizer/index.ts:1503:19)
@@ -513,6 +325,205 @@
       at FlowParserMixin.parseSubscripts (../../node_modules/@babel/parser/src/parser/expression.ts:744:19)
       at FlowParserMixin.parseSubscripts (../../node_modules/@babel/parser/src/plugins/flow/index.ts:3253:20)
       at FlowParserMixin.parseExprSubscripts (../../node_modules/@babel/parser/src/parser/expression.ts:729:17)
+
+ PASS  src/__tests__/SimpleApp.test.js
+  ● Console
+
+    console.error
+      Warning: An update to AppContent inside a test was not wrapped in act(...).
+      
+      When testing, code that causes React state updates should be wrapped into act(...):
+      
+      act(() => {
+        /* fire events that update state */
+      });
+      /* assert on the output */
+      
+      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
+          at AppContent (/workspaces/jg_aitraining2/packages/frontend/src/App.js:30:37)
+          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material/styles.js:26:33)
+          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/theme/ThemeProvider.js:68:33)
+          at App
+
+      370 |         sx={{ position: 'fixed', bottom: 16, right: 16 }}
+      371 |         onClick={() => {
+    > 372 |             setEditingTask(null);
+          |             ^
+      373 |             setShowTaskForm(true);
+      374 |         }}
+      375 |       >
+
+      at printWarning (../../node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (../../node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at warnIfUpdatesNotWrappedWithActDEV (../../node_modules/react-dom/cjs/react-dom.development.js:27628:9)
+      at scheduleUpdateOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setEditingTask (../../node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at onClick (src/App.js:372:13)
+      at HTMLUnknownElement.callCallback (../../node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (../../node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (../../node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+      at invokeGuardedCallback (../../node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+      at invokeGuardedCallbackAndCatchFirstError (../../node_modules/react-dom/cjs/react-dom.development.js:4291:25)
+      at executeDispatch (../../node_modules/react-dom/cjs/react-dom.development.js:9041:3)
+      at processDispatchQueueItemsInOrder (../../node_modules/react-dom/cjs/react-dom.development.js:9073:7)
+      at processDispatchQueue (../../node_modules/react-dom/cjs/react-dom.development.js:9086:5)
+      at dispatchEventsForPlugins (../../node_modules/react-dom/cjs/react-dom.development.js:9097:3)
+      at ../../node_modules/react-dom/cjs/react-dom.development.js:9288:12
+      at batchedUpdates$1 (../../node_modules/react-dom/cjs/react-dom.development.js:26179:12)
+      at batchedUpdates (../../node_modules/react-dom/cjs/react-dom.development.js:3991:12)
+      at dispatchEventForPluginEventSystem (../../node_modules/react-dom/cjs/react-dom.development.js:9287:3)
+      at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (../../node_modules/react-dom/cjs/react-dom.development.js:6465:5)
+      at dispatchEvent (../../node_modules/react-dom/cjs/react-dom.development.js:6457:5)
+      at dispatchDiscreteEvent (../../node_modules/react-dom/cjs/react-dom.development.js:6430:5)
+      at HTMLDivElement.callTheUserObjectsOperation (../../node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLButtonElementImpl._dispatch (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLButtonElementImpl.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLButtonElement.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at ../../node_modules/@testing-library/user-event/dist/cjs/event/dispatchEvent.js:45:43
+      at Object.eventWrapper (../../node_modules/@testing-library/dom/dist/config.js:25:23)
+      at Object.wrapEvent (../../node_modules/@testing-library/user-event/dist/cjs/event/wrapEvent.js:6:28)
+      at Object.dispatchEvent (../../node_modules/@testing-library/user-event/dist/cjs/event/dispatchEvent.js:45:22)
+      at Object.dispatchUIEvent (../../node_modules/@testing-library/user-event/dist/cjs/event/dispatchEvent.js:22:26)
+      at Mouse.up (../../node_modules/@testing-library/user-event/dist/cjs/system/pointer/mouse.js:100:30)
+      at PointerHost.release (../../node_modules/@testing-library/user-event/dist/cjs/system/pointer/index.js:87:24)
+      at pointerAction (../../node_modules/@testing-library/user-event/dist/cjs/pointer/index.js:54:47)
+      at Object.pointer (../../node_modules/@testing-library/user-event/dist/cjs/pointer/index.js:27:9)
+      at Object.<anonymous> (src/__tests__/SimpleApp.test.js:65:5)
+
+    console.error
+      Warning: An update to AppContent inside a test was not wrapped in act(...).
+      
+      When testing, code that causes React state updates should be wrapped into act(...):
+      
+      act(() => {
+        /* fire events that update state */
+      });
+      /* assert on the output */
+      
+      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
+          at AppContent (/workspaces/jg_aitraining2/packages/frontend/src/App.js:30:37)
+          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material/styles.js:26:33)
+          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/theme/ThemeProvider.js:68:33)
+          at App
+
+      371 |         onClick={() => {
+      372 |             setEditingTask(null);
+    > 373 |             setShowTaskForm(true);
+          |             ^
+      374 |         }}
+      375 |       >
+      376 |         <AddIcon />
+
+      at printWarning (../../node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (../../node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at warnIfUpdatesNotWrappedWithActDEV (../../node_modules/react-dom/cjs/react-dom.development.js:27628:9)
+      at scheduleUpdateOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setShowTaskForm (../../node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at onClick (src/App.js:373:13)
+      at HTMLUnknownElement.callCallback (../../node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (../../node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (../../node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+      at invokeGuardedCallback (../../node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+      at invokeGuardedCallbackAndCatchFirstError (../../node_modules/react-dom/cjs/react-dom.development.js:4291:25)
+      at executeDispatch (../../node_modules/react-dom/cjs/react-dom.development.js:9041:3)
+      at processDispatchQueueItemsInOrder (../../node_modules/react-dom/cjs/react-dom.development.js:9073:7)
+      at processDispatchQueue (../../node_modules/react-dom/cjs/react-dom.development.js:9086:5)
+      at dispatchEventsForPlugins (../../node_modules/react-dom/cjs/react-dom.development.js:9097:3)
+      at ../../node_modules/react-dom/cjs/react-dom.development.js:9288:12
+      at batchedUpdates$1 (../../node_modules/react-dom/cjs/react-dom.development.js:26179:12)
+      at batchedUpdates (../../node_modules/react-dom/cjs/react-dom.development.js:3991:12)
+      at dispatchEventForPluginEventSystem (../../node_modules/react-dom/cjs/react-dom.development.js:9287:3)
+      at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (../../node_modules/react-dom/cjs/react-dom.development.js:6465:5)
+      at dispatchEvent (../../node_modules/react-dom/cjs/react-dom.development.js:6457:5)
+      at dispatchDiscreteEvent (../../node_modules/react-dom/cjs/react-dom.development.js:6430:5)
+      at HTMLDivElement.callTheUserObjectsOperation (../../node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLButtonElementImpl._dispatch (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLButtonElementImpl.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLButtonElement.dispatchEvent (../../node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at ../../node_modules/@testing-library/user-event/dist/cjs/event/dispatchEvent.js:45:43
+      at Object.eventWrapper (../../node_modules/@testing-library/dom/dist/config.js:25:23)
+      at Object.wrapEvent (../../node_modules/@testing-library/user-event/dist/cjs/event/wrapEvent.js:6:28)
+      at Object.dispatchEvent (../../node_modules/@testing-library/user-event/dist/cjs/event/dispatchEvent.js:45:22)
+      at Object.dispatchUIEvent (../../node_modules/@testing-library/user-event/dist/cjs/event/dispatchEvent.js:22:26)
+      at Mouse.up (../../node_modules/@testing-library/user-event/dist/cjs/system/pointer/mouse.js:100:30)
+      at PointerHost.release (../../node_modules/@testing-library/user-event/dist/cjs/system/pointer/index.js:87:24)
+      at pointerAction (../../node_modules/@testing-library/user-event/dist/cjs/pointer/index.js:54:47)
+      at Object.pointer (../../node_modules/@testing-library/user-event/dist/cjs/pointer/index.js:27:9)
+      at Object.<anonymous> (src/__tests__/SimpleApp.test.js:65:5)
+
+    console.error
+      Warning: React does not recognize the `maxWidth` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `maxwidth` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+          at div
+          at Dialog (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material.js:36:26)
+          at TaskForm (/workspaces/jg_aitraining2/packages/frontend/src/TaskForm.js:14:21)
+          at div
+          at Container (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material.js:5:29)
+          at AppContent (/workspaces/jg_aitraining2/packages/frontend/src/App.js:30:37)
+          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material/styles.js:26:33)
+          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/theme/ThemeProvider.js:68:33)
+          at App
+
+      at printWarning (../../node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (../../node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at validateProperty$1 (../../node_modules/react-dom/cjs/react-dom.development.js:3757:7)
+      at warnUnknownProperties (../../node_modules/react-dom/cjs/react-dom.development.js:3803:21)
+      at validateProperties$2 (../../node_modules/react-dom/cjs/react-dom.development.js:3827:3)
+      at validatePropertiesInDevelopment (../../node_modules/react-dom/cjs/react-dom.development.js:9541:5)
+      at setInitialProperties (../../node_modules/react-dom/cjs/react-dom.development.js:9830:5)
+      at finalizeInitialChildren (../../node_modules/react-dom/cjs/react-dom.development.js:10950:3)
+      at completeWork (../../node_modules/react-dom/cjs/react-dom.development.js:22232:17)
+      at completeUnitOfWork (../../node_modules/react-dom/cjs/react-dom.development.js:26632:16)
+      at performUnitOfWork (../../node_modules/react-dom/cjs/react-dom.development.js:26607:5)
+      at workLoopSync (../../node_modules/react-dom/cjs/react-dom.development.js:26505:5)
+      at renderRootSync (../../node_modules/react-dom/cjs/react-dom.development.js:26473:7)
+      at performSyncWorkOnRoot (../../node_modules/react-dom/cjs/react-dom.development.js:26124:20)
+      at flushSyncCallbacks (../../node_modules/react-dom/cjs/react-dom.development.js:12042:22)
+      at ../../node_modules/react-dom/cjs/react-dom.development.js:25690:13
+      at ../../node_modules/jsdom/lib/jsdom/browser/Window.js:550:9
+
+    console.error
+      Warning: React does not recognize the `fullWidth` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `fullwidth` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+          at div
+          at Dialog (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material.js:36:26)
+          at TaskForm (/workspaces/jg_aitraining2/packages/frontend/src/TaskForm.js:14:21)
+          at div
+          at Container (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material.js:5:29)
+          at AppContent (/workspaces/jg_aitraining2/packages/frontend/src/App.js:30:37)
+          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/__mocks__/@mui/material/styles.js:26:33)
+          at ThemeProvider (/workspaces/jg_aitraining2/packages/frontend/src/theme/ThemeProvider.js:68:33)
+          at App
+
+      at printWarning (../../node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (../../node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at validateProperty$1 (../../node_modules/react-dom/cjs/react-dom.development.js:3757:7)
+      at warnUnknownProperties (../../node_modules/react-dom/cjs/react-dom.development.js:3803:21)
+      at validateProperties$2 (../../node_modules/react-dom/cjs/react-dom.development.js:3827:3)
+      at validatePropertiesInDevelopment (../../node_modules/react-dom/cjs/react-dom.development.js:9541:5)
+      at setInitialProperties (../../node_modules/react-dom/cjs/react-dom.development.js:9830:5)
+      at finalizeInitialChildren (../../node_modules/react-dom/cjs/react-dom.development.js:10950:3)
+      at completeWork (../../node_modules/react-dom/cjs/react-dom.development.js:22232:17)
+      at completeUnitOfWork (../../node_modules/react-dom/cjs/react-dom.development.js:26632:16)
+      at performUnitOfWork (../../node_modules/react-dom/cjs/react-dom.development.js:26607:5)
+      at workLoopSync (../../node_modules/react-dom/cjs/react-dom.development.js:26505:5)
+      at renderRootSync (../../node_modules/react-dom/cjs/react-dom.development.js:26473:7)
+      at performSyncWorkOnRoot (../../node_modules/react-dom/cjs/react-dom.development.js:26124:20)
+      at flushSyncCallbacks (../../node_modules/react-dom/cjs/react-dom.development.js:12042:22)
+      at ../../node_modules/react-dom/cjs/react-dom.development.js:25690:13
+      at ../../node_modules/jsdom/lib/jsdom/browser/Window.js:550:9
 
 --------------------|---------|----------|---------|---------|-----------------------------
 File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s           
@@ -569,9 +580,9 @@ Summary of all failing tests
       94 |     });
     > 95 |     const addButton = screen.getByRole('button', { name: /add new task/i });
          |           ^
-      96 |     await userEvent.click(addButton);
-      97 |     await userEvent.type(screen.getByLabelText(/task title/i), 'New Task');
-      98 |     await userEvent.type(screen.getByLabelText(/description/i), 'New Desc');
+      96 |     await user.click(addButton);
+      97 |     await user.type(screen.getByLabelText(/task title/i), 'New Task');
+      98 |     await user.type(screen.getByLabelText(/description/i), 'New Desc');
 
       at toParseError (../../node_modules/@babel/parser/src/parse-error.ts:95:45)
       at FlowParserMixin.raise (../../node_modules/@babel/parser/src/tokenizer/index.ts:1503:19)
@@ -628,7 +639,7 @@ Summary of all failing tests
 Test Suites: 1 failed, 24 skipped, 15 passed, 16 of 40 total
 Tests:       32 skipped, 121 passed, 153 total
 Snapshots:   0 total
-Time:        41.358 s
+Time:        49.752 s
 Ran all test suites.
 npm error Lifecycle script `test` failed with error:
 npm error code 1
