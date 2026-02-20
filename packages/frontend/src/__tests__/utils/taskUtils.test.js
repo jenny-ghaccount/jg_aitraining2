@@ -1,63 +1,7 @@
-// Clean task utility function tests
+// Import real implementations instead of using mocks
+import { validateTask, sanitizeTaskInput, formatTaskDate, getTaskPriority } from '../../utils/taskUtils';
+
 describe('Task Utility Functions', () => {
-  // Mock utility functions for validation
-  const validateTask = (task) => {
-    const errors = [];
-    
-    if (!task || typeof task !== 'object') {
-      errors.push('Task must be an object');
-      return { isValid: false, errors }; // Early return to prevent null access
-    }
-    
-    if (!task.title || typeof task.title !== 'string' || task.title.trim() === '') {
-      errors.push('Title is required');
-    }
-    
-    if (task.title && task.title.length > 200) {
-      errors.push('Title must be less than 200 characters');
-    }
-    
-    return { isValid: errors.length === 0, errors };
-  };
-
-  const formatTaskDate = (date) => {
-    if (!date) return '';
-    
-    try {
-      const taskDate = new Date(date);
-      if (isNaN(taskDate.getTime())) {
-        return 'Invalid Date';
-      }
-      return taskDate.toLocaleDateString();
-    } catch (error) {
-      return 'Invalid Date';
-    }
-  };
-
-  const sanitizeTaskInput = (input) => {
-    if (!input || typeof input !== 'string') {
-      return '';
-    }
-    
-    // Remove script tags and their content completely
-    let cleaned = input.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
-    // Remove remaining HTML tags
-    cleaned = cleaned.replace(/<[^>]*>/g, '');
-    // Trim whitespace
-    return cleaned.trim();
-  };
-
-  const getTaskPriority = (task) => {
-    const priority = task?.priority;
-    const validPriorities = ['low', 'medium', 'high'];
-    
-    if (validPriorities.includes(priority)) {
-      return priority;
-    }
-    
-    return 'medium'; // default priority
-  };
-
   describe('validateTask', () => {
     test('should validate correct task data', () => {
       const validTask = { title: 'Test Task', description: 'Test Description' };

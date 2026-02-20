@@ -1,55 +1,8 @@
 import { renderHook, act } from '@testing-library/react';
-import React from 'react';
+import useTaskManager from '../../hooks/useTaskManager';
 
 // Mock fetch for API calls
 global.fetch = jest.fn();
-
-// Simple mock hook for testing hook patterns
-const useTestTaskManager = () => {
-  const [tasks, setTasks] = React.useState([]);
-  const [filter, setFilter] = React.useState('all');
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
-  const [idCounter, setIdCounter] = React.useState(1);
-
-  const addTask = React.useCallback((taskData) => {
-    const newTask = {
-      id: idCounter,
-      ...taskData,
-      completed: false,
-      createdAt: new Date().toISOString()
-    };
-    setTasks(prev => [...prev, newTask]);
-    setIdCounter(prev => prev + 1);
-  }, [idCounter]);
-
-  const updateTask = React.useCallback((id, updates) => {
-    setTasks(prev => 
-      prev.map(task => 
-        task.id === id ? { ...task, ...updates } : task
-      )
-    );
-  }, []);
-
-  const deleteTask = React.useCallback((id) => {
-    setTasks(prev => prev.filter(task => task.id !== id));
-  }, []);
-
-  const setTaskFilter = React.useCallback((newFilter) => {
-    setFilter(newFilter);
-  }, []);
-
-  return {
-    tasks,
-    filter,
-    isLoading,
-    error,
-    addTask,
-    updateTask,
-    deleteTask,
-    setFilter: setTaskFilter
-  };
-};
 
 describe('Task Manager Hook Tests', () => {
   beforeEach(() => {
@@ -59,7 +12,7 @@ describe('Task Manager Hook Tests', () => {
   });
 
   test('initializes with correct default state', () => {
-    const { result } = renderHook(() => useTestTaskManager());
+    const { result } = renderHook(() => useTaskManager());
     
     expect(result.current.tasks).toEqual([]);
     expect(result.current.filter).toBe('all');
@@ -68,7 +21,7 @@ describe('Task Manager Hook Tests', () => {
   });
 
   test('provides all necessary functions', () => {
-    const { result } = renderHook(() => useTestTaskManager());
+    const { result } = renderHook(() => useTaskManager());
     
     expect(typeof result.current.addTask).toBe('function');
     expect(typeof result.current.updateTask).toBe('function');
@@ -77,7 +30,7 @@ describe('Task Manager Hook Tests', () => {
   });
 
   test('can add a task', () => {
-    const { result } = renderHook(() => useTestTaskManager());
+    const { result } = renderHook(() => useTaskManager());
     
     act(() => {
       result.current.addTask({ title: 'Test Task' });
@@ -90,7 +43,7 @@ describe('Task Manager Hook Tests', () => {
   });
 
   test('can update a task', () => {
-    const { result } = renderHook(() => useTestTaskManager());
+    const { result } = renderHook(() => useTaskManager());
     
     // Add a task first
     act(() => {
@@ -108,7 +61,7 @@ describe('Task Manager Hook Tests', () => {
   });
 
   test('can delete a task', () => {
-    const { result } = renderHook(() => useTestTaskManager());
+    const { result } = renderHook(() => useTaskManager());
     
     // Add a task first
     act(() => {
@@ -126,7 +79,7 @@ describe('Task Manager Hook Tests', () => {
   });
 
   test('can change filter', () => {
-    const { result } = renderHook(() => useTestTaskManager());
+    const { result } = renderHook(() => useTaskManager());
     
     act(() => {
       result.current.setFilter('active');
@@ -142,7 +95,7 @@ describe('Task Manager Hook Tests', () => {
   });
 
   test('maintains state consistency across operations', () => {
-    const { result } = renderHook(() => useTestTaskManager());
+    const { result } = renderHook(() => useTaskManager());
     
     // Add multiple tasks
     act(() => {
