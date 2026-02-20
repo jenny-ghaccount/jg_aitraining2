@@ -5,7 +5,8 @@ import React from 'react';
 export const Container = ({ children, component, maxWidth, ...props }) => {
   const role = component === 'main' ? 'main' : props.role;
   // Filter out Material-UI specific props that shouldn't be passed to DOM
-  const { sx, ...domProps } = props;
+  const { sx, maxWidth: _maxWidth, ...domProps } = props;
+  // Remove maxWidth from DOM props
   return <div {...domProps} role={role}>{children}</div>;
 };
 export const Box = ({ children, sx, ...props }) => <div {...props}>{children}</div>;
