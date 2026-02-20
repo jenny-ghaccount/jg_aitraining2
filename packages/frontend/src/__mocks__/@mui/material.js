@@ -1,13 +1,15 @@
 // Enhanced mock for @mui/material that properly handles accessibility attributes
 import React from 'react';
 
-// Mock Material-UI components for testing with proper roles
-export const Container = ({ children, component, ...props }) => {
+// Mock Material-UI components for testing with proper roles and prop handling
+export const Container = ({ children, component, maxWidth, ...props }) => {
   const role = component === 'main' ? 'main' : props.role;
-  return <div {...props} role={role}>{children}</div>;
+  // Filter out Material-UI specific props that shouldn't be passed to DOM
+  const { sx, ...domProps } = props;
+  return <div {...domProps} role={role}>{children}</div>;
 };
-export const Box = ({ children, ...props }) => <div {...props}>{children}</div>;
-export const Typography = ({ children, component, ...props }) => {
+export const Box = ({ children, sx, ...props }) => <div {...props}>{children}</div>;
+export const Typography = ({ children, component, variant, sx, ...props }) => {
   const Tag = component || 'div';
   return <Tag {...props}>{children}</Tag>;
 };
