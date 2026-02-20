@@ -68,6 +68,7 @@
   },
   "jest": {
     "moduleNameMapper": {
+      "@mui/material/styles": "<rootDir>/src/__mocks__/@mui/material/styles.js",
       "@mui/material": "<rootDir>/src/__mocks__/@mui/material.js",
       "@mui/icons-material": "<rootDir>/src/__mocks__/@mui/icons-material.js",
       "@mui/system": "<rootDir>/src/__mocks__/@mui/system.js",
