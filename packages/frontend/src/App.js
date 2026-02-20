@@ -112,7 +112,7 @@ function AppContent() {
 
   const deleteTask = async (taskId) => {
     try {
-      const response = await fetch(`/api/items/${taskId}`, {
+      const response = await fetch(`/api/tasks/${taskId}`, {
         method: 'DELETE',
       });
 

@@ -4,12 +4,18 @@ import userEvent from '@testing-library/user-event';
 import App from '../../App';
 
 // Mock fetch for API calls
-global.fetch = jest.fn();
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    ok: true,
+    json: () => Promise.resolve([])
+  })
+);
 
 describe('Component Integration Tests', () => {
   beforeEach(() => {
-    fetch.mockClear();
-    fetch.mockResolvedValue({
+    // Reset the mock before each test
+    global.fetch.mockClear();
+    global.fetch.mockResolvedValue({
       ok: true,
       json: async () => ([])
     });
