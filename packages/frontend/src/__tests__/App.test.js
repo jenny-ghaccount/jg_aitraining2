@@ -127,7 +127,7 @@ describe('App Component', () => {
       });
       
       expect(screen.getByRole('banner')).toBeInTheDocument(); // AppBar
-      expect(screen.getByText('Task Manager')).toBeInTheDocument();
+      expect(screen.getByText('Todo App')).toBeInTheDocument();
     });
 
     test('shows loading state initially', async () => {

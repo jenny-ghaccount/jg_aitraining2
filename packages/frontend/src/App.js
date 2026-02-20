@@ -194,42 +194,41 @@ function AppContent() {
   const filteredTasks = getFilteredTasks();
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div>
-          <h1>Todo App</h1>
-          <p>Stay organized and get things done</p>
-        </div>
-        <button 
-          className="settings-btn"
-          onClick={() => setShowSettings(!showSettings)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              setShowSettings(!showSettings);
-            }
-          }}
-          aria-expanded={showSettings}
-          aria-label="Open settings menu"
-        >
-          ⚙️ Settings
-        </button>
-      </header>
+    <Container maxWidth="lg">
+      <AppBar position="static" sx={{ mb: 2 }}>
+        <Toolbar>
+          <Typography variant="h6" component="h1" sx={{ flexGrow: 1 }}>
+            Todo App
+          </Typography>
+          <IconButton
+            edge="end"
+            color="inherit"
+            onClick={() => setShowSettings(!showSettings)}
+            aria-expanded={showSettings}
+            aria-label="Open settings menu"
+          >
+            <SettingsIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
 
       {/* Settings Menu */}
       {showSettings && (
-        <div className="settings-menu" role="dialog" aria-label="Settings">
-          <h3>Accessibility Themes</h3>
-          <div className="theme-options">
-            <button
-              onClick={toggleTheme}
-              className=\"theme-option-button\"
-            >
-              Switch to {currentTheme === 'standard' ? 'high contrast' : 'standard'} theme
-            </button>
-            <p>Current theme: {currentTheme.replace('-', ' ')}</p>
-          </div>
-        </div>
+        <Box sx={{ mb: 2, p: 2, border: 1, borderColor: 'divider', borderRadius: 1 }}>
+          <Typography variant="h6" gutterBottom>
+            Accessibility Themes
+          </Typography>
+          <Button
+            onClick={toggleTheme}
+            variant="outlined"
+            sx={{ mr: 1 }}
+          >
+            Switch to {currentTheme === 'standard' ? 'high contrast' : 'standard'} theme
+          </Button>
+          <Typography variant="body2">
+            Current theme: {currentTheme.replace('-', ' ')}
+          </Typography>
+        </Box>
       )}
 
       <main className="main-content">
@@ -251,15 +250,16 @@ function AppContent() {
           </div>
 
           {loading && (
-            <div className="loading" role="status" aria-label="Loading tasks">
-              Loading tasks...
-            </div>
+            <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }} role="status" aria-label="Loading tasks">
+              <CircularProgress />
+              <Typography sx={{ ml: 2 }}>Loading tasks...</Typography>
+            </Box>
           )}
 
           {error && (
-            <div className="error-message" role="alert">
+            <Alert severity="error" sx={{ mb: 2 }} role="alert">
               {error}
-            </div>
+            </Alert>
           )}
 
           {!loading && !error && (
@@ -339,17 +339,17 @@ function AppContent() {
       </main>
 
       {/* Floating Action Button */}
-      <button 
-        className="fab"
+      <Fab
+        color="primary"
+        aria-label="Add new task"
+        sx={{ position: 'fixed', bottom: 16, right: 16 }}
         onClick={() => {
           setEditingTask(null);
           setShowTaskForm(true);
         }}
-        aria-label="Add new task"
-        title="Add new task"
       >
-        +
-      </button>
+        <AddIcon />
+      </Fab>
 
       {/* Task Form Modal */}
       <TaskForm
@@ -367,7 +367,7 @@ function AppContent() {
         }}
         task={editingTask}
       />
-    </div>
+    </Container>
   );
 }
 

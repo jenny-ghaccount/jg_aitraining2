@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import './TaskForm.css';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  Button,
+  IconButton,
+  Box
+} from '@mui/material';
+import { Close as CloseIcon } from '@mui/icons-material';
 
 const TaskForm = ({ isOpen, onClose, onSubmit, task = null }) => {
   const [title, setTitle] = useState(task?.title || '');
@@ -55,110 +65,88 @@ const TaskForm = ({ isOpen, onClose, onSubmit, task = null }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={handleClose}>
-      <div 
-        className="modal-content" 
-        onClick={(e) => e.stopPropagation()}
-        role="dialog"
-        aria-labelledby="task-form-title"
-        aria-modal="true"
-      >
-        <div className="modal-header">
-          <h2 id="task-form-title">
-            {task ? 'Edit Task' : 'Add New Task'}
-          </h2>
-          <button 
-            className="modal-close-btn"
-            onClick={handleClose}
-            aria-label="Close dialog"
-            type="button"
-          >
-            ×
-          </button>
-        </div>
-        
-        <form onSubmit={handleSubmit} className="task-form">
-          <div className="form-group">
-            <label htmlFor="task-title" className="form-label">
-              Task Title *
-            </label>
-            <input
-              id="task-title"
-              type="text"
-              className={`form-input ${errors.title ? 'error' : ''}`}
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Enter task title"
-              maxLength={255}
-              required
-              autoFocus
-            />
-            {errors.title && (
-              <span className="error-text" role="alert">
-                {errors.title}
-              </span>
-            )}
-          </div>
+    <Dialog
+      open={isOpen}
+      onClose={handleClose}
+      maxWidth="sm"
+      fullWidth
+      aria-labelledby="task-form-title"
+    >
+      <DialogTitle id="task-form-title">
+        {task ? 'Edit Task' : 'Add New Task'}
+        <IconButton
+          aria-label="Close dialog"
+          onClick={handleClose}
+          sx={{ position: 'absolute', right: 8, top: 8 }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
+      
+      <DialogContent>
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+          <TextField
+            id="task-title"
+            name="title"
+            label="Task Title"
+            fullWidth
+            required
+            autoFocus
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Enter task title"
+            inputProps={{ maxLength: 255 }}
+            error={!!errors.title}
+            helperText={errors.title}
+            margin="normal"
+          />
 
-          <div className="form-group">
-            <label htmlFor="task-description" className="form-label">
-              Description
-            </label>
-            <textarea
-              id="task-description"
-              className={`form-textarea ${errors.description ? 'error' : ''}`}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Enter task description (optional)"
-              maxLength={1000}
-              rows={3}
-            />
-            {errors.description && (
-              <span className="error-text" role="alert">
-                {errors.description}
-              </span>
-            )}
-            <small className="character-count">
-              {description.length}/1000 characters
-            </small>
-          </div>
+          <TextField
+            id="task-description"
+            name="description"
+            label="Description"
+            fullWidth
+            multiline
+            rows={3}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Enter task description (optional)"
+            inputProps={{ maxLength: 1000 }}
+            error={!!errors.description}
+            helperText={errors.description || `${description.length}/1000 characters`}
+            margin="normal"
+          />
 
-          <div className="form-group">
-            <label htmlFor="task-due-date" className="form-label">
-              Due Date
-            </label>
-            <input
-              id="task-due-date"
-              type="date"
-              className="form-input"
-              value={dueDate}
-              onChange={(e) => setDueDate(e.target.value)}
-              min={new Date().toISOString().split('T')[0]}
-            />
-            <small className="form-help">
-              Leave empty if no specific due date is needed
-            </small>
-          </div>
+          <TextField
+            id="task-due-date"
+            name="dueDate"
+            label="Due Date"
+            type="date"
+            fullWidth
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+            InputLabelProps={{ shrink: true }}
+            inputProps={{ min: new Date().toISOString().split('T')[0] }}
+            helperText="Leave empty if no specific due date is needed"
+            margin="normal"
+          />
+        </Box>
+      </DialogContent>
 
-          <div className="form-actions">
-            <button
-              type="button"
-              className="btn-secondary"
-              onClick={handleClose}
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="btn-primary"
-              disabled={!title.trim()}
-            >
-              {task ? 'Update Task' : 'Add Task'}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+      <DialogActions>
+        <Button onClick={handleClose} color="secondary">
+          Cancel
+        </Button>
+        <Button
+          onClick={handleSubmit}
+          variant="contained"
+          color="primary"
+          disabled={!title.trim()}
+        >
+          {task ? 'Update Task' : 'Add Task'}
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 };
 
