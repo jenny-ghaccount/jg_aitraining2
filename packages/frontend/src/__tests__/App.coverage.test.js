@@ -79,18 +79,17 @@ describe('App Component Coverage', () => {
       });
     });
     render(<App />);
+    const user = require('@testing-library/user-event').default.setup();
     // Open task form
     const addButton = screen.getByRole('button', { name: /add new task/i });
-    await addButton.click();
+    await user.click(addButton);
     // Fill out form
     const titleInput = screen.getByLabelText(/task title/i);
-    await titleInput.focus();
-    await titleInput.setSelectionRange(0, 0);
-    await titleInput.value = 'Test Task';
+    await user.type(titleInput, 'Test Task');
     const submitButton = screen.getByRole('button', { name: /add task/i });
-    await submitButton.click();
+    await user.click(submitButton);
     // Wait for task to appear
-    await waitFor(() => {
+    await require('@testing-library/react').waitFor(() => {
       expect(screen.getByText('Test Task')).toBeInTheDocument();
     });
     const addButton = screen.getByRole('button', { name: /add new task/i });
