@@ -1,1038 +1,1035 @@
+                </h2>
+                <button
+                  aria-label="Close dialog"
+                  class="modal-close-btn"
+                  type="button"
+                >
+                  ×
+                </button>
+              </div>
+              <form
+                class="task-form"
+              >
+                <div
+                  class="form-group"
+                >
+                  <label
+                    class="form-label"
+                    for="task-title"
+                  >
+                    Task Title *
+                  </label>
+                  <input
+                    class="form-input "
+                    id="task-title"
+                    maxlength="255"
+                    placeholder="Enter task title"
+                    required=""
+                    type="text"
+                    value="My First Task"
+                  />
+                </div>
+                <div
+                  class="form-group"
+                >
+                  <label
+                    class="form-label"
+                    for="task-description"
+                  >
+                    Description
+                  </label>
+                  <textarea
+                    class="form-textarea "
+                    id="task-description"
+                    maxlength="1000"
+                    placeholder="Enter task description (optional)"
+                    rows="3"
+                  >
+                    This is a test task
+                  </textarea>
+                  <small
+                    class="character-count"
+                  >
+                    19
+                    /1000 characters
+                  </small>
+                </div>
+                <div
+                  class="form-group"
+                >
+                  <label
+                    class="form-label"
+                    for="task-due-date"
+                  >
+                    Due Date
+                  </label>
+                  <input
+                    class="form-input"
+                    id="task-due-date"
+                    min="2026-02-20"
+                    type="date"
+                    value=""
+                  />
+                  <small
+                    class="form-help"
+                  >
+                    Leave empty if no specific due date is needed
+                  </small>
+                </div>
+                <div
+                  class="form-actions"
+                >
+                  <button
+                    class="btn-secondary"
+                    type="button"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    class="btn-primary"
+                    type="submit"
+                  >
+                    Add Task
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
 
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
+      72 |     }
+      73 |
+    > 74 |     const submitButton = screen.getByRole('button', { name: /create task|save/i });
+         |                                 ^
+      75 |     await user.click(submitButton);
+      76 |
+      77 |     // Verify task was added (this would require the actual task to render)
 
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
+      at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
+      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByRole (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at Object.<anonymous> (src/__tests__/integration/Integration.test.js:74:33)
 
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:138:13)
+  ● Integration Tests › theme integration
 
-  ● TaskForm Component › Form Submission › submits valid form data
+    ReferenceError: THEMES is not defined
 
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
+      226 |           <h3>Accessibility Themes</h3>
+      227 |           <div className="theme-options">
+    > 228 |             {Object.entries(THEMES).map(([key, value]) => (
+          |                             ^
+      229 |               <label key={value} className="theme-option">
+      230 |                 <input
+      231 |                   type="radio"
 
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
+      at AppContent (src/App.js:228:29)
+      at renderWithHooks (../../node_modules/react-dom/cjs/react-dom.development.js:15486:18)
+      at updateFunctionComponent (../../node_modules/react-dom/cjs/react-dom.development.js:19617:20)
+      at beginWork (../../node_modules/react-dom/cjs/react-dom.development.js:21640:16)
+      at beginWork$1 (../../node_modules/react-dom/cjs/react-dom.development.js:27465:14)
+      at performUnitOfWork (../../node_modules/react-dom/cjs/react-dom.development.js:26599:12)
+      at workLoopSync (../../node_modules/react-dom/cjs/react-dom.development.js:26505:5)
+      at renderRootSync (../../node_modules/react-dom/cjs/react-dom.development.js:26473:7)
+      at recoverFromConcurrentError (../../node_modules/react-dom/cjs/react-dom.development.js:25889:20)
+      at performSyncWorkOnRoot (../../node_modules/react-dom/cjs/react-dom.development.js:26135:20)
+      at flushSyncCallbacks (../../node_modules/react-dom/cjs/react-dom.development.js:12042:22)
+      at ../../node_modules/react-dom/cjs/react-dom.development.js:25690:13
+      at ../../node_modules/jsdom/lib/jsdom/browser/Window.js:550:9
 
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:168:13)
+  ● Integration Tests › theme integration
 
-  ● TaskForm Component › Form Submission › handles form cancellation
+    Unable to find role="dialog" and name `/settings/i`
 
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
+    Ignored nodes: comments, script, style
+    <body>
+      <div />
+    </body>
 
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
+      135 |     await user.click(settingsButton);
+      136 |
+    > 137 |     await waitFor(() => {
+          |                  ^
+      138 |       expect(screen.getByRole('dialog', { name: /settings/i })).toBeInTheDocument();
+      139 |       expect(screen.getByText('Accessibility Themes')).toBeInTheDocument();
+      140 |     });
 
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:191:13)
+      at waitForWrapper (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:163:27)
+      at Object.<anonymous> (src/__tests__/integration/Integration.test.js:137:18)
 
-  ● TaskForm Component › Form Submission › clears form after successful submission
+  ● Integration Tests › filter and display integration
 
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
+    TestingLibraryElementError: Found multiple elements with the role "button" and name `/active/i`
 
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
+    Here are the matching elements:
 
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:206:13)
+    Ignored nodes: comments, script, style
+    <button
+      aria-pressed="false"
+      class="filter-btn "
+    >
+      Active
+    </button>
 
-  ● TaskForm Component › Keyboard Navigation › supports tab navigation through form fields
+    Ignored nodes: comments, script, style
+    <button
+      aria-label="Edit task: Active Task"
+      class="task-btn edit"
+    >
+      ✏️ Edit
+    </button>
 
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
+    Ignored nodes: comments, script, style
+    <button
+      aria-label="Delete task: Active Task"
+      class="task-btn delete"
+    >
+      �� Delete
+    </button>
 
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
+    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
 
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:229:13)
+    Ignored nodes: comments, script, style
+    <body>
+      <div>
+        <div
+          class="App"
+        >
+          <header
+            class="App-header"
+          >
+            <div>
+              <h1>
+                Todo App
+              </h1>
+              <p>
+                Stay organized and get things done
+              </p>
+            </div>
+            <button
+              aria-expanded="false"
+              aria-label="Open settings menu"
+              class="settings-btn"
+            >
+              ⚙️ Settings
+            </button>
+          </header>
+          <main
+            class="main-content"
+          >
+            <div
+              class="task-list-container"
+            >
+              <div
+                class="task-list-header"
+              >
+                <h2>
+                  Your Tasks (
+                  2
+                  )
+                </h2>
+                <div
+                  class="task-filters"
+                >
+                  <button
+                    aria-pressed="true"
+                    class="filter-btn active"
+                  >
+                    All
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Active
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Completed
+                  </button>
+                </div>
+              </div>
+              <ul
+                class="task-list"
+                role="list"
+              >
+                <li
+                  class="task-card completed"
+                  role="listitem"
+                >
+                  <div
+                    class="task-content"
+                  >
+                    <div
+                      class="task-header"
+                    >
+                      <h3
+                        class="task-title completed"
+                      >
+                        Completed Task
+                      </h3>
+                    </div>
+                    <div
+                      class="task-meta"
+                    >
+                      <div
+                        class="task-due-date"
+                      />
+                      <div
+                        class="task-actions"
+                      >
+                        <button
+                          aria-label="Mark as incomplete"
+                          class="task-btn complete completed"
+                        >
+                          ↶ Undo
+                        </button>
+                        <button
+                          aria-label="Edit task: Completed Task"
+                          class="task-btn edit"
+                        >
+                          ✏️ Edit
+                        </button>
+                        <button
+                          aria-label="Delete task: Completed Task"
+                          class="task-btn delete"
+                        >
+                          �� Delete
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li
+                  class="task-card normal"
+                  role="listitem"
+                >
+                  <div
+                    class="task-content"
+                  >
+                    <div
+                      class="task-header"
+                    >
+                      <h3
+                        class="task-title "
+                      >
+                        Active Task
+                      </h3>
+                    </div>
+                    <div
+                      class="task-meta"
+                    >
+                      <div
+                        class="task-due-date"
+                      />
+                      <div
+                        class="task-actions"
+                      >
+                        <button
+                          aria-label="Mark as complete"
+                          class="task-btn complete "
+                        >
+                          ✓ Complete
+                        </button>
+                        <button
+                          aria-label="Edit task: Active Task"
+                          class="task-btn edit"
+                        >
+                          ✏️ Edit
+                        </button>
+                        <button
+                          aria-label="Delete task: Active Task"
+                          class="task-btn delete"
+                        >
+                          �� Delete
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </main>
+          <button
+            aria-label="Add new task"
+            class="fab"
+            title="Add new task"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </body>
 
-  ● TaskForm Component › Keyboard Navigation › submits form on Enter key in title field
+      164 |
+      165 |     // Test filtering to active only
+    > 166 |     const activeButton = screen.getByRole('button', { name: /active/i });
+          |                                 ^
+      167 |     await user.click(activeButton);
+      168 |
+      169 |     await waitFor(() => {
 
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:257:13)
-
-  ● TaskForm Component › Keyboard Navigation › cancels form on Escape key
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:277:13)
-
-  ● TaskForm Component › Accessibility › meets basic accessibility standards
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:290:35)
-
-  ● TaskForm Component › Accessibility › has proper ARIA labels and roles
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:305:13)
-
-  ● TaskForm Component › Accessibility › announces form errors to screen readers
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:320:13)
-
-  ● TaskForm Component › Material-UI Integration › renders Material-UI components correctly
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:338:13)
-
-  ● TaskForm Component › Material-UI Integration › applies theme correctly
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:350:13)
-
- PASS  src/__tests__/hooks/useTaskManager.test.js
- PASS  src/__tests__/test-utils-clean.js
- PASS  src/__tests__/utils/taskUtils.test.js
- PASS  src/__tests__/test-utils-fixed.js
- PASS  src/__tests__/testHelpers.js
- PASS  src/__tests__/test-utils.js
- PASS  src/__tests__/utils/appUtils.test.js
- PASS  src/__tests__/utils/basicUtils.test.js
- FAIL  src/__tests__/SimpleApp.test.js
-  ● Test suite failed to run
-
-    ReferenceError: App is not defined
-
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
-
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/SimpleApp.test.js:4:1)
-
- FAIL  src/__tests__/App.test.js
-  ● Test suite failed to run
-
-    ReferenceError: App is not defined
-
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
-
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/App.test.js:6:1)
+      at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
+      at getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:20:35)
+      at getMultipleElementsFoundError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:23:10)
+      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:55:13
+      at getByRole (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at Object.<anonymous> (src/__tests__/integration/Integration.test.js:166:33)
 
  FAIL  src/__tests__/integration/ComponentIntegration.test.js
-  ● Test suite failed to run
+  ● Component Integration Tests › should pass basic accessibility audit
 
-    ReferenceError: App is not defined
+    Unable to find an element with the text: TODO App. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
 
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
+    Ignored nodes: comments, script, style
+    <body>
+      <div>
+        <div
+          class="App"
+        >
+          <header
+            class="App-header"
+          >
+            <div>
+              <h1>
+                Todo App
+              </h1>
+              <p>
+                Stay organized and get things done
+              </p>
+            </div>
+            <button
+              aria-expanded="false"
+              aria-label="Open settings menu"
+              class="settings-btn"
+            >
+              ⚙️ Settings
+            </button>
+          </header>
+          <main
+            class="main-content"
+          >
+            <div
+              class="task-list-container"
+            >
+              <div
+                class="task-list-header"
+              >
+                <h2>
+                  Your Tasks (
+                  0
+                  )
+                </h2>
+                <div
+                  class="task-filters"
+                >
+                  <button
+                    aria-pressed="true"
+                    class="filter-btn active"
+                  >
+                    All
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Active
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Completed
+                  </button>
+                </div>
+              </div>
+              <div
+                class="empty-state"
+              >
+                <h3>
+                  No tasks found
+                </h3>
+                <p>
+                  Click the + button to add your first task!
+                </p>
+              </div>
+            </div>
+          </main>
+          <button
+            aria-label="Add new task"
+            class="fab"
+            title="Add new task"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </body>
 
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:4:1)
+      39 |     const { container } = render(<App />);
+      40 |     
+    > 41 |     await waitFor(() => {
+         |                  ^
+      42 |       expect(screen.getByText('TODO App')).toBeInTheDocument();
+      43 |     });
+      44 |
 
- FAIL  src/__tests__/integration/Integration.test.js
-  ● Test suite failed to run
+      at waitForWrapper (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:163:27)
+      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:41:18)
 
-    ReferenceError: App is not defined
+  ● Component Integration Tests › should handle form interactions
 
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
+    TestingLibraryElementError: Unable to find an accessible element with the role "textbox"
 
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/integration/Integration.test.js:4:1)
+    Here are the accessible roles:
 
- FAIL  src/__tests__/integration/ComponentIntegration.simple.fixed.test.js
-  ● Test suite failed to run
+      banner:
 
-    ReferenceError: App is not defined
+      Name "":
+      <header
+        class="App-header"
+      />
 
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
+      --------------------------------------------------
+      heading:
 
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.simple.fixed.test.js:7:1)
+      Name "Todo App":
+      <h1 />
 
- FAIL  src/__tests__/integration/ComponentIntegration.simple.test.js
-  ● Test suite failed to run
+      Name "Your Tasks (0)":
+      <h2 />
 
-    ReferenceError: App is not defined
+      --------------------------------------------------
+      button:
 
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
+      Name "Open settings menu":
+      <button
+        aria-expanded="false"
+        aria-label="Open settings menu"
+        class="settings-btn"
+      />
 
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.simple.test.js:6:1)
+      Name "All":
+      <button
+        aria-pressed="true"
+        class="filter-btn active"
+      />
+
+      Name "Active":
+      <button
+        aria-pressed="false"
+        class="filter-btn "
+      />
+
+      Name "Completed":
+      <button
+        aria-pressed="false"
+        class="filter-btn "
+      />
+
+      Name "Add new task":
+      <button
+        aria-label="Add new task"
+        class="fab"
+        title="Add new task"
+      />
+
+      --------------------------------------------------
+      main:
+
+      Name "":
+      <main
+        class="main-content"
+      />
+
+      --------------------------------------------------
+      status:
+
+      Name "Loading tasks":
+      <div
+        aria-label="Loading tasks"
+        class="loading"
+        role="status"
+      />
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    <body>
+      <div>
+        <div
+          class="App"
+        >
+          <header
+            class="App-header"
+          >
+            <div>
+              <h1>
+                Todo App
+              </h1>
+              <p>
+                Stay organized and get things done
+              </p>
+            </div>
+            <button
+              aria-expanded="false"
+              aria-label="Open settings menu"
+              class="settings-btn"
+            >
+              ⚙️ Settings
+            </button>
+          </header>
+          <main
+            class="main-content"
+          >
+            <div
+              class="task-list-container"
+            >
+              <div
+                class="task-list-header"
+              >
+                <h2>
+                  Your Tasks (
+                  0
+                  )
+                </h2>
+                <div
+                  class="task-filters"
+                >
+                  <button
+                    aria-pressed="true"
+                    class="filter-btn active"
+                  >
+                    All
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Active
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Completed
+                  </button>
+                </div>
+              </div>
+              <div
+                aria-label="Loading tasks"
+                class="loading"
+                role="status"
+              >
+                Loading tasks...
+              </div>
+            </div>
+          </main>
+          <button
+            aria-label="Add new task"
+            class="fab"
+            title="Add new task"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </body>
+
+      52 |     
+      53 |     // Find the task input and button
+    > 54 |     const taskInput = screen.getByRole('textbox');
+         |                              ^
+      55 |     const addButton = screen.getByRole('button', { name: /add task/i });
+      56 |     
+      57 |     // Type a task and submit
+
+      at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
+      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByRole (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:54:30)
+
+  ● Component Integration Tests › should handle Enter key form submission
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "textbox"
+
+    Here are the accessible roles:
+
+      banner:
+
+      Name "":
+      <header
+        class="App-header"
+      />
+
+      --------------------------------------------------
+      heading:
+
+      Name "Todo App":
+      <h1 />
+
+      Name "Your Tasks (0)":
+      <h2 />
+
+      --------------------------------------------------
+      button:
+
+      Name "Open settings menu":
+      <button
+        aria-expanded="false"
+        aria-label="Open settings menu"
+        class="settings-btn"
+      />
+
+      Name "All":
+      <button
+        aria-pressed="true"
+        class="filter-btn active"
+      />
+
+      Name "Active":
+      <button
+        aria-pressed="false"
+        class="filter-btn "
+      />
+
+      Name "Completed":
+      <button
+        aria-pressed="false"
+        class="filter-btn "
+      />
+
+      Name "Add new task":
+      <button
+        aria-label="Add new task"
+        class="fab"
+        title="Add new task"
+      />
+
+      --------------------------------------------------
+      main:
+
+      Name "":
+      <main
+        class="main-content"
+      />
+
+      --------------------------------------------------
+      status:
+
+      Name "Loading tasks":
+      <div
+        aria-label="Loading tasks"
+        class="loading"
+        role="status"
+      />
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    <body>
+      <div>
+        <div
+          class="App"
+        >
+          <header
+            class="App-header"
+          >
+            <div>
+              <h1>
+                Todo App
+              </h1>
+              <p>
+                Stay organized and get things done
+              </p>
+            </div>
+            <button
+              aria-expanded="false"
+              aria-label="Open settings menu"
+              class="settings-btn"
+            >
+              ⚙️ Settings
+            </button>
+          </header>
+          <main
+            class="main-content"
+          >
+            <div
+              class="task-list-container"
+            >
+              <div
+                class="task-list-header"
+              >
+                <h2>
+                  Your Tasks (
+                  0
+                  )
+                </h2>
+                <div
+                  class="task-filters"
+                >
+                  <button
+                    aria-pressed="true"
+                    class="filter-btn active"
+                  >
+                    All
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Active
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Completed
+                  </button>
+                </div>
+              </div>
+              <div
+                aria-label="Loading tasks"
+                class="loading"
+                role="status"
+              >
+                Loading tasks...
+              </div>
+            </div>
+          </main>
+          <button
+            aria-label="Add new task"
+            class="fab"
+            title="Add new task"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </body>
+
+      84 |     render(<App />);
+      85 |     
+    > 86 |     const taskInput = screen.getByRole('textbox');
+         |                              ^
+      87 |     
+      88 |     // Type task and press Enter
+      89 |     await user.type(taskInput, 'Task via Enter{enter}');
+
+      at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
+      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByRole (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:86:30)
 
  FAIL  src/__tests__/AppIntegration.test.js
-  ● Test suite failed to run
-
-    ReferenceError: App is not defined
-
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
-
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/AppIntegration.test.js:3:1)
-
---------------------|---------|----------|---------|---------|----------------------------------------------------------------
-File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                              
---------------------|---------|----------|---------|---------|----------------------------------------------------------------
-All files           |   30.74 |    28.64 |   22.66 |   32.98 |                                                                
- src                |    5.46 |    13.67 |    2.32 |    6.28 |                                                                
-  App.js            |       0 |        0 |       0 |       0 | 23-374                                                         
-  TaskForm.js       |   26.31 |    43.24 |    12.5 |   27.77 | 11-24,28-44,48-52,61-135                                       
- src/hooks          |   66.66 |    58.33 |   52.94 |   71.87 |                                                                
-  useTaskManager.js |   66.66 |    58.33 |   52.94 |   71.87 | 17-18,51-52,57,61-67                                           
- src/theme          |   47.82 |     22.5 |   27.27 |   49.25 |                                                                
-  ThemeProvider.js  |   41.93 |     22.5 |   27.27 |   43.33 | 14-18,73,80,88,104-109,115-119,125-134,138-140,145-148,152-161 
-  theme.js          |     100 |      100 |     100 |     100 |                                                                
- src/utils          |   96.77 |      100 |     100 |   96.66 |                                                                
-  taskUtils.js      |   96.77 |      100 |     100 |   96.66 | 45                                                             
---------------------|---------|----------|---------|---------|----------------------------------------------------------------
-
-=============================== Coverage summary ===============================
-Statements   : 30.74% ( 99/322 )
-Branches     : 28.64% ( 55/192 )
-Functions    : 22.66% ( 17/75 )
-Lines        : 32.98% ( 95/288 )
-================================================================================
-Jest: "global" coverage threshold for statements (80%) not met: 30.74%
-Jest: "global" coverage threshold for branches (80%) not met: 28.64%
-Jest: "global" coverage threshold for lines (80%) not met: 32.98%
-Jest: "global" coverage threshold for functions (80%) not met: 22.66%
-
-Summary of all failing tests
- FAIL  src/__tests__/TaskForm.test.js
-  ● TaskForm Component › Rendering › renders form elements correctly
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:27:13)
-
-  ● TaskForm Component › Rendering › renders in edit mode with task data
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:48:13)
-
-  ● TaskForm Component › Form Validation › validates required title field
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:77:13)
-
-  ● TaskForm Component › Form Validation › validates title length limit
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:94:13)
-
-  ● TaskForm Component › Form Validation › validates description length limit
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:115:13)
-
-  ● TaskForm Component › Form Validation › validates date format
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:138:13)
-
-  ● TaskForm Component › Form Submission › submits valid form data
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:168:13)
-
-  ● TaskForm Component › Form Submission › handles form cancellation
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:191:13)
-
-  ● TaskForm Component › Form Submission › clears form after successful submission
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:206:13)
-
-  ● TaskForm Component › Keyboard Navigation › supports tab navigation through form fields
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:229:13)
-
-  ● TaskForm Component › Keyboard Navigation › submits form on Enter key in title field
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:257:13)
-
-  ● TaskForm Component › Keyboard Navigation › cancels form on Escape key
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:277:13)
-
-  ● TaskForm Component › Accessibility › meets basic accessibility standards
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:290:35)
-
-  ● TaskForm Component › Accessibility › has proper ARIA labels and roles
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:305:13)
-
-  ● TaskForm Component › Accessibility › announces form errors to screen readers
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:320:13)
-
-  ● TaskForm Component › Material-UI Integration › renders Material-UI components correctly
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:338:13)
-
-  ● TaskForm Component › Material-UI Integration › applies theme correctly
-
-    TypeError: Cannot read properties of undefined (reading 'addEventListener')
-
-      112 |     };
-      113 |
-    > 114 |     darkModeQuery.addEventListener('change', handleThemeChange);
-          |                   ^
-      115 |     highContrastQuery.addEventListener('change', handleThemeChange);
-      116 |
-      117 |     return () => {
-
-      at src/theme/ThemeProvider.js:114:19
-      at commitHookEffectListMount (../../node_modules/react-dom/cjs/react-dom.development.js:23189:26)
-      at commitPassiveMountOnFiber (../../node_modules/react-dom/cjs/react-dom.development.js:24970:11)
-      at commitPassiveMountEffects_complete (../../node_modules/react-dom/cjs/react-dom.development.js:24930:9)
-      at commitPassiveMountEffects_begin (../../node_modules/react-dom/cjs/react-dom.development.js:24917:7)
-      at commitPassiveMountEffects (../../node_modules/react-dom/cjs/react-dom.development.js:24905:3)
-      at flushPassiveEffectsImpl (../../node_modules/react-dom/cjs/react-dom.development.js:27078:3)
-      at flushPassiveEffects (../../node_modules/react-dom/cjs/react-dom.development.js:27023:14)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:26808:9
-      at flushActQueue (../../node_modules/react/cjs/react.development.js:2667:24)
-      at act (../../node_modules/react/cjs/react.development.js:2582:11)
-      at ../../node_modules/@testing-library/react/dist/act-compat.js:47:25
-      at renderRoot (../../node_modules/@testing-library/react/dist/pure.js:180:26)
-      at render (../../node_modules/@testing-library/react/dist/pure.js:271:10)
-      at Object.<anonymous> (src/__tests__/TaskForm.test.js:350:13)
+  ● App Integration Tests › shows empty state when no tasks
+
+    Unable to find an element with the text: No tasks found. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, script, style
+    <body>
+      <div>
+        <div
+          class="App"
+        >
+          <header
+            class="App-header"
+          >
+            <div>
+              <h1>
+                Todo App
+              </h1>
+              <p>
+                Stay organized and get things done
+              </p>
+            </div>
+            <button
+              aria-expanded="false"
+              aria-label="Open settings menu"
+              class="settings-btn"
+            >
+              ⚙️ Settings
+            </button>
+          </header>
+          <main
+            class="main-content"
+          >
+            <div
+              class="task-list-container"
+            >
+              <div
+                class="task-list-header"
+              >
+                <h2>
+                  Your Tasks (
+                  0
+                  )
+                </h2>
+                <div
+                  class="task-filters"
+                >
+                  <button
+                    aria-pressed="true"
+                    class="filter-btn active"
+                  >
+                    All
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Active
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Completed
+                  </button>
+                </div>
+              </div>
+              <div
+                class="error-message"
+                role="alert"
+              >
+                Failed to fetch tasks: Cannot read properties of undefined (reading 'ok')
+              </div>
+            </div>
+          </main>
+          <button
+            aria-label="Add new task"
+            class="fab"
+            title="Add new task"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </body>
+
+      29 |     render(<App />);
+      30 |     
+    > 31 |     await waitFor(() => {
+         |                  ^
+      32 |       expect(screen.getByText('No tasks found')).toBeInTheDocument();
+      33 |     });
+      34 |   });
+
+      at waitForWrapper (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:163:27)
+      at Object.<anonymous> (src/__tests__/AppIntegration.test.js:31:18)
 
  FAIL  src/__tests__/SimpleApp.test.js
-  ● Test suite failed to run
+  ● Simple App Tests › shows empty state message
 
-    ReferenceError: App is not defined
+    TestingLibraryElementError: Unable to find an element with the text: No tasks found. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
 
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
+    Ignored nodes: comments, script, style
+    <body>
+      <div>
+        <div
+          class="App"
+        >
+          <header
+            class="App-header"
+          >
+            <div>
+              <h1>
+                Todo App
+              </h1>
+              <p>
+                Stay organized and get things done
+              </p>
+            </div>
+            <button
+              aria-expanded="false"
+              aria-label="Open settings menu"
+              class="settings-btn"
+            >
+              ⚙️ Settings
+            </button>
+          </header>
+          <main
+            class="main-content"
+          >
+            <div
+              class="task-list-container"
+            >
+              <div
+                class="task-list-header"
+              >
+                <h2>
+                  Your Tasks (
+                  0
+                  )
+                </h2>
+                <div
+                  class="task-filters"
+                >
+                  <button
+                    aria-pressed="true"
+                    class="filter-btn active"
+                  >
+                    All
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Active
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    class="filter-btn "
+                  >
+                    Completed
+                  </button>
+                </div>
+              </div>
+              <div
+                aria-label="Loading tasks"
+                class="loading"
+                role="status"
+              >
+                Loading tasks...
+              </div>
+            </div>
+          </main>
+          <button
+            aria-label="Add new task"
+            class="fab"
+            title="Add new task"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </body>
 
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/SimpleApp.test.js:4:1)
+      29 |   test('shows empty state message', () => {
+      30 |     render(<App />);
+    > 31 |     expect(screen.getByText('No tasks found')).toBeInTheDocument();
+         |                   ^
+      32 |     expect(screen.getByText(/click the \+ button to add your first task/i)).toBeInTheDocument();
+      33 |   });
+      34 |
 
- FAIL  src/__tests__/App.test.js
-  ● Test suite failed to run
-
-    ReferenceError: App is not defined
-
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
-
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/App.test.js:6:1)
-
- FAIL  src/__tests__/integration/ComponentIntegration.test.js
-  ● Test suite failed to run
-
-    ReferenceError: App is not defined
-
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
-
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:4:1)
-
- FAIL  src/__tests__/integration/Integration.test.js
-  ● Test suite failed to run
-
-    ReferenceError: App is not defined
-
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
-
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/integration/Integration.test.js:4:1)
-
- FAIL  src/__tests__/integration/ComponentIntegration.simple.fixed.test.js
-  ● Test suite failed to run
-
-    ReferenceError: App is not defined
-
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
-
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.simple.fixed.test.js:7:1)
-
- FAIL  src/__tests__/integration/ComponentIntegration.simple.test.js
-  ● Test suite failed to run
-
-    ReferenceError: App is not defined
-
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
-
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.simple.test.js:6:1)
-
- FAIL  src/__tests__/AppIntegration.test.js
-  ● Test suite failed to run
-
-    ReferenceError: App is not defined
-
-      381 | }
-      382 |
-    > 383 | export default App;
-          |                ^
-
-      at Object.<anonymous> (src/App.js:383:16)
-      at Object.<anonymous> (src/__tests__/AppIntegration.test.js:3:1)
+      at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
+      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByText (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at Object.<anonymous> (src/__tests__/SimpleApp.test.js:31:19)
 
 
-Test Suites: 8 failed, 22 skipped, 8 passed, 16 of 38 total
-Tests:       17 failed, 23 skipped, 51 passed, 91 total
+Test Suites: 6 failed, 22 skipped, 10 passed, 16 of 38 total
+Tests:       28 failed, 23 skipped, 81 passed, 132 total
 Snapshots:   0 total
-Time:        6.85 s
+Time:        36.884 s
 Ran all test suites.
 npm error Lifecycle script `test` failed with error:
 npm error code 1
@@ -1041,4 +1038,4 @@ npm error workspace frontend@0.1.0
 npm error location /workspaces/jg_aitraining2/packages/frontend
 npm error command failed
 npm error command sh -c react-scripts test --coverage --watchAll=false
-@jenny-ghaccount ➜ /workspaces/jg_aitraining2 (feature/context) $ 
+@jenny-ghaccount ➜ /workspaces/jg_aitraining2/packages/frontend (feature/context) $ 

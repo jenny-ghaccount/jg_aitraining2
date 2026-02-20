@@ -94,29 +94,62 @@ export const ThemeProvider = ({ children }) => {
 
   // Listen for system theme changes
   useEffect(() => {
-    if (!window.matchMedia) return;
+    // Ensure window.matchMedia exists and works properly
+    if (!window.matchMedia || typeof window.matchMedia !== 'function') {
+      return;
+    }
     
-    const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const highContrastQuery = window.matchMedia('(prefers-contrast: high)');
+    let darkModeQuery, highContrastQuery;
+    
+    try {
+      darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      highContrastQuery = window.matchMedia('(prefers-contrast: high)');
+    } catch (error) {
+      // matchMedia failed, skip theme change detection
+      return;
+    }
+    
+    // Ensure queries are valid MediaQueryList objects
+    if (!darkModeQuery || !highContrastQuery || 
+        typeof darkModeQuery.addEventListener !== 'function' ||
+        typeof highContrastQuery.addEventListener !== 'function') {
+      return;
+    }
     
     const handleThemeChange = () => {
       // Only auto-switch if user hasn't manually selected a theme
       const hasManualSelection = localStorage.getItem('manual-theme-selection');
       if (!hasManualSelection) {
-        if (highContrastQuery.matches) {
-          setCurrentTheme(darkModeQuery.matches ? 'high-contrast-dark' : 'high-contrast-light');
+        if (highContrastQuery && highContrastQuery.matches) {
+          setCurrentTheme(darkModeQuery && darkModeQuery.matches ? 'high-contrast-dark' : 'high-contrast-light');
         } else {
-          setCurrentTheme(darkModeQuery.matches ? 'high-contrast-dark' : 'standard');
+          setCurrentTheme(darkModeQuery && darkModeQuery.matches ? 'high-contrast-dark' : 'standard');
         }
       }
     };
 
-    darkModeQuery.addEventListener('change', handleThemeChange);
-    highContrastQuery.addEventListener('change', handleThemeChange);
+    // Add event listeners safely
+    try {
+      darkModeQuery.addEventListener('change', handleThemeChange);
+      highContrastQuery.addEventListener('change', handleThemeChange);
+    } catch (error) {
+      // Event listener setup failed, continue without theme change detection
+      console.warn('Theme change detection setup failed:', error);
+    }
 
     return () => {
-      darkModeQuery.removeEventListener('change', handleThemeChange);
-      highContrastQuery.removeEventListener('change', handleThemeChange);
+      // Remove event listeners safely
+      try {
+        if (darkModeQuery && typeof darkModeQuery.removeEventListener === 'function') {
+          darkModeQuery.removeEventListener('change', handleThemeChange);
+        }
+        if (highContrastQuery && typeof highContrastQuery.removeEventListener === 'function') {
+          highContrastQuery.removeEventListener('change', handleThemeChange);
+        }
+      } catch (error) {
+        // Cleanup failed, but that's okay
+        console.warn('Theme change cleanup failed:', error);
+      }
     };
   }, []);
 

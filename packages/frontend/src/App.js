@@ -380,4 +380,13 @@ function AppContent() {
   );
 }
 
+// Main App wrapper with theme provider
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
+}
+
 export default App;
