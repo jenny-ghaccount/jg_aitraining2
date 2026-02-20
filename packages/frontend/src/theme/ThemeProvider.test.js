@@ -70,9 +70,10 @@ describe('ThemeProvider', () => {
 
   test('throws error if useTheme used outside provider', () => {
     const BrokenConsumer = () => {
-      return useTheme();
+      useTheme();
+      return null;
     };
-    expect(() => render(<BrokenConsumer />)).toThrow(/useTheme must be used within a ThemeProvider/);
+    expect(() => render(<BrokenConsumer />)).toThrow('useTheme must be used within a ThemeProvider');
   });
 
   test('sets theme from localStorage', () => {
