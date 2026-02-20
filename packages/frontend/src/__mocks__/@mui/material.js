@@ -22,7 +22,8 @@ export const Alert = ({ children, ...props }) => <div {...props} role="alert">{c
 export const Button = ({ children, ...props }) => <button {...props}>{children}</button>;
 
 // Enhanced TextField mock with proper label handling and error display
-export const TextField = ({ label, id, name, error, helperText, inputProps, InputLabelProps, InputProps, ...props }) => (
+// Note: We intentionally don't spread inputProps to allow validation testing
+export const TextField = ({ label, id, name, error, helperText, inputProps, InputLabelProps, InputProps, margin, fullWidth, multiline, rows, ...props }) => (
   <div>
     {label && <label htmlFor={id || name}>{label}</label>}
     <input id={id || name} name={name} {...props} />
