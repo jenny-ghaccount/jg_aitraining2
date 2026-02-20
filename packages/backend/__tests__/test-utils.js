@@ -237,9 +237,43 @@ const performanceHelpers = {
   }
 };
 
+/**
+ * Database utilities for test cleanup (matches test expectations)
+ */
+const dbUtils = {
+  // Clean all tasks from database
+  cleanTasks(db) {
+    try {
+      db.prepare('DELETE FROM tasks').run();
+    } catch (error) {
+      // Table might not exist, ignore
+    }
+  },
+
+  // Insert multiple tasks
+  insertTasks(db, tasks) {
+    const stmt = db.prepare(`
+      INSERT INTO tasks (title, description, completed, due_date, sort_order)
+      VALUES (?, ?, ?, ?, ?)
+    `);
+    tasks.forEach(task => {
+      stmt.run(
+        task.title,
+        task.description || '',
+        task.completed ? 1 : 0,
+        task.dueDate || null,
+        task.sortOrder || 0
+      );
+    });
+  }
+};
+
 module.exports = {
+  createValidTask,
+  createMultipleTasks,
   apiTestHelpers,
   dbTestHelpers,
+  dbUtils,
   validationHelpers,
   performanceHelpers
 };
