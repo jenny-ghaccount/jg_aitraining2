@@ -22,13 +22,10 @@ export const Alert = ({ children, ...props }) => <div {...props} role="alert">{c
 export const Button = ({ children, ...props }) => <button {...props}>{children}</button>;
 
 // Enhanced TextField mock with proper label handling
-export const TextField = ({ label, id, name, error, helperText, multiline, rows, type = 'text', ...props }) => (
+export const TextField = ({ label, id, name, error, helperText, ...props }) => (
   <div>
     {label && <label htmlFor={id || name}>{label}</label>}
-    {multiline ? 
-      <textarea id={id || name} name={name} rows={rows} {...props} /> :
-      <input id={id || name} name={name} type={type} {...props} />
-    }
+    <input id={id || name} name={name} {...props} />
     {error && helperText && <div role="alert">{helperText}</div>}
   </div>
 );

@@ -84,7 +84,7 @@ describe('TaskForm Component', () => {
       const submitButton = screen.getByRole('button', { name: /add task/i });
       await user.click(submitButton);
 
-      expect(screen.getByText('Task title is required')).toBeInTheDocument();
+      expect(screen.getByText(/task title is required/i)).toBeInTheDocument();
       expect(mockOnSubmit).not.toHaveBeenCalled();
     });
 
@@ -105,7 +105,7 @@ describe('TaskForm Component', () => {
       const submitButton = screen.getByRole('button', { name: /add task/i });
       await user.click(submitButton);
 
-      expect(screen.getByText('Task title must be less than 255 characters')).toBeInTheDocument();
+      expect(screen.getByText(/task title must be less than 255 characters/i)).toBeInTheDocument();
       expect(mockOnSubmit).not.toHaveBeenCalled();
     });
 

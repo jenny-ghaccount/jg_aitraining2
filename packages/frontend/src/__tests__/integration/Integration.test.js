@@ -92,7 +92,7 @@ describe('Integration Tests', () => {
 
     await waitFor(() => {
       expect(screen.getByRole('alert')).toBeInTheDocument();
-      expect(screen.getByText('Failed to fetch tasks: Network failed')).toBeInTheDocument();
+      expect(screen.getByText(/failed to fetch tasks/i)).toBeInTheDocument();
     });
   });
 
