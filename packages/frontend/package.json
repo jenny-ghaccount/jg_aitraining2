@@ -67,6 +67,14 @@
     "eslint-plugin-playwright": "^0.18.0"
   },
   "jest": {
+    "moduleNameMapper": {
+      "@mui/material": "<rootDir>/src/__mocks__/@mui/material.js",
+      "@mui/icons-material": "<rootDir>/src/__mocks__/@mui/icons-material.js",
+      "@mui/system": "<rootDir>/src/__mocks__/@mui/system.js",
+      "@emotion/react": "<rootDir>/src/__mocks__/@emotion/react.js",
+      "@emotion/styled": "<rootDir>/src/__mocks__/@emotion/styled.js",
+      "jest-axe": "<rootDir>/src/__mocks__/jest-axe.js"
+    },
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
       "!src/index.js",

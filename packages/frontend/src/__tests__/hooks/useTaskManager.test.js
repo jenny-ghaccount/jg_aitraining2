@@ -16,7 +16,7 @@ describe('Task Manager Hook Tests', () => {
     
     expect(result.current.tasks).toEqual([]);
     expect(result.current.filter).toBe('all');
-    expect(result.current.isLoading).toBe(false);
+    expect(result.current.loading).toBe(false);
     expect(result.current.error).toBe(null);
   });
 
