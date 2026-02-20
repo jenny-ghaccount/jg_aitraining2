@@ -1,101 +1,117 @@
-      <h2
-        id="task-form-title"
-      />
+      432 |       
+      433 |       // Check for proper ARIA labels and roles
+    > 434 |       expect(screen.getByRole('main')).toBeInTheDocument();
+          |                     ^
+      435 |       expect(screen.getByRole('banner')).toBeInTheDocument();
+      436 |       expect(screen.getAllByRole('button')).toHaveLength.greaterThan(0);
+      437 |       
 
-      --------------------------------------------------
+      at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
+      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByRole (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at Object.<anonymous> (src/__tests__/App.test.js:434:21)
+
+ FAIL  src/__tests__/integration/Integration.test.js
+  ● Integration Tests › complete user workflow - add, edit, complete, delete tasks
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/create task|save/i`
+
+    Here are the accessible roles:
+
       button:
 
       Name "Open settings menu":
       <button
         aria-expanded="false"
         aria-label="Open settings menu"
-        class="settings-btn"
+        color="inherit"
+        edge="end"
       />
 
       Name "All":
       <button
         aria-pressed="true"
-        class="filter-btn active"
+        variant="contained"
       />
 
       Name "Active":
       <button
         aria-pressed="false"
-        class="filter-btn "
+        variant="outlined"
       />
 
       Name "Completed":
       <button
         aria-pressed="false"
-        class="filter-btn "
+        variant="outlined"
       />
 
       Name "Add new task":
       <button
         aria-label="Add new task"
-        class="fab"
-        title="Add new task"
+        color="primary"
+        sx="[object Object]"
       />
 
       Name "Close dialog":
       <button
         aria-label="Close dialog"
-        class="modal-close-btn"
-        type="button"
+        sx="[object Object]"
       />
 
       Name "Cancel":
       <button
-        class="btn-secondary"
-        type="button"
+        color="secondary"
       />
 
       Name "Add Task":
       <button
-        class="btn-primary"
-        type="submit"
-      />
-
-      --------------------------------------------------
-      main:
-
-      Name "":
-      <main
-        class="main-content"
+        color="primary"
+        variant="contained"
       />
 
       --------------------------------------------------
       dialog:
 
-      Name "Add New Task":
+      Name "Add New Task ✗":
       <div
         aria-labelledby="task-form-title"
-        aria-modal="true"
-        class="modal-content"
+        maxwidth="sm"
         role="dialog"
+      />
+
+      --------------------------------------------------
+      heading:
+
+      Name "Add New Task ✗":
+      <h2
+        id="task-form-title"
       />
 
       --------------------------------------------------
       textbox:
 
-      Name "Task Title *":
+      Name "Task Title":
       <input
-        class="form-input "
         id="task-title"
-        maxlength="255"
+        inputprops="[object Object]"
+        margin="normal"
+        name="title"
         placeholder="Enter task title"
         required=""
-        type="text"
         value="My First Task"
       />
 
       Name "Description":
-      <textarea
-        class="form-textarea "
+      <input
         id="task-description"
-        maxlength="1000"
+        inputprops="[object Object]"
+        margin="normal"
+        name="description"
         placeholder="Enter task description (optional)"
         rows="3"
+        value="This is a test task"
       />
 
       --------------------------------------------------
@@ -104,239 +120,203 @@
     <body>
       <div>
         <div
-          class="App"
+          maxwidth="lg"
         >
-          <header
-            class="App-header"
+          <div
+            position="static"
+            sx="[object Object]"
           >
             <div>
-              <h1>
-                Todo App
-              </h1>
-              <p>
-                Stay organized and get things done
-              </p>
-            </div>
-            <button
-              aria-expanded="false"
-              aria-label="Open settings menu"
-              class="settings-btn"
-            >
-              ⚙️ Settings
-            </button>
-          </header>
-          <main
-            class="main-content"
-          >
-            <div
-              class="task-list-container"
-            >
               <div
-                class="task-list-header"
+                component="h1"
+                sx="[object Object]"
+                variant="h6"
               >
-                <h2>
+                Todo App
+              </div>
+              <button
+                aria-expanded="false"
+                aria-label="Open settings menu"
+                color="inherit"
+                edge="end"
+              >
+                <span>
+                  ⚙
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            component="main"
+            maxwidth="md"
+            sx="[object Object]"
+          >
+            <div>
+              <div
+                sx="[object Object]"
+              >
+                <div
+                  sx="[object Object]"
+                  variant="h4"
+                >
                   Your Tasks (
                   0
                   )
-                </h2>
+                </div>
                 <div
-                  class="task-filters"
+                  sx="[object Object]"
                 >
                   <button
                     aria-pressed="true"
-                    class="filter-btn active"
+                    variant="contained"
                   >
                     All
                   </button>
                   <button
                     aria-pressed="false"
-                    class="filter-btn "
+                    variant="outlined"
                   >
                     Active
                   </button>
                   <button
                     aria-pressed="false"
-                    class="filter-btn "
+                    variant="outlined"
                   >
                     Completed
                   </button>
                 </div>
               </div>
               <div
-                class="empty-state"
-              >
-                <h3>
-                  No tasks found
-                </h3>
-                <p>
-                  Click the + button to add your first task!
-                </p>
-              </div>
-            </div>
-          </main>
-          <button
-            aria-label="Add new task"
-            class="fab"
-            title="Add new task"
-          >
-            +
-          </button>
-          <div
-            class="modal-overlay"
-          >
-            <div
-              aria-labelledby="task-form-title"
-              aria-modal="true"
-              class="modal-content"
-              role="dialog"
-            >
-              <div
-                class="modal-header"
-              >
-                <h2
-                  id="task-form-title"
-                >
-                  Add New Task
-                </h2>
-                <button
-                  aria-label="Close dialog"
-                  class="modal-close-btn"
-                  type="button"
-                >
-                  ×
-                </button>
-              </div>
-              <form
-                class="task-form"
+                sx="[object Object]"
               >
                 <div
-                  class="form-group"
+                  sx="[object Object]"
+                  variant="h5"
                 >
+                  No tasks found
+                </div>
+                <div
+                  color="text.secondary"
+                  variant="body1"
+                >
+                  Click the + button to add your first task!
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            aria-label="Add new task"
+            color="primary"
+            sx="[object Object]"
+          >
+            <span>
+              +
+            </span>
+          </button>
+          <div
+            aria-labelledby="task-form-title"
+            maxwidth="sm"
+            role="dialog"
+          >
+            <h2
+              id="task-form-title"
+            >
+              Add New Task
+              <button
+                aria-label="Close dialog"
+                sx="[object Object]"
+              >
+                <span>
+                  ✗
+                </span>
+              </button>
+            </h2>
+            <div>
+              <div
+                component="form"
+                sx="[object Object]"
+              >
+                <div>
                   <label
-                    class="form-label"
                     for="task-title"
                   >
-                    Task Title *
+                    Task Title
                   </label>
                   <input
-                    class="form-input "
                     id="task-title"
-                    maxlength="255"
+                    inputprops="[object Object]"
+                    margin="normal"
+                    name="title"
                     placeholder="Enter task title"
                     required=""
-                    type="text"
                     value="My First Task"
                   />
                 </div>
-                <div
-                  class="form-group"
-                >
+                <div>
                   <label
-                    class="form-label"
                     for="task-description"
                   >
                     Description
                   </label>
-                  <textarea
-                    class="form-textarea "
+                  <input
                     id="task-description"
-                    maxlength="1000"
+                    inputprops="[object Object]"
+                    margin="normal"
+                    name="description"
                     placeholder="Enter task description (optional)"
                     rows="3"
-                  >
-                    This is a test task
-                  </textarea>
-                  <small
-                    class="character-count"
-                  >
-                    19
-                    /1000 characters
-                  </small>
+                    value="This is a test task"
+                  />
                 </div>
-                <div
-                  class="form-group"
-                >
+                <div>
                   <label
-                    class="form-label"
                     for="task-due-date"
                   >
                     Due Date
                   </label>
                   <input
-                    class="form-input"
                     id="task-due-date"
-                    min="2026-02-20"
+                    inputlabelprops="[object Object]"
+                    inputprops="[object Object]"
+                    margin="normal"
+                    name="dueDate"
                     type="date"
                     value=""
                   />
-                  <small
-                    class="form-help"
-                  >
-                    Leave empty if no specific due date is needed
-                  </small>
                 </div>
-                <div
-                  class="form-actions"
-                >
-                  <button
-                    class="btn-secondary"
-                    type="button"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    class="btn-primary"
-                    type="submit"
-                  >
-                    Add Task
-                  </button>
-                </div>
-              </form>
+              </div>
+            </div>
+            <div>
+              <button
+                color="secondary"
+              >
+                Cancel
+              </button>
+              <button
+                color="primary"
+                variant="contained"
+              >
+                Add Task
+              </button>
             </div>
           </div>
         </div>
       </div>
     </body>
 
-      72 |     }
-      73 |
-    > 74 |     const submitButton = screen.getByRole('button', { name: /create task|save/i });
+      77 |     }
+      78 |
+    > 79 |     const submitButton = screen.getByRole('button', { name: /create task|save/i });
          |                                 ^
-      75 |     await user.click(submitButton);
-      76 |
-      77 |     // Verify task was added (this would require the actual task to render)
+      80 |     await user.click(submitButton);
+      81 |
+      82 |     // Verify task was added (this would require the actual task to render)
 
       at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
       at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
       at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
       at getByRole (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
-      at Object.<anonymous> (src/__tests__/integration/Integration.test.js:74:33)
-
-  ● Integration Tests › theme integration
-
-    ReferenceError: THEMES is not defined
-
-      239 |           <h3>Accessibility Themes</h3>
-      240 |           <div className="theme-options">
-    > 241 |             {Object.entries(THEMES).map(([key, value]) => (
-          |                             ^
-      242 |               <label key={value} className="theme-option">
-      243 |                 <input
-      244 |                   type="radio"
-
-      at AppContent (src/App.js:241:29)
-      at renderWithHooks (../../node_modules/react-dom/cjs/react-dom.development.js:15486:18)
-      at updateFunctionComponent (../../node_modules/react-dom/cjs/react-dom.development.js:19617:20)
-      at beginWork (../../node_modules/react-dom/cjs/react-dom.development.js:21640:16)
-      at beginWork$1 (../../node_modules/react-dom/cjs/react-dom.development.js:27465:14)
-      at performUnitOfWork (../../node_modules/react-dom/cjs/react-dom.development.js:26599:12)
-      at workLoopSync (../../node_modules/react-dom/cjs/react-dom.development.js:26505:5)
-      at renderRootSync (../../node_modules/react-dom/cjs/react-dom.development.js:26473:7)
-      at recoverFromConcurrentError (../../node_modules/react-dom/cjs/react-dom.development.js:25889:20)
-      at performSyncWorkOnRoot (../../node_modules/react-dom/cjs/react-dom.development.js:26135:20)
-      at flushSyncCallbacks (../../node_modules/react-dom/cjs/react-dom.development.js:12042:22)
-      at ../../node_modules/react-dom/cjs/react-dom.development.js:25690:13
-      at ../../node_modules/jsdom/lib/jsdom/browser/Window.js:550:9
+      at Object.<anonymous> (src/__tests__/integration/Integration.test.js:79:33)
 
   ● Integration Tests › theme integration
 
@@ -344,19 +324,138 @@
 
     Ignored nodes: comments, script, style
     <body>
-      <div />
+      <div>
+        <div
+          maxwidth="lg"
+        >
+          <div
+            position="static"
+            sx="[object Object]"
+          >
+            <div>
+              <div
+                component="h1"
+                sx="[object Object]"
+                variant="h6"
+              >
+                Todo App
+              </div>
+              <button
+                aria-expanded="true"
+                aria-label="Open settings menu"
+                color="inherit"
+                edge="end"
+              >
+                <span>
+                  ⚙
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            sx="[object Object]"
+          >
+            <div
+              variant="h6"
+            >
+              Accessibility Themes
+            </div>
+            <button
+              sx="[object Object]"
+              variant="outlined"
+            >
+              Switch to 
+              high contrast
+               theme
+            </button>
+            <div
+              variant="body2"
+            >
+              Current theme: 
+              standard
+            </div>
+          </div>
+          <div
+            component="main"
+            maxwidth="md"
+            sx="[object Object]"
+          >
+            <div>
+              <div
+                sx="[object Object]"
+              >
+                <div
+                  sx="[object Object]"
+                  variant="h4"
+                >
+                  Your Tasks (
+                  0
+                  )
+                </div>
+                <div
+                  sx="[object Object]"
+                >
+                  <button
+                    aria-pressed="true"
+                    variant="contained"
+                  >
+                    All
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    variant="outlined"
+                  >
+                    Active
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    variant="outlined"
+                  >
+                    Completed
+                  </button>
+                </div>
+              </div>
+              <div
+                sx="[object Object]"
+              >
+                <div
+                  sx="[object Object]"
+                  variant="h5"
+                >
+                  No tasks found
+                </div>
+                <div
+                  color="text.secondary"
+                  variant="body1"
+                >
+                  Click the + button to add your first task!
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            aria-label="Add new task"
+            color="primary"
+            sx="[object Object]"
+          >
+            <span>
+              +
+            </span>
+          </button>
+        </div>
+      </div>
     </body>
 
-      135 |     await user.click(settingsButton);
-      136 |
-    > 137 |     await waitFor(() => {
+      140 |     await user.click(settingsButton);
+      141 |
+    > 142 |     await waitFor(() => {
           |                  ^
-      138 |       expect(screen.getByRole('dialog', { name: /settings/i })).toBeInTheDocument();
-      139 |       expect(screen.getByText('Accessibility Themes')).toBeInTheDocument();
-      140 |     });
+      143 |       expect(screen.getByRole('dialog', { name: /settings/i })).toBeInTheDocument();
+      144 |       expect(screen.getByText('Accessibility Themes')).toBeInTheDocument();
+      145 |     });
 
       at waitForWrapper (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:163:27)
-      at Object.<anonymous> (src/__tests__/integration/Integration.test.js:137:18)
+      at Object.<anonymous> (src/__tests__/integration/Integration.test.js:142:18)
 
   ● Integration Tests › filter and display integration
 
@@ -367,7 +466,7 @@
     Ignored nodes: comments, script, style
     <button
       aria-pressed="false"
-      class="filter-btn "
+      variant="outlined"
     >
       Active
     </button>
@@ -375,17 +474,18 @@
     Ignored nodes: comments, script, style
     <button
       aria-label="Edit task: Active Task"
-      class="task-btn edit"
+      variant="outlined"
     >
-      ✏️ Edit
+      Edit
     </button>
 
     Ignored nodes: comments, script, style
     <button
       aria-label="Delete task: Active Task"
-      class="task-btn delete"
+      color="error"
+      variant="outlined"
     >
-      �� Delete
+      Delete
     </button>
 
     (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
@@ -394,537 +494,422 @@
     <body>
       <div>
         <div
-          class="App"
+          maxwidth="lg"
         >
-          <header
-            class="App-header"
+          <div
+            position="static"
+            sx="[object Object]"
           >
             <div>
-              <h1>
-                Todo App
-              </h1>
-              <p>
-                Stay organized and get things done
-              </p>
-            </div>
-            <button
-              aria-expanded="false"
-              aria-label="Open settings menu"
-              class="settings-btn"
-            >
-              ⚙️ Settings
-            </button>
-          </header>
-          <main
-            class="main-content"
-          >
-            <div
-              class="task-list-container"
-            >
               <div
-                class="task-list-header"
+                component="h1"
+                sx="[object Object]"
+                variant="h6"
               >
-                <h2>
+                Todo App
+              </div>
+              <button
+                aria-expanded="false"
+                aria-label="Open settings menu"
+                color="inherit"
+                edge="end"
+              >
+                <span>
+                  ⚙
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            component="main"
+            maxwidth="md"
+            sx="[object Object]"
+          >
+            <div>
+              <div
+                sx="[object Object]"
+              >
+                <div
+                  sx="[object Object]"
+                  variant="h4"
+                >
                   Your Tasks (
                   2
                   )
-                </h2>
+                </div>
                 <div
-                  class="task-filters"
+                  sx="[object Object]"
                 >
                   <button
                     aria-pressed="true"
-                    class="filter-btn active"
+                    variant="contained"
                   >
                     All
                   </button>
                   <button
                     aria-pressed="false"
-                    class="filter-btn "
+                    variant="outlined"
                   >
                     Active
                   </button>
                   <button
                     aria-pressed="false"
-                    class="filter-btn "
+                    variant="outlined"
                   >
                     Completed
                   </button>
                 </div>
               </div>
               <ul
-                class="task-list"
                 role="list"
               >
                 <li
-                  class="task-card completed"
+                  elevation="1"
                   role="listitem"
+                  sx="[object Object]"
                 >
                   <div
-                    class="task-content"
+                    sx="[object Object]"
                   >
-                    <div
-                      class="task-header"
-                    >
-                      <h3
-                        class="task-title completed"
+                    <input
+                      aria-label="Mark as incomplete"
+                      checked=""
+                      type="checkbox"
+                    />
+                  </div>
+                  <div>
+                    <div>
+                      <div
+                        sx="[object Object]"
+                        variant="h6"
                       >
                         Completed Task
-                      </h3>
-                    </div>
-                    <div
-                      class="task-meta"
-                    >
-                      <div
-                        class="task-due-date"
-                      />
-                      <div
-                        class="task-actions"
-                      >
-                        <button
-                          aria-label="Mark as incomplete"
-                          class="task-btn complete completed"
-                        >
-                          ↶ Undo
-                        </button>
-                        <button
-                          aria-label="Edit task: Completed Task"
-                          class="task-btn edit"
-                        >
-                          ✏️ Edit
-                        </button>
-                        <button
-                          aria-label="Delete task: Completed Task"
-                          class="task-btn delete"
-                        >
-                          �� Delete
-                        </button>
                       </div>
+                    </div>
+                    <div>
+                      <div>
+                        <div
+                          color="text.secondary"
+                          variant="caption"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      sx="[object Object]"
+                    >
+                      <button
+                        aria-label="Edit task: Completed Task"
+                        variant="outlined"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        aria-label="Delete task: Completed Task"
+                        color="error"
+                        variant="outlined"
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
                 </li>
                 <li
-                  class="task-card normal"
+                  elevation="1"
                   role="listitem"
+                  sx="[object Object]"
                 >
                   <div
-                    class="task-content"
+                    sx="[object Object]"
                   >
-                    <div
-                      class="task-header"
-                    >
-                      <h3
-                        class="task-title "
+                    <input
+                      aria-label="Mark as complete"
+                      type="checkbox"
+                    />
+                  </div>
+                  <div>
+                    <div>
+                      <div
+                        sx="[object Object]"
+                        variant="h6"
                       >
                         Active Task
-                      </h3>
-                    </div>
-                    <div
-                      class="task-meta"
-                    >
-                      <div
-                        class="task-due-date"
-                      />
-                      <div
-                        class="task-actions"
-                      >
-                        <button
-                          aria-label="Mark as complete"
-                          class="task-btn complete "
-                        >
-                          ✓ Complete
-                        </button>
-                        <button
-                          aria-label="Edit task: Active Task"
-                          class="task-btn edit"
-                        >
-                          ✏️ Edit
-                        </button>
-                        <button
-                          aria-label="Delete task: Active Task"
-                          class="task-btn delete"
-                        >
-                          �� Delete
-                        </button>
                       </div>
+                    </div>
+                    <div>
+                      <div>
+                        <div
+                          color="text.secondary"
+                          variant="caption"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      sx="[object Object]"
+                    >
+                      <button
+                        aria-label="Edit task: Active Task"
+                        variant="outlined"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        aria-label="Delete task: Active Task"
+                        color="error"
+                        variant="outlined"
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
                 </li>
               </ul>
             </div>
-          </main>
+          </div>
           <button
             aria-label="Add new task"
-            class="fab"
-            title="Add new task"
+            color="primary"
+            sx="[object Object]"
           >
-            +
+            <span>
+              +
+            </span>
           </button>
         </div>
       </div>
     </body>
 
-      164 |
-      165 |     // Test filtering to active only
-    > 166 |     const activeButton = screen.getByRole('button', { name: /active/i });
+      169 |
+      170 |     // Test filtering to active only
+    > 171 |     const activeButton = screen.getByRole('button', { name: /active/i });
           |                                 ^
-      167 |     await user.click(activeButton);
-      168 |
-      169 |     await waitFor(() => {
+      172 |     await user.click(activeButton);
+      173 |
+      174 |     await waitFor(() => {
 
       at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
       at getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:20:35)
       at getMultipleElementsFoundError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:23:10)
       at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:55:13
       at getByRole (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
-      at Object.<anonymous> (src/__tests__/integration/Integration.test.js:166:33)
+      at Object.<anonymous> (src/__tests__/integration/Integration.test.js:171:33)
 
  FAIL  src/__tests__/integration/ComponentIntegration.test.js
-  ● Component Integration Tests › should handle form interactions
-
-    TestingLibraryElementError: Unable to find an accessible element with the role "textbox"
-
-    Here are the accessible roles:
-
-      banner:
-
-      Name "":
-      <header
-        class="App-header"
-      />
-
-      --------------------------------------------------
-      heading:
-
-      Name "Todo App":
-      <h1 />
-
-      Name "Your Tasks (0)":
-      <h2 />
-
-      --------------------------------------------------
-      button:
-
-      Name "Open settings menu":
-      <button
-        aria-expanded="false"
-        aria-label="Open settings menu"
-        class="settings-btn"
-      />
-
-      Name "All":
-      <button
-        aria-pressed="true"
-        class="filter-btn active"
-      />
-
-      Name "Active":
-      <button
-        aria-pressed="false"
-        class="filter-btn "
-      />
-
-      Name "Completed":
-      <button
-        aria-pressed="false"
-        class="filter-btn "
-      />
-
-      Name "Add new task":
-      <button
-        aria-label="Add new task"
-        class="fab"
-        title="Add new task"
-      />
-
-      --------------------------------------------------
-      main:
-
-      Name "":
-      <main
-        class="main-content"
-      />
-
-      --------------------------------------------------
-      status:
-
-      Name "Loading tasks":
-      <div
-        aria-label="Loading tasks"
-        class="loading"
-        role="status"
-      />
-
-      --------------------------------------------------
-
-    Ignored nodes: comments, script, style
-    <body>
-      <div>
-        <div
-          class="App"
-        >
-          <header
-            class="App-header"
-          >
-            <div>
-              <h1>
-                Todo App
-              </h1>
-              <p>
-                Stay organized and get things done
-              </p>
-            </div>
-            <button
-              aria-expanded="false"
-              aria-label="Open settings menu"
-              class="settings-btn"
-            >
-              ⚙️ Settings
-            </button>
-          </header>
-          <main
-            class="main-content"
-          >
-            <div
-              class="task-list-container"
-            >
-              <div
-                class="task-list-header"
-              >
-                <h2>
-                  Your Tasks (
-                  0
-                  )
-                </h2>
-                <div
-                  class="task-filters"
-                >
-                  <button
-                    aria-pressed="true"
-                    class="filter-btn active"
-                  >
-                    All
-                  </button>
-                  <button
-                    aria-pressed="false"
-                    class="filter-btn "
-                  >
-                    Active
-                  </button>
-                  <button
-                    aria-pressed="false"
-                    class="filter-btn "
-                  >
-                    Completed
-                  </button>
-                </div>
-              </div>
-              <div
-                aria-label="Loading tasks"
-                class="loading"
-                role="status"
-              >
-                Loading tasks...
-              </div>
-            </div>
-          </main>
-          <button
-            aria-label="Add new task"
-            class="fab"
-            title="Add new task"
-          >
-            +
-          </button>
-        </div>
-      </div>
-    </body>
-
-      66 |     
-      67 |     // Find the task input and button
-    > 68 |     const taskInput = screen.getByRole('textbox');
-         |                              ^
-      69 |     const addButton = screen.getByRole('button', { name: /add task/i });
-      70 |     
-      71 |     // Type a task and submit
-
-      at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
-      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
-      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
-      at getByRole (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
-      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:68:30)
-
   ● Component Integration Tests › should handle Enter key form submission
 
-    TestingLibraryElementError: Unable to find an accessible element with the role "textbox"
+    expect(element).not.toBeInTheDocument()
 
-    Here are the accessible roles:
-
-      banner:
-
-      Name "":
-      <header
-        class="App-header"
-      />
-
-      --------------------------------------------------
-      heading:
-
-      Name "Todo App":
-      <h1 />
-
-      Name "Your Tasks (0)":
-      <h2 />
-
-      --------------------------------------------------
-      button:
-
-      Name "Open settings menu":
-      <button
-        aria-expanded="false"
-        aria-label="Open settings menu"
-        class="settings-btn"
-      />
-
-      Name "All":
-      <button
-        aria-pressed="true"
-        class="filter-btn active"
-      />
-
-      Name "Active":
-      <button
-        aria-pressed="false"
-        class="filter-btn "
-      />
-
-      Name "Completed":
-      <button
-        aria-pressed="false"
-        class="filter-btn "
-      />
-
-      Name "Add new task":
-      <button
-        aria-label="Add new task"
-        class="fab"
-        title="Add new task"
-      />
-
-      --------------------------------------------------
-      main:
-
-      Name "":
-      <main
-        class="main-content"
-      />
-
-      --------------------------------------------------
-      status:
-
-      Name "Loading tasks":
-      <div
-        aria-label="Loading tasks"
-        class="loading"
-        role="status"
-      />
-
-      --------------------------------------------------
+    expected document not to contain element, found <div aria-labelledby="task-form-title" maxwidth="sm" role="dialog"><h2 id="task-form-title">Add New Task<button aria-label="Close dialog" sx="[object Object]"><span>✗</span></button></h2><div><div component="form" sx="[object Object]"><div><label for="task-title">Task Title</label><input id="task-title" inputprops="[object Object]" margin="normal" name="title" placeholder="Enter task title" required="" value="Task via Enter" /></div><div><label for="task-description">Description</label><input id="task-description" inputprops="[object Object]" margin="normal" name="description" placeholder="Enter task description (optional)" rows="3" value="" /></div><div><label for="task-due-date">Due Date</label><input id="task-due-date" inputlabelprops="[object Object]" inputprops="[object Object]" margin="normal" name="dueDate" type="date" value="" /></div></div></div><div><button color="secondary">Cancel</button><button color="primary" variant="contained">Add Task</button></div></div> instead
 
     Ignored nodes: comments, script, style
-    <body>
-      <div>
-        <div
-          class="App"
-        >
-          <header
-            class="App-header"
-          >
-            <div>
-              <h1>
-                Todo App
-              </h1>
-              <p>
-                Stay organized and get things done
-              </p>
-            </div>
-            <button
-              aria-expanded="false"
-              aria-label="Open settings menu"
-              class="settings-btn"
-            >
-              ⚙️ Settings
-            </button>
-          </header>
-          <main
-            class="main-content"
+    <html
+      data-theme="standard"
+    >
+      <head />
+      <body>
+        <div>
+          <div
+            maxwidth="lg"
           >
             <div
-              class="task-list-container"
+              position="static"
+              sx="[object Object]"
             >
-              <div
-                class="task-list-header"
-              >
-                <h2>
-                  Your Tasks (
-                  0
-                  )
-                </h2>
+              <div>
                 <div
-                  class="task-filters"
+                  component="h1"
+                  sx="[object Object]"
+                  variant="h6"
                 >
-                  <button
-                    aria-pressed="true"
-                    class="filter-btn active"
-                  >
-                    All
-                  </button>
-                  <button
-                    aria-pressed="false"
-                    class="filter-btn "
-                  >
-                    Active
-                  </button>
-                  <button
-                    aria-pressed="false"
-                    class="filter-btn "
-                  >
-                    Completed
-                  </button>
+                  Todo App
                 </div>
-              </div>
-              <div
-                aria-label="Loading tasks"
-                class="loading"
-                role="status"
-              >
-                Loading tasks...
+                <button
+                  aria-expanded="false"
+                  aria-label="Open settings menu"
+                  color="inherit"
+                  edge="end"
+                >
+                  <span>
+                    ⚙
+                  </span>
+                </button>
               </div>
             </div>
-          </main>
-          <button
-            aria-label="Add new task"
-            class="fab"
-            title="Add new task"
-          >
-            +
-          </button>
+            <div
+              component="main"
+              maxwidth="md"
+              sx="[object Object]"
+            >
+              <div>
+                <div
+                  sx="[object Object]"
+                >
+                  <div
+                    sx="[object Object]"
+                    variant="h4"
+                  >
+                    Your Tasks (
+                    0
+                    )
+                  </div>
+                  <div
+                    sx="[object Object]"
+                  >
+                    <button
+                      aria-pressed="true"
+                      variant="contained"
+                    >
+                      All
+                    </button>
+                    <button
+                      aria-pressed="false"
+                      variant="outlined"
+                    >
+                      Active
+                    </button>
+                    <button
+                      aria-pressed="false"
+                      variant="outlined"
+                    >
+                      Completed
+                    </button>
+                  </div>
+                </div>
+                <div
+                  sx="[object Object]"
+                >
+                  <div
+                    sx="[object Object]"
+                    variant="h5"
+                  >
+                    No tasks found
+                  </div>
+                  <div
+                    color="text.secondary"
+                    variant="body1"
+                  >
+                    Click the + button to add your first task!
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              aria-label="Add new task"
+              color="primary"
+              sx="[object Object]"
+            >
+              <span>
+                +
+              </span>
+            </button>
+            <div
+              aria-labelledby="task-form-title"
+              maxwidth="sm"
+              role="dialog"
+            >
+              <h2
+                id="task-form-title"
+              >
+                Add New Task
+                <button
+                  aria-label="Close dialog"
+                  sx="[object Object]"
+                >
+                  <span>
+                    ✗
+                  </span>
+                </button>
+              </h2>
+              <div>
+                <div
+                  component="form"
+                  sx="[object Object]"
+                >
+                  <div>
+                    <label
+                      for="task-title"
+                    >
+                      Task Title
+                    </label>
+                    <input
+                      id="task-title"
+                      inputprops="[object Object]"
+                      margin="normal"
+                      name="title"
+                      placeholder="Enter task title"
+                      required=""
+                      value="Task via Enter"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="task-description"
+                    >
+                      Description
+                    </label>
+                    <input
+                      id="task-description"
+                      inputprops="[object Object]"
+                      margin="normal"
+                      name="description"
+                      placeholder="Enter task description (optional)"
+                      rows="3"
+                      value=""
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="task-due-date"
+                    >
+                      Due Date
+                    </label>
+                    <input
+                      id="task-due-date"
+                      inputlabelprops="[object Object]"
+                      inputprops="[object Object]"
+                      margin="normal"
+                      name="dueDate"
+                      type="date"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <button
+                  color="secondary"
+                >
+                  Cancel
+                </button>
+                <button
+                  color="primary"
+                  variant="contained"
+                >
+                  Add Task
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </body>
+      </body>
+    </html>
 
-       98 |     render(<App />);
-       99 |     
-    > 100 |     const taskInput = screen.getByRole('textbox');
-          |                              ^
-      101 |     
-      102 |     // Type task and press Enter
-      103 |     await user.type(taskInput, 'Task via Enter{enter}');
+      146 |     // Modal should close
+      147 |     await waitFor(() => {
+    > 148 |       expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+          |                                                ^
+      149 |     });
+      150 |   });
+      151 | });
 
-      at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
-      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
-      at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
-      at getByRole (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
-      at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:100:30)
+      at src/__tests__/integration/ComponentIntegration.test.js:148:48
+      at runWithExpensiveErrorDiagnosticsDisabled (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:47:12)
+      at checkCallback (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:124:77)
+      at checkRealTimersCallback (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:118:16)
+      at Timeout.task [as _onTimeout] (../../node_modules/jsdom/lib/jsdom/browser/Window.js:516:19)
 
  FAIL  src/__tests__/SimpleApp.test.js
   ● Simple App Tests › shows empty state message
@@ -935,103 +920,113 @@
     <body>
       <div>
         <div
-          class="App"
+          maxwidth="lg"
         >
-          <header
-            class="App-header"
+          <div
+            position="static"
+            sx="[object Object]"
           >
             <div>
-              <h1>
-                Todo App
-              </h1>
-              <p>
-                Stay organized and get things done
-              </p>
-            </div>
-            <button
-              aria-expanded="false"
-              aria-label="Open settings menu"
-              class="settings-btn"
-            >
-              ⚙️ Settings
-            </button>
-          </header>
-          <main
-            class="main-content"
-          >
-            <div
-              class="task-list-container"
-            >
               <div
-                class="task-list-header"
+                component="h1"
+                sx="[object Object]"
+                variant="h6"
               >
-                <h2>
+                Todo App
+              </div>
+              <button
+                aria-expanded="false"
+                aria-label="Open settings menu"
+                color="inherit"
+                edge="end"
+              >
+                <span>
+                  ⚙
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            component="main"
+            maxwidth="md"
+            sx="[object Object]"
+          >
+            <div>
+              <div
+                sx="[object Object]"
+              >
+                <div
+                  sx="[object Object]"
+                  variant="h4"
+                >
                   Your Tasks (
                   0
                   )
-                </h2>
+                </div>
                 <div
-                  class="task-filters"
+                  sx="[object Object]"
                 >
                   <button
                     aria-pressed="true"
-                    class="filter-btn active"
+                    variant="contained"
                   >
                     All
                   </button>
                   <button
                     aria-pressed="false"
-                    class="filter-btn "
+                    variant="outlined"
                   >
                     Active
                   </button>
                   <button
                     aria-pressed="false"
-                    class="filter-btn "
+                    variant="outlined"
                   >
                     Completed
                   </button>
                 </div>
               </div>
               <div
-                aria-label="Loading tasks"
-                class="loading"
-                role="status"
+                role="alert"
+                severity="error"
+                sx="[object Object]"
               >
-                Loading tasks...
+                Failed to fetch tasks: No response received from server
               </div>
             </div>
-          </main>
+          </div>
           <button
             aria-label="Add new task"
-            class="fab"
-            title="Add new task"
+            color="primary"
+            sx="[object Object]"
           >
-            +
+            <span>
+              +
+            </span>
           </button>
         </div>
       </div>
     </body>
 
-      45 |   test('shows empty state message', () => {
-      46 |     render(<App />);
-    > 47 |     expect(screen.getByText('No tasks found')).toBeInTheDocument();
+      56 |     });
+      57 |     
+    > 58 |     expect(screen.getByText('No tasks found')).toBeInTheDocument();
          |                   ^
-      48 |     expect(screen.getByText(/click the \+ button to add your first task/i)).toBeInTheDocument();
-      49 |   });
-      50 |
+      59 |     expect(screen.getByText(/click the \+ button to add your first task/i)).toBeInTheDocument();
+      60 |   });
+      61 |
 
       at Object.getElementError (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
       at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
       at ../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
       at getByText (../../node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
-      at Object.<anonymous> (src/__tests__/SimpleApp.test.js:47:19)
+      at Object.<anonymous> (src/__tests__/SimpleApp.test.js:58:19)
 
 
 Test Suites: 5 failed, 22 skipped, 11 passed, 16 of 38 total
-Tests:       26 failed, 23 skipped, 83 passed, 132 total
+Tests:       24 failed, 23 skipped, 85 passed, 132 total
 Snapshots:   0 total
-Time:        34.6 s
+Time:        35.111 s
 Ran all test suites.
 npm error Lifecycle script `test` failed with error:
 npm error code 1

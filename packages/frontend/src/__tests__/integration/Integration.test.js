@@ -76,7 +76,7 @@ describe('Integration Tests', () => {
       await user.type(descInput, 'This is a test task');
     }
 
-    const submitButton = screen.getByRole('button', { name: /create task|save/i });
+    const submitButton = screen.getByRole('button', { name: /add task|create task|save/i });
     await user.click(submitButton);
 
     // Verify task was added (this would require the actual task to render)

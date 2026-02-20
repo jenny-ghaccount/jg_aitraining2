@@ -8,7 +8,14 @@ import {
   IconButton,
   Fab,
   CircularProgress,
-  Alert
+  Alert,
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+  Paper,
+  Checkbox
 } from '@mui/material';
 import { 
   Add as AddIcon,
@@ -231,23 +238,23 @@ function AppContent() {
         </Box>
       )}
 
-      <main className="main-content">
-        <div className="task-list-container">
-          <div className="task-list-header">
-            <h2>Your Tasks ({filteredTasks.length})</h2>
-            <div className="task-filters">
+      <Container component="main" maxWidth="md" sx={{ mt: 3, mb: 10 }}>
+        <Box>
+          <Box sx={{ mb: 3 }}>
+            <Typography variant="h4" sx={{ mb: 2 }}>Your Tasks ({filteredTasks.length})</Typography>
+            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
               {['all', 'active', 'completed'].map(filterType => (
-                <button
+                <Button
                   key={filterType}
-                  className={`filter-btn ${filter === filterType ? 'active' : ''}`}
+                  variant={filter === filterType ? 'contained' : 'outlined'}
                   onClick={() => setFilter(filterType)}
                   aria-pressed={filter === filterType}
                 >
                   {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
-                </button>
+                </Button>
               ))}
-            </div>
-          </div>
+            </Box>
+          </Box>
 
           {loading && (
             <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }} role="status" aria-label="Loading tasks">
@@ -265,78 +272,96 @@ function AppContent() {
           {!loading && !error && (
             <>
               {filteredTasks.length > 0 ? (
-                <ul className="task-list" role="list">
+                <List role="list">
                   {filteredTasks.map((task) => {
                     const status = getTaskStatus(task);
                     return (
-                      <li 
+                      <ListItem 
                         key={task.id} 
-                        className={`task-card ${status}`}
+                        component={Paper}
+                        elevation={1}
+                        sx={{ 
+                          mb: 2, 
+                          p: 2,
+                          bgcolor: task.completed ? 'action.selected' : 'background.paper'
+                        }}
                         role="listitem"
                       >
-                        <div className="task-content">
-                          <div className="task-header">
-                            <h3 className={`task-title ${task.completed ? 'completed' : ''}`}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
+                          <Checkbox
+                            checked={task.completed}
+                            onChange={() => toggleTaskComplete(task.id)}
+                            aria-label={task.completed ? 'Mark as incomplete' : 'Mark as complete'}
+                          />
+                        </Box>
+                        <ListItemText
+                          primary={
+                            <Typography 
+                              variant="h6" 
+                              sx={{ 
+                                textDecoration: task.completed ? 'line-through' : 'none',
+                                color: task.completed ? 'text.secondary' : 'text.primary'
+                              }}
+                            >
                               {task.title}
-                            </h3>
-                          </div>
-                          
-                          {task.description && (
-                            <p className="task-description">{task.description}</p>
-                          )}
-                          
-                          <div className="task-meta">
-                            <div className="task-due-date">
-                              {formatDueDate(task.dueDate)}
-                            </div>
-                            
-                            <div className="task-actions">
-                              <button
-                                className={`task-btn complete ${task.completed ? 'completed' : ''}`}
-                                onClick={() => toggleTaskComplete(task.id)}
-                                aria-label={task.completed ? 'Mark as incomplete' : 'Mark as complete'}
-                              >
-                                {task.completed ? '↶ Undo' : '✓ Complete'}
-                              </button>
-                              <button
-                                className="task-btn edit"
-                                onClick={() => {
-                                  setEditingTask(task);
-                                  setShowTaskForm(true);
-                                }}
-                                aria-label={`Edit task: ${task.title}`}
-                              >
-                                ✏️ Edit
-                              </button>
-                              <button
-                                className="task-btn delete"
-                                onClick={() => deleteTask(task.id)}
-                                aria-label={`Delete task: ${task.title}`}
-                              >
-                                🗑 Delete
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
+                            </Typography>
+                          }
+                          secondary={
+                            <Box>
+                              {task.description && (
+                                <Typography variant="body2" sx={{ mb: 1 }}>
+                                  {task.description}
+                                </Typography>
+                              )}
+                              <Typography variant="caption" color="text.secondary">
+                                {formatDueDate(task.dueDate)}
+                              </Typography>
+                            </Box>
+                          }
+                        />
+                        <ListItemSecondaryAction>
+                          <Box sx={{ display: 'flex', gap: 1 }}>
+                            <Button
+                              variant="outlined"
+                              size="small"
+                              onClick={() => {
+                                setEditingTask(task);
+                                setShowTaskForm(true);
+                              }}
+                              aria-label={`Edit task: ${task.title}`}
+                            >
+                              Edit
+                            </Button>
+                            <Button
+                              variant="outlined"
+                              color="error"
+                              size="small"
+                              onClick={() => deleteTask(task.id)}
+                              aria-label={`Delete task: ${task.title}`}
+                            >
+                              Delete
+                            </Button>
+                          </Box>
+                        </ListItemSecondaryAction>
+                      </ListItem>
                     );
                   })}
-                </ul>
+                </List>
               ) : (
-                <div className="empty-state">
-                  <h3>No tasks found</h3>
-                  <p>
+                <Paper sx={{ p: 4, textAlign: 'center' }}>
+                  <Typography variant="h5" sx={{ mb: 2 }}>No tasks found</Typography>
+                  <Typography variant="body1" color="text.secondary">
                     {filter === 'all' 
                       ? 'Click the + button to add your first task!'
                       : `No ${filter} tasks. Try a different filter or add some tasks.`
                     }
-                  </p>
-                </div>
+                  </Typography>
+                </Paper>
               )}
             </>
           )}
-        </div>
-      </main>
+        </Box>
+      </Container>
 
       {/* Floating Action Button */}
       <Fab

@@ -195,7 +195,7 @@ describe('App Component', () => {
       await user.type(screen.getByLabelText(/description/i), 'Test description');
       
       // Submit form
-      const submitButton = screen.getByRole('button', { name: /create task/i });
+      const submitButton = screen.getByRole('button', { name: /add task|create task/i });
       await user.click(submitButton);
       
       // Verify task appears
@@ -220,7 +220,7 @@ describe('App Component', () => {
       await user.click(addButton);
       
       // Try to submit without title
-      const submitButton = screen.getByRole('button', { name: /create task/i });
+      const submitButton = screen.getByRole('button', { name: /add task|create task/i });
       await user.click(submitButton);
       
       // Should show validation error
@@ -359,7 +359,7 @@ describe('App Component', () => {
       
       await user.type(screen.getByLabelText(/task title/i), 'Valid Title');
       
-      const submitButton = screen.getByRole('button', { name: /create task/i });
+      const submitButton = screen.getByRole('button', { name: /add task|create task/i });
       await user.click(submitButton);
       
       // Should show error message
