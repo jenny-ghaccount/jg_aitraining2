@@ -73,7 +73,12 @@ describe('ThemeProvider', () => {
       useTheme();
       return null;
     };
-    expect(() => render(<BrokenConsumer />)).toThrow('useTheme must be used within a ThemeProvider');
+    // Use act to ensure error is caught during render
+    expect(() => {
+      act(() => {
+        render(<BrokenConsumer />);
+      });
+    }).toThrow('useTheme must be used within a ThemeProvider');
   });
 
   test('sets theme from localStorage', () => {
