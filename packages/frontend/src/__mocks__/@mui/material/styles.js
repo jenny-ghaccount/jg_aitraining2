@@ -3,20 +3,22 @@ export const createTheme = (config) => ({
   ...config,
   palette: config?.palette || {},
   typography: config?.typography || {},
-  spacing: config?.spacing || 8,
+  spacing: typeof config?.spacing === 'function' ? config.spacing : (value = 1) => value * 8,
   breakpoints: config?.breakpoints || {},
   components: config?.components || {},
   mixins: config?.mixins || {},
+  shape: config?.shape || { borderRadius: 4 },
 });
 
 export const ThemeProvider = ({ children }) => children;
 export const useTheme = () => ({
   palette: { mode: 'light' },
-  spacing: (value) => value * 8,
+  spacing: (value = 1) => value * 8,
   breakpoints: {
     up: () => '@media (min-width: 600px)',
     down: () => '@media (max-width: 600px)',
-  }
+  },
+  shape: { borderRadius: 4 },
 });
 
 export const styled = () => () => 'div';

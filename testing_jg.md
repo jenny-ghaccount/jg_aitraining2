@@ -5,26 +5,26 @@
 
  PASS  src/__tests__/hooks/useTaskManager.test.js
  PASS  src/__tests__/test-utils-clean.js
- PASS  src/__tests__/testHelpers.js
- PASS  src/__tests__/test-utils-fixed.js
- PASS  src/__tests__/utils/basicUtils.test.js
- PASS  src/__tests__/test-utils.js
  PASS  src/__tests__/utils/taskUtils.test.js
+ PASS  src/__tests__/test-utils-fixed.js
+ PASS  src/__tests__/testHelpers.js
+ PASS  src/__tests__/test-utils.js
  PASS  src/__tests__/utils/appUtils.test.js
+ PASS  src/__tests__/utils/basicUtils.test.js
  FAIL  src/__tests__/SimpleApp.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/SimpleApp.test.js:4:1)
@@ -32,17 +32,17 @@
  FAIL  src/__tests__/App.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/App.test.js:6:1)
@@ -50,17 +50,17 @@
  FAIL  src/__tests__/integration/ComponentIntegration.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:4:1)
@@ -68,17 +68,17 @@
  FAIL  src/__tests__/integration/Integration.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/integration/Integration.test.js:4:1)
@@ -86,17 +86,17 @@
  FAIL  src/__tests__/integration/ComponentIntegration.simple.fixed.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.simple.fixed.test.js:7:1)
@@ -104,17 +104,17 @@
  FAIL  src/__tests__/integration/ComponentIntegration.simple.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.simple.test.js:6:1)
@@ -122,34 +122,34 @@
  FAIL  src/__tests__/TaskForm.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/__tests__/TaskForm.test.js:4:1)
 
  FAIL  src/__tests__/AppIntegration.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/AppIntegration.test.js:3:1)
@@ -185,17 +185,17 @@ Summary of all failing tests
  FAIL  src/__tests__/SimpleApp.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/SimpleApp.test.js:4:1)
@@ -203,17 +203,17 @@ Summary of all failing tests
  FAIL  src/__tests__/App.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/App.test.js:6:1)
@@ -221,17 +221,17 @@ Summary of all failing tests
  FAIL  src/__tests__/integration/ComponentIntegration.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.test.js:4:1)
@@ -239,17 +239,17 @@ Summary of all failing tests
  FAIL  src/__tests__/integration/Integration.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/integration/Integration.test.js:4:1)
@@ -257,17 +257,17 @@ Summary of all failing tests
  FAIL  src/__tests__/integration/ComponentIntegration.simple.fixed.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.simple.fixed.test.js:7:1)
@@ -275,17 +275,17 @@ Summary of all failing tests
  FAIL  src/__tests__/integration/ComponentIntegration.simple.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/integration/ComponentIntegration.simple.test.js:6:1)
@@ -293,34 +293,34 @@ Summary of all failing tests
  FAIL  src/__tests__/TaskForm.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/__tests__/TaskForm.test.js:4:1)
 
  FAIL  src/__tests__/AppIntegration.test.js
   ● Test suite failed to run
 
-    TypeError: (0 , _styles.createTheme) is not a function
+    TypeError: baseTheme.spacing is not a function
 
-      136 |
-      137 | // Base theme configuration
-    > 138 | const baseTheme = createTheme({
-          |                              ^
-      139 |   palette: {
-      140 |     mode: 'light',
-      141 |     primary: {
+      321 |         root: {
+      322 |           minHeight: 48, // Material Design minimum
+    > 323 |           paddingLeft: baseTheme.spacing(2),
+          |                                  ^
+      324 |           paddingRight: baseTheme.spacing(2),
+      325 |           '&:hover': {
+      326 |             backgroundColor: 'rgba(25, 118, 210, 0.04)'
 
-      at Object.<anonymous> (src/theme/theme.js:138:30)
+      at Object.<anonymous> (src/theme/theme.js:323:34)
       at Object.<anonymous> (src/theme/ThemeProvider.js:4:1)
       at Object.<anonymous> (src/App.js:18:1)
       at Object.<anonymous> (src/__tests__/AppIntegration.test.js:3:1)
@@ -329,7 +329,7 @@ Summary of all failing tests
 Test Suites: 8 failed, 22 skipped, 8 passed, 16 of 38 total
 Tests:       22 skipped, 51 passed, 73 total
 Snapshots:   0 total
-Time:        6.497 s
+Time:        5.03 s
 Ran all test suites.
 npm error Lifecycle script `test` failed with error:
 npm error code 1
@@ -338,3 +338,4 @@ npm error workspace frontend@0.1.0
 npm error location /workspaces/jg_aitraining2/packages/frontend
 npm error command failed
 npm error command sh -c react-scripts test --coverage --watchAll=false
+@jenny-ghaccount ➜ /workspaces/jg_aitraining2/packages/frontend (feature/context) $ 
