@@ -4,8 +4,14 @@ module.exports = {
   
   // Test file patterns
   testMatch: [
-    '**/__tests__/**/*.js', 
+    '**/__tests__/**/*.test.js', 
     '**/?(*.)+(spec|test).js'
+  ],
+  
+  // Exclude utility files from tests
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    'test-utils.js'
   ],
   
   // Coverage configuration
@@ -51,8 +57,5 @@ module.exports = {
   watchPathIgnorePatterns: [
     '<rootDir>/node_modules/', 
     '<rootDir>/coverage/'
-  ],
-  
-  // Test result processor
-  testResultsProcessor: 'jest-sonar-reporter'
+  ]
 };

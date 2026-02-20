@@ -66,12 +66,4 @@ global.testHelpers = {
   }
 };
 
-// Mock external dependencies if needed
-jest.mock('better-sqlite3', () => {
-  const mockDb = {
-    prepare: jest.fn(),
-    exec: jest.fn(),
-    close: jest.fn()
-  };
-  return jest.fn(() => mockDb);
-});
+// Use real better-sqlite3 for integration tests (no mock)
