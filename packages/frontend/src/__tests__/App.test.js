@@ -155,7 +155,8 @@ describe('App Component', () => {
       
       // Check task details
       expect(screen.getByText('Write comprehensive documentation for the project')).toBeInTheDocument();
-      expect(screen.getByText('2026-02-25')).toBeInTheDocument(); // Due date
+      // Due date is displayed as relative time (e.g., "Due in 5 days") not raw date
+      expect(screen.getByText(/due in/i)).toBeInTheDocument();
     });
   });
 
