@@ -10,16 +10,18 @@ const useTestTaskManager = () => {
   const [filter, setFilter] = React.useState('all');
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
+  const [idCounter, setIdCounter] = React.useState(1);
 
   const addTask = React.useCallback((taskData) => {
     const newTask = {
-      id: Date.now(),
+      id: idCounter,
       ...taskData,
       completed: false,
       createdAt: new Date().toISOString()
     };
     setTasks(prev => [...prev, newTask]);
-  }, []);
+    setIdCounter(prev => prev + 1);
+  }, [idCounter]);
 
   const updateTask = React.useCallback((id, updates) => {
     setTasks(prev => 

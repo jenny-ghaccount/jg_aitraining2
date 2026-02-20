@@ -54,3 +54,13 @@ export const waitForAsync = (ms = 100) => {
 // Re-export commonly used testing-library functions
 export * from '@testing-library/react';
 export { default as userEvent } from '@testing-library/user-event';
+
+// Test to prevent Jest "no tests" error
+describe('test-utils-clean utilities', () => {
+  test('waitForAsync should return a promise', async () => {
+    const start = Date.now();
+    await waitForAsync(10);
+    const elapsed = Date.now() - start;
+    expect(elapsed).toBeGreaterThanOrEqual(10);
+  });
+});

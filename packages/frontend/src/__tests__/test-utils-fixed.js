@@ -31,3 +31,13 @@ export const createMockHandlers = () => ({
 // Re-export commonly used testing-library functions
 export * from '@testing-library/react';
 export { default as userEvent } from '@testing-library/user-event';
+
+// Test to prevent Jest "no tests" error
+describe('test-utils-fixed utilities', () => {
+  test('createMockHandlers should create mock functions', () => {
+    const handlers = createMockHandlers();
+    expect(handlers.onClick).toEqual(expect.any(Function));
+    expect(handlers.onChange).toEqual(expect.any(Function));
+    expect(handlers.onSubmit).toEqual(expect.any(Function));
+  });
+});

@@ -28,3 +28,19 @@ export const createMockTask = (overrides = {}) => ({
   createdAt: new Date().toISOString(),
   ...overrides
 });
+
+// Test to prevent Jest "no tests" error
+describe('test-utils utilities', () => {
+  test('createMockTask should create a task object', () => {
+    const task = createMockTask();
+    expect(task).toHaveProperty('id');
+    expect(task).toHaveProperty('title', 'Test Task');
+    expect(task).toHaveProperty('completed', false);
+  });
+
+  test('createMockTask should accept overrides', () => {
+    const task = createMockTask({ completed: true, title: 'Custom Task' });
+    expect(task.completed).toBe(true);
+    expect(task.title).toBe('Custom Task');
+  });
+});

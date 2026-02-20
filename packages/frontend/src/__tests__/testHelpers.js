@@ -39,3 +39,13 @@ export const resetAllMocks = () => {
 export const waitForAsync = (ms = 0) => {
   return new Promise(resolve => setTimeout(resolve, ms));
 };
+
+// Test to prevent Jest "no tests" error
+describe('testHelpers utilities', () => {
+  test('waitForAsync should work correctly', async () => {
+    const start = Date.now();
+    await waitForAsync(10);
+    const elapsed = Date.now() - start;
+    expect(elapsed).toBeGreaterThanOrEqual(10);
+  });
+});

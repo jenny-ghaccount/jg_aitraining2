@@ -6,6 +6,7 @@ describe('Task Utility Functions', () => {
     
     if (!task || typeof task !== 'object') {
       errors.push('Task must be an object');
+      return { isValid: false, errors }; // Early return to prevent null access
     }
     
     if (!task.title || typeof task.title !== 'string' || task.title.trim() === '') {
@@ -38,8 +39,12 @@ describe('Task Utility Functions', () => {
       return '';
     }
     
-    // Remove HTML tags and trim whitespace
-    return input.replace(/<[^>]*>/g, '').trim();
+    // Remove script tags and their content completely
+    let cleaned = input.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+    // Remove remaining HTML tags
+    cleaned = cleaned.replace(/<[^>]*>/g, '');
+    // Trim whitespace
+    return cleaned.trim();
   };
 
   const getTaskPriority = (task) => {
