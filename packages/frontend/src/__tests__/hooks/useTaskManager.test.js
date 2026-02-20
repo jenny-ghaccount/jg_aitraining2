@@ -6,9 +6,14 @@ global.fetch = jest.fn();
 
 describe('Task Manager Hook Tests', () => {
   beforeEach(() => {
-    if (global.fetch && global.fetch.mockClear) {
-      global.fetch.mockClear();
-    }
+    // Reset fetch mock
+    global.fetch = jest.fn(() =>
+      Promise.resolve({
+        ok: true,
+        status: 200,
+        json: () => Promise.resolve([]),
+      })
+    );
   });
 
   test('initializes with correct default state', () => {

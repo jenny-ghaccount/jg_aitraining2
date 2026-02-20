@@ -84,7 +84,7 @@ describe('TaskForm Component', () => {
       const submitButton = screen.getByRole('button', { name: /add task/i });
       await user.click(submitButton);
 
-      expect(screen.getByText(/task title is required/i)).toBeInTheDocument();
+      expect(screen.getByText('Task title is required')).toBeInTheDocument();
       expect(mockOnSubmit).not.toHaveBeenCalled();
     });
 
@@ -105,7 +105,7 @@ describe('TaskForm Component', () => {
       const submitButton = screen.getByRole('button', { name: /add task/i });
       await user.click(submitButton);
 
-      expect(screen.getByText(/task title must be less than 255 characters/i)).toBeInTheDocument();
+      expect(screen.getByText('Task title must be less than 255 characters')).toBeInTheDocument();
       expect(mockOnSubmit).not.toHaveBeenCalled();
     });
 
@@ -128,7 +128,7 @@ describe('TaskForm Component', () => {
       const submitButton = screen.getByRole('button', { name: /add task/i });
       await user.click(submitButton);
 
-      expect(screen.getByText(/description must be less than 1000 characters/i)).toBeInTheDocument();
+      expect(screen.getByText('Description must be less than 1000 characters')).toBeInTheDocument();
       expect(mockOnSubmit).not.toHaveBeenCalled();
     });
 
@@ -328,7 +328,7 @@ describe('TaskForm Component', () => {
       await user.click(submitButton);
 
       // Error should have proper ARIA attributes
-      const errorMessage = screen.getByText(/task title is required/i);
+      const errorMessage = screen.getByText('Task title is required');
       expect(errorMessage).toHaveAttribute('role', 'alert');
     });
   });
