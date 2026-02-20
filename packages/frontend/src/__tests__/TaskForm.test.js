@@ -36,6 +36,14 @@ describe('TaskForm Component', () => {
       expect(screen.getByLabelText(/due date/i)).toBeInTheDocument();
       expect(screen.getByRole('button', { name: /add task/i })).toBeInTheDocument();
       expect(screen.getByRole('button', { name: /cancel/i })).toBeInTheDocument();
+      // Logging for debugging
+      console.log('Rendered form elements:', {
+        title: screen.queryByLabelText(/task title/i),
+        description: screen.queryByLabelText(/description/i),
+        dueDate: screen.queryByLabelText(/due date/i),
+        addTaskBtn: screen.queryByRole('button', { name: /add task/i }),
+        cancelBtn: screen.queryByRole('button', { name: /cancel/i })
+      });
     });
 
     test('renders in edit mode with task data', () => {
@@ -84,6 +92,8 @@ describe('TaskForm Component', () => {
       const submitButton = screen.getByRole('button', { name: /add task/i });
       expect(submitButton).toBeDisabled();
       expect(mockOnSubmit).not.toHaveBeenCalled();
+      // Logging for debugging
+      console.log('Submit button disabled:', submitButton.disabled);
     });
 
     test('validates title length limit', async () => {
@@ -311,6 +321,11 @@ describe('TaskForm Component', () => {
       
       expect(labels.length).toBeGreaterThan(0);
       expect(inputs.length).toBeGreaterThan(0);
+      // Logging for debugging
+      console.log('Accessibility check:', {
+        labelCount: labels.length,
+        inputCount: inputs.length
+      });
     });
 
     test('has proper ARIA labels and roles', () => {
