@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { waitFor } from '@testing-library/react';
 import TaskForm from '../TaskForm';
 import { ThemeProvider } from '../theme/ThemeProvider';
 
@@ -102,8 +103,11 @@ describe('TaskForm Component', () => {
       const submitButton = screen.getByRole('button', { name: /add task/i });
       await user.click(submitButton);
 
-      expect(screen.getByText(/task title must be less than 255 characters/i)).toBeInTheDocument();
-      expect(mockOnSubmit).not.toHaveBeenCalled();
+      // Wait for error message to appear
+      await waitFor(() => {
+        expect(screen.getByText(/task title must be less than 255 characters/i)).toBeInTheDocument();
+        expect(mockOnSubmit).not.toHaveBeenCalled();
+      });
     });
 
     test('validates description length limit', async () => {
@@ -125,8 +129,11 @@ describe('TaskForm Component', () => {
       const submitButton = screen.getByRole('button', { name: /add task/i });
       await user.click(submitButton);
 
-      expect(screen.getByText('Description must be less than 1000 characters')).toBeInTheDocument();
-      expect(mockOnSubmit).not.toHaveBeenCalled();
+      // Wait for error message to appear
+      await waitFor(() => {
+        expect(screen.getByText('Description must be less than 1000 characters')).toBeInTheDocument();
+        expect(mockOnSubmit).not.toHaveBeenCalled();
+      });
     });
 
     test('validates date format', async () => {
@@ -142,19 +149,20 @@ describe('TaskForm Component', () => {
       await user.type(titleInput, 'Valid Title');
 
       // Try to enter invalid date (this would depend on your date picker implementation)
-      // This test may need adjustment based on the actual date picker component
       const dateInput = screen.getByLabelText(/due date/i);
       await user.type(dateInput, 'invalid-date');
 
       const submitButton = screen.getByRole('button', { name: /add task/i });
       await user.click(submitButton);
 
-      // The exact error message will depend on your date validation implementation
-      expect(mockOnSubmit).not.toHaveBeenCalledWith(
-        expect.objectContaining({
-          dueDate: 'invalid-date'
-        })
-      );
+      // Wait for any error message or just check that onSubmit was not called
+      await waitFor(() => {
+        expect(mockOnSubmit).not.toHaveBeenCalledWith(
+          expect.objectContaining({
+            dueDate: 'invalid-date'
+          })
+        );
+      });
     });
   });
 
@@ -214,8 +222,10 @@ describe('TaskForm Component', () => {
       await user.click(submitButton);
 
       // Form should be cleared after submission (if successful)
-      expect(screen.getByLabelText(/task title/i)).toHaveValue('');
-      expect(screen.getByLabelText(/description/i)).toHaveValue('');
+      await waitFor(() => {
+        expect(screen.getByLabelText(/task title/i)).toHaveValue('');
+        expect(screen.getByLabelText(/description/i)).toHaveValue('');
+      });
     });
   });
 

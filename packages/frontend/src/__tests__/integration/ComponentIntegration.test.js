@@ -76,22 +76,24 @@ describe('Component Integration Tests', () => {
     // Open the task form modal first
     const addButton = screen.getByRole('button', { name: /add new task/i });
     await user.click(addButton);
-    
+
     // Wait for modal to open and find form elements
     await waitFor(() => {
       expect(screen.getByRole('dialog')).toBeInTheDocument();
     });
-    
+
     // Find the task input and submit button
     const taskInput = screen.getByRole('textbox', { name: /task title/i });
     const submitButton = screen.getByRole('button', { name: /add task/i });
-    
+
     // Type a task and submit
     await user.type(taskInput, 'Test task');
-    expect(taskInput).toHaveValue('Test task');
-    
+    await waitFor(() => {
+      expect(taskInput).toHaveValue('Test task');
+    });
+
     await user.click(submitButton);
-    
+
     // Modal should close after submission
     await waitFor(() => {
       expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
@@ -132,23 +134,27 @@ describe('Component Integration Tests', () => {
     // Open the task form modal
     const addButton = screen.getByRole('button', { name: /add new task/i });
     await user.click(addButton);
-    
+
     // Wait for modal to open
     await waitFor(() => {
       expect(screen.getByRole('dialog')).toBeInTheDocument();
     });
-    
+
     const taskInput = screen.getByRole('textbox', { name: /task title/i });
-    
+
     // Type task title
     await user.type(taskInput, 'New Task Title');
-    
+    await waitFor(() => {
+      expect(taskInput).toHaveValue('New Task Title');
+    });
+
     // Click the Add Task button to submit
     const submitButton = screen.getByRole('button', { name: /add task/i });
     await user.click(submitButton);
-    
+
     // After form submission, either the dialog closes or shows a result
-    // We just verify the user interaction completed without throwing
-    expect(true).toBe(true);
+    await waitFor(() => {
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    });
   });
 });

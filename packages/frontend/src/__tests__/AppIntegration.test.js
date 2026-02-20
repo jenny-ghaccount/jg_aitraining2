@@ -50,31 +50,35 @@ describe('App Integration Tests', () => {
   test('has working filter buttons', async () => {
     const user = userEvent.setup();
     render(<App />);
-    
+
     await waitFor(() => {
       expect(screen.queryByText('Loading tasks...')).not.toBeInTheDocument();
     });
-    
+
     const allButton = screen.getByRole('button', { name: /all/i });
     const activeButton = screen.getByRole('button', { name: /active/i });
-    
-    expect(allButton).toHaveAttribute('aria-pressed', 'true');
-    
+
+    await waitFor(() => {
+      expect(allButton).toHaveAttribute('aria-pressed', 'true');
+    });
+
     await user.click(activeButton);
-    expect(activeButton).toHaveAttribute('aria-pressed', 'true');
+    await waitFor(() => {
+      expect(activeButton).toHaveAttribute('aria-pressed', 'true');
+    });
   });
 
   test('opens add task dialog', async () => {
     const user = userEvent.setup();
     render(<App />);
-    
+
     await waitFor(() => {
       expect(screen.queryByText('Loading tasks...')).not.toBeInTheDocument();
     });
-    
+
     const addButton = screen.getByRole('button', { name: /add new task/i });
     await user.click(addButton);
-    
+
     await waitFor(() => {
       expect(screen.getByRole('dialog')).toBeInTheDocument();
     });
