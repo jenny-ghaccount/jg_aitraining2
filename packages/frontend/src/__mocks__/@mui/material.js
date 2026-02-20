@@ -5,7 +5,7 @@ import React from 'react';
 export const Container = ({ children, component, maxWidth, ...props }) => {
   const role = component === 'main' ? 'main' : props.role;
   // Filter out Material-UI specific props that shouldn't be passed to DOM
-  const { sx, maxWidth: _maxWidth, ...domProps } = props;
+    const { sx, maxWidth: _maxWidth, fullWidth: _fullWidth, ...domProps } = props;
   // Remove maxWidth from DOM props
   return <div {...domProps} role={role}>{children}</div>;
 };
@@ -34,7 +34,9 @@ export const TextField = ({ label, id, name, error, helperText, inputProps, Inpu
 
 // Enhanced Dialog mock with proper accessibility
 export const Dialog = ({ children, open, ...props }) => 
-  open ? <div {...props} role="dialog">{children}</div> : null;
+  if (!open) return null;
+  const { sx, maxWidth: _maxWidth, fullWidth: _fullWidth, ...domProps } = props;
+  return <div {...domProps} role="dialog">{children}</div>;
 
 export const DialogTitle = ({ children, ...props }) => <h2 {...props}>{children}</h2>;
 export const DialogContent = ({ children, ...props }) => <div {...props}>{children}</div>;
