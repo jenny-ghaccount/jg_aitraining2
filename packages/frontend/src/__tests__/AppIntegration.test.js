@@ -15,7 +15,7 @@ global.fetch = jest.fn(() =>
   })
 );
 
-describe.skip('App Integration Tests', () => {
+describe('App Integration Tests', () => {
   beforeEach(() => {
     fetch.mockClear();
     fetch.mockResolvedValue({

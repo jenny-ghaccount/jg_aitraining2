@@ -119,31 +119,32 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-describe.skip('App Component', () => {
+describe('App Component', () => {
   describe('Initial Loading and Display', () => {
     test('renders app bar and main container', async () => {
-      await act(async () => {
-        render(<App />);
-      });
+      render(<App />);
       
+      // Basic structure should be immediately available
       expect(screen.getByRole('banner')).toBeInTheDocument(); // AppBar
       expect(screen.getByText('Todo App')).toBeInTheDocument();
     });
 
     test('shows loading state initially', async () => {
-      await act(async () => {
-        render(<App />);
-      });
+      render(<App />);
       
-      expect(screen.getByRole('progressbar')).toBeInTheDocument();
+      // Should show loading state initially
       expect(screen.getByText('Loading tasks...')).toBeInTheDocument();
     });
 
     test('loads and displays tasks correctly', async () => {
-      await act(async () => {
-        render(<App />);
+      render(<App />);
+      
+      // Wait for loading to finish
+      await waitFor(() => {
+        expect(screen.queryByText('Loading tasks...')).not.toBeInTheDocument();
       });
       
+      // Now check for task content
       await waitFor(() => {
         expect(screen.getByText('Complete project documentation')).toBeInTheDocument();
         expect(screen.getByText('Review pull requests')).toBeInTheDocument();
@@ -159,12 +160,11 @@ describe.skip('App Component', () => {
     test('opens task form when add button is clicked', async () => {
       const user = userEvent.setup();
       
-      await act(async () => {
-        render(<App />);
-      });
+      render(<App />);
       
+      // Wait for loading to complete
       await waitFor(() => {
-        expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
+        expect(screen.queryByText('Loading tasks...')).not.toBeInTheDocument();
       });
       
       // Click the floating action button
@@ -178,12 +178,11 @@ describe.skip('App Component', () => {
     test('creates new task with valid data', async () => {
       const user = userEvent.setup();
       
-      await act(async () => {
-        render(<App />);
-      });
+      render(<App />);
       
+      // Wait for loading to complete
       await waitFor(() => {
-        expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
+        expect(screen.queryByText('Loading tasks...')).not.toBeInTheDocument();
       });
       
       // Open task form

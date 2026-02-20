@@ -17,7 +17,7 @@ const defaultProps = {
   onClose: mockOnClose
 };
 
-describe.skip('TaskForm Component', () => {
+describe('TaskForm Component', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });

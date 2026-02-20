@@ -16,17 +16,38 @@ global.fetch = jest.fn(() =>
   })
 );
 
-describe.skip('Simple App Tests', () => {
+describe('Simple App Tests', () => {
   beforeEach(() => {
     fetch.mockClear();
+    fetch.mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ([]),
+      text: async () => '[]',
+      headers: new Headers(),
+      url: '/api/tasks',
+      statusText: 'OK'
+    });
   });
-  test('renders the app without crashing', () => {
+  test('renders the app without crashing', async () => {
     render(<App />);
+    
+    // Wait for loading to complete first
+    await waitFor(() => {
+      expect(screen.queryByText('Loading tasks...')).not.toBeInTheDocument();
+    });
+    
     expect(screen.getByText('Todo App')).toBeInTheDocument();
   });
 
-  test('shows add task button', () => {
+  test('shows add task button', async () => {
     render(<App />);
+    
+    // Wait for loading to complete first
+    await waitFor(() => {
+      expect(screen.queryByText('Loading tasks...')).not.toBeInTheDocument();
+    });
+    
     const addButton = screen.getByRole('button', { name: /add new task/i });
     expect(addButton).toBeInTheDocument();
   });

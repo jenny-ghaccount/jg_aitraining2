@@ -20,7 +20,7 @@ global.fetch = jest.fn(() =>
   })
 );
 
-describe.skip('Component Integration Tests', () => {
+describe('Component Integration Tests', () => {
   beforeEach(() => {
     // Reset the mock before each test
     global.fetch.mockClear();
