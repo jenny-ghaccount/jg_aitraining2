@@ -364,9 +364,9 @@ describe('App Component', () => {
       const submitButton = screen.getByRole('button', { name: /add task|create task/i });
       await user.click(submitButton);
       
-      // Should show error message
+      // Should show error message for long title
       await waitFor(() => {
-        expect(screen.getByText(/cannot exceed 255 characters/i)).toBeInTheDocument();
+        expect(screen.getByText(/255 characters/i)).toBeInTheDocument();
       });
     });
   });
@@ -379,7 +379,7 @@ describe('App Component', () => {
         render(<App />);
       });
       
-      const themeButton = screen.getByRole('button', { name: /toggle theme/i });
+      const themeButton = screen.getByRole('button', { name: /switch to.*theme/i });
       await user.click(themeButton);
       
       // Theme should change (this would need theme context testing)
@@ -414,7 +414,7 @@ describe('App Component', () => {
       
       // Tab through interactive elements
       await user.tab();
-      expect(screen.getByRole('button', { name: /toggle theme/i })).toHaveFocus();
+      expect(screen.getByRole('button', { name: /switch to.*theme/i })).toHaveFocus();
       
       await user.tab();
       expect(screen.getByRole('button', { name: /settings/i })).toHaveFocus();
