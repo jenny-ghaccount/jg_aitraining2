@@ -17,18 +17,16 @@ const server = setupServer(
       ])
     );
   }),
-  
+
   // POST /api/items handler
   rest.post('/api/items', (req, res, ctx) => {
     const { name } = req.body;
-    
     if (!name || name.trim() === '') {
       return res(
         ctx.status(400),
         ctx.json({ error: 'Item name is required' })
       );
     }
-    
     return res(
       ctx.status(201),
       ctx.json({
@@ -37,8 +35,57 @@ const server = setupServer(
         created_at: new Date().toISOString(),
       })
     );
+  }),
+
+  // PUT /api/items/:id handler for editing
+  rest.put('/api/items/:id', (req, res, ctx) => {
+    const { name, due_date } = req.body;
+    if (!name || name.trim() === '') {
+      return res(
+        ctx.status(400),
+        ctx.json({ error: 'Item name is required' })
+      );
+    }
+    return res(
+      ctx.status(200),
+      ctx.json({
+        id: Number(req.params.id),
+        name,
+        due_date,
+        created_at: new Date().toISOString(),
+      })
+    );
   })
 );
+  test('edits an item when edit form is used', async () => {
+    const user = userEvent.setup();
+    await act(async () => {
+      render(<App />);
+    });
+    // Wait for items to load
+    await waitFor(() => {
+      expect(screen.getByText('Test Item 1')).toBeInTheDocument();
+    });
+    // Click Edit button for first item
+    const editButton = screen.getAllByText('Edit')[0];
+    await act(async () => {
+      await user.click(editButton);
+    });
+    // Edit form should appear
+    const editInput = screen.getByPlaceholderText('Edit item name');
+    await act(async () => {
+      await user.clear(editInput);
+      await user.type(editInput, 'Edited Task');
+    });
+    const saveButton = screen.getByText('Save');
+    await act(async () => {
+      await user.click(saveButton);
+    });
+    // Wait for updated item to appear
+    await waitFor(() => {
+      expect(screen.getByText('Edited Task')).toBeInTheDocument();
+    });
+  });
 
 // Setup and teardown for the mock server
 beforeAll(() => server.listen());

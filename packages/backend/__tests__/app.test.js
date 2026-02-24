@@ -74,6 +74,40 @@ describe('API Endpoints', () => {
     });
   });
 
+  describe('PUT /api/items/:id', () => {
+    it('should update an existing item', async () => {
+      const item = await createItem('Item To Edit');
+      const updatedData = { name: 'Edited Item', due_date: '2026-03-01' };
+      const response = await request(app)
+        .put(`/api/items/${item.id}`)
+        .send(updatedData)
+        .set('Accept', 'application/json');
+
+      expect(response.status).toBe(200);
+      expect(response.body.name).toBe(updatedData.name);
+      expect(response.body.due_date).toBe(updatedData.due_date);
+    });
+
+    it('should return 404 if item does not exist', async () => {
+      const response = await request(app)
+        .put('/api/items/99999')
+        .send({ name: 'Does Not Exist', due_date: '2026-03-01' })
+        .set('Accept', 'application/json');
+      expect(response.status).toBe(404);
+      expect(response.body).toHaveProperty('error');
+    });
+
+    it('should return 400 if name is missing', async () => {
+      const item = await createItem('Item To Edit');
+      const response = await request(app)
+        .put(`/api/items/${item.id}`)
+        .send({ due_date: '2026-03-01' })
+        .set('Accept', 'application/json');
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('error');
+    });
+  });
+
   describe('DELETE /api/items/:id', () => {
     it('should delete an existing item', async () => {
       const item = await createItem('Item To Be Deleted');

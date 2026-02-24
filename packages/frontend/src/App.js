@@ -6,6 +6,9 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [newItem, setNewItem] = useState('');
+  const [editItemId, setEditItemId] = useState(null);
+  const [editName, setEditName] = useState('');
+  const [editDueDate, setEditDueDate] = useState('');
 
   useEffect(() => {
     fetchData();
@@ -73,6 +76,45 @@ function App() {
     }
   };
 
+  // Handle edit button click
+  const handleEditClick = (item) => {
+    setEditItemId(item.id);
+    setEditName(item.name);
+    setEditDueDate(item.due_date || '');
+  };
+
+  // Handle edit form submit
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    if (!editName.trim()) return;
+    try {
+      const response = await fetch(`/api/items/${editItemId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: editName, due_date: editDueDate }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to update item');
+      }
+      const updatedItem = await response.json();
+      setData(data.map(item => item.id === editItemId ? updatedItem : item));
+      setEditItemId(null);
+      setEditName('');
+      setEditDueDate('');
+      setError(null);
+    } catch (err) {
+      setError('Error updating item: ' + err.message);
+      console.error('Error updating item:', err);
+    }
+  };
+
+  // Handle cancel edit
+  const handleCancelEdit = () => {
+    setEditItemId(null);
+    setEditName('');
+    setEditDueDate('');
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -103,14 +145,45 @@ function App() {
               {data.length > 0 ? (
                 data.map((item) => (
                   <li key={item.id}>
-                    <span>{item.name}</span>
-                    <button 
-                      onClick={() => handleDelete(item.id)}
-                      className="delete-btn"
-                      type="button"
-                    >
-                      Delete
-                    </button>
+                    {editItemId === item.id ? (
+                      <form onSubmit={handleEditSubmit} className="edit-form">
+                        <input
+                          type="text"
+                          value={editName}
+                          onChange={(e) => setEditName(e.target.value)}
+                          placeholder="Edit item name"
+                        />
+                        <input
+                          type="date"
+                          value={editDueDate}
+                          onChange={(e) => setEditDueDate(e.target.value)}
+                          placeholder="Due date"
+                        />
+                        <button type="submit">Save</button>
+                        <button type="button" onClick={handleCancelEdit}>Cancel</button>
+                      </form>
+                    ) : (
+                      <>
+                        <span>{item.name}</span>
+                        {item.due_date && (
+                          <span className="due-date"> (Due: {item.due_date})</span>
+                        )}
+                        <button
+                          onClick={() => handleEditClick(item)}
+                          className="edit-btn"
+                          type="button"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDelete(item.id)}
+                          className="delete-btn"
+                          type="button"
+                        >
+                          Delete
+                        </button>
+                      </>
+                    )}
                   </li>
                 ))
               ) : (
