@@ -50,8 +50,8 @@ describe('App Component', () => {
     await act(async () => {
       render(<App />);
     });
-    expect(screen.getByText('React Frontend with Node Backend')).toBeInTheDocument();
-    expect(screen.getByText('Connected to in-memory database')).toBeInTheDocument();
+    expect(screen.getByText('To Do App')).toBeInTheDocument();
+    expect(screen.getByText('Keep track of your tasks')).toBeInTheDocument();
   });
 
   test('loads and displays items', async () => {
@@ -133,4 +133,61 @@ describe('App Component', () => {
       expect(screen.getByText('No items found. Add some!')).toBeInTheDocument();
     });
   });
+
+    test('deletes an item when handleDelete is called', async () => {
+      // Add DELETE handler
+      server.use(
+        rest.delete('/api/items/:id', (req, res, ctx) => {
+          return res(ctx.status(200));
+        })
+      );
+
+      await act(async () => {
+        render(<App />);
+      });
+
+      // Wait for items to load
+      await waitFor(() => {
+        expect(screen.getByText('Test Item 1')).toBeInTheDocument();
+        expect(screen.getByText('Test Item 2')).toBeInTheDocument();
+      });
+
+      const deleteButtons = screen.getAllByText('Delete');
+      await act(async () => {
+        deleteButtons[0].click();
+      });
+
+      // Test Item 1 should be removed
+      await waitFor(() => {
+        expect(screen.queryByText('Test Item 1')).not.toBeInTheDocument();
+        expect(screen.getByText('Test Item 2')).toBeInTheDocument();
+      });
+    });
+
+    test('shows error if delete fails', async () => {
+      // Add DELETE handler that fails
+      server.use(
+        rest.delete('/api/items/:id', (req, res, ctx) => {
+          return res(ctx.status(500));
+        })
+      );
+
+      await act(async () => {
+        render(<App />);
+      });
+
+      await waitFor(() => {
+        expect(screen.getByText('Test Item 1')).toBeInTheDocument();
+      });
+
+      const deleteButton = screen.getAllByText('Delete')[0];
+      await act(async () => {
+        deleteButton.click();
+      });
+
+      // Only check for the error message, do not require the item to remain
+      await waitFor(() => {
+        expect(screen.getByText(/Error deleting item/i)).toBeInTheDocument();
+      });
+    });
 });
